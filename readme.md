@@ -1,8 +1,8 @@
-# Redux CRUD Reducers
+# Redux CRUD
 
-[ ![Codeship Status for Versent/redux-crud-reducers](https://codeship.com/projects/4cdbd560-2938-0133-5117-3e546cad586a/status?branch=master)](https://codeship.com/projects/97925)
+[ ![Codeship Status for Versent/redux-crud](https://codeship.com/projects/41be3440-293a-0133-d1a0-76c73dc375da/status?branch=master)](https://codeship.com/projects/97928)
 
-A set of standard reducers for CRUD Applications
+A set of standard actions and reducers for CRUD Applications
 
 __Work in progress__
 
