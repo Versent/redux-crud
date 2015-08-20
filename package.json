@@ -19,5 +19,20 @@
   "bugs": {
     "url": "https://github.com/Versent/redux-crud/issues"
   },
-  "homepage": "https://github.com/Versent/redux-crud"
+  "homepage": "https://github.com/Versent/redux-crud",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-shell": "^0.4.2",
+    "gulp-watch": "^4.3.5",
+    "rewire": "^2.3.4",
+    "sinon": "^1.16.0",
+    "tap-dot": "^1.0.0",
+    "tape": "^4.2.0",
+    "tape-catch": "^1.0.4"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "redux-crud-actions": "^0.4.0",
+    "seamless-immutable": "^3.0.0"
+  }
 }
