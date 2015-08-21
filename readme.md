@@ -29,8 +29,22 @@ function (state, action) {
 
 ```
 
+## .actionCreatorsFor
+
+See https://github.com/Versent/redux-crud-actions#actioncreatorsfor
+
+## .actionTypesFor
+
+See https://github.com/Versent/redux-crud-actions#actiontypesfor
+
 ## Conventions
 
 - These reducers user __seamless-immutable__ for storing data.
 - Reducer expects standard action names from https://github.com/Versent/redux-crud-actions
 - Reducer expects standard actions from https://github.com/Versent/redux-crud-actions
+
+## Using with Redux
+
+### Actions
+
+### Reducers

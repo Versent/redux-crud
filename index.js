@@ -1,5 +1,9 @@
-var reducersFor = require('./lib/reducersFor');
+var actionCreatorsFor = require('./lib/actionCreatorsFor');
+var actionTypesFor    = require('./lib/actionTypesFor');
+var reducersFor       = require('./lib/reducersFor');
 
 module.exports = {
-  reducersFor: reducersFor,
+  actionCreatorsFor: actionCreatorsFor,
+  actionTypesFor:    actionTypesFor,
+  reducersFor:       reducersFor,
 };
