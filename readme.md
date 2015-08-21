@@ -47,9 +47,25 @@ function (state, action) {
 
 ### Action creators
 
+Redux CRUD generates the following action creators:
+
+- fetchStart
+- fetchSuccess
+- fetchError
+- createStart
+- createSuccess
+- createError
+- updateStart
+- updateSuccess
+- updateError
+- deleteStart
+- deleteSuccess
+- deleteError
+
 Create your action creators by extending the standard actions:
 
 ```js
+import _            from 'lodash';
 import reduxCrud    from 'redux-crud';
 
 const standardActionCreators = reduxCrud.actionCreatorsFor('users');
