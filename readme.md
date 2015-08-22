@@ -63,6 +63,12 @@ function (state, action) {
 
 ```
 
+Reducers for takes a config object as second argument:
+
+```
+crudReducers.reducersFor('users', {key: '_id'});
+```
+
 ## Using with Redux
 
 ### Action creators
