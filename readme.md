@@ -2,7 +2,9 @@
 
 [ ![Codeship Status for Versent/redux-crud](https://codeship.com/projects/41be3440-293a-0133-d1a0-76c73dc375da/status?branch=master)](https://codeship.com/projects/97928)
 
-Redux CRUD is an opinionated way of building CRUD applications using Redux. Redux CRUD gives you an standard set of:
+Redux CRUD is an opinionated way of building CRUD applications using Redux. After building several Flux applications we found that we always end up duplicating the same actions types, actions and reducers for all our resources.
+
+Redux CRUD gives you an standard set of:
 
 - action types e.g. USER_UPDATE_SUCCESS
 - actions e.g. updateSuccess, updateError
@@ -10,17 +12,35 @@ Redux CRUD is an opinionated way of building CRUD applications using Redux. Redu
 
 Redux CRUD uses [__seamless-immutable__](https://github.com/rtfeldman/seamless-immutable) for storing data.
 
-__Work in progress__
+## Working with resources in Redux
 
-## .actionTypesFor
+When building an app you might have resources like __users__, __posts__ and __comments__.
+
+You will probably end up with action types for them like:
+
+- USERS_FETCH_SUCCESS
+- POSTS_FETCH_SUCCESS
+- COMMENTS_FETCH_SUCCESS
+
+And action creators like:
+
+- users.fetchSuccess
+- posts.fetchSuccess
+- comments.fetchSuccess
+
+There is strong repetitive pattern between all of them. Redux CRUD aims to remove all this repetitive boilerplate by giving providing strong conventions on naming and processing data.
+
+## API
+
+### .actionTypesFor
 
 See https://github.com/Versent/redux-crud-actions#actiontypesfor
 
-## .actionCreatorsFor
+### .actionCreatorsFor
 
 See https://github.com/Versent/redux-crud-actions#actioncreatorsfor
 
-## .reducersFor
+### .reducersFor
 
 Create a reducer function for the given resource.
 
@@ -153,3 +173,30 @@ const allReducers = combineReducers({
 const store = createStoreWithMiddleware(allReducers);
 
 ```
+
+### Getting data to your components
+
+-
+
+## Best practices
+
+### About nesting
+
+Don't atttempt to store nested resources. e.g. `{id: 1, posts: [{...}]}`. This makes harder to keep the information in sync with the UI. Instead always normalize the resources when they arrive from the server and store them in collections of their own.
+
+### Use plural resources
+
+Use collection of resources and name them using the plural form e.g. `users` instead of `user`. Redux CRUD always expects to deal with collections.
+
+### About optimistic updates
+
+-
+
+## Development
+
+### Testing
+
+```
+npm test
+```
+
