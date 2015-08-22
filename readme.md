@@ -69,6 +69,8 @@ Reducers for takes a config object as second argument:
 crudReducers.reducersFor('users', {key: '_id'});
 ```
 
+### What each reducer does
+
 ## Using with Redux
 
 ### Action creators
@@ -184,9 +186,9 @@ const store = createStoreWithMiddleware(allReducers);
 
 -
 
-## Best practices
+## Notes
 
-### About nesting
+### Avoid nesting
 
 Don't atttempt to store nested resources. e.g. `{id: 1, posts: [{...}]}`. This makes harder to keep the information in sync with the UI. Instead always normalize the resources when they arrive from the server and store them in collections of their own.
 
@@ -195,6 +197,32 @@ Don't atttempt to store nested resources. e.g. `{id: 1, posts: [{...}]}`. This m
 Use collection of resources and name them using the plural form e.g. `users` instead of `user`. Redux CRUD always expects to deal with collections.
 
 ### About optimistic updates
+
+### Mapping over records in components
+
+Most likely you will get a seamless-immutable collection in you components. Don't map over it to create list because seamless-immutable will attempt to make the react components immutable, this doesn't work.
+
+Don't do this:
+
+```js
+var lis = records.map(function(record) {
+  return <li key={record.id}>{record.name}</li>;
+});
+```
+
+Instead, use lodash to map or convert to mutable first:
+
+```js
+var lis = _.map(records, function(record) {
+  return <li key={record.id}>{record.name}</li>;
+});
+
+or 
+
+var lis = records.toMutable().map(function(record) {
+  return <li key={record.id}>{record.name}</li>;
+});
+```
 
 -
 
