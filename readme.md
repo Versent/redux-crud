@@ -2,7 +2,7 @@
 
 [ ![Codeship Status for Versent/redux-crud](https://codeship.com/projects/41be3440-293a-0133-d1a0-76c73dc375da/status?branch=master)](https://codeship.com/projects/97928)
 
-Redux CRUD is an opinionated way of building CRUD applications using Redux. After building several Flux applications we found that we always end up duplicating the same actions types, actions and reducers for all our resources.
+Redux CRUD is a convention driven way of building CRUD applications using Redux. After building several Flux applications we found that we always end up duplicating the same actions types, actions and reducers for all our resources.
 
 Redux CRUD gives you an standard set of:
 
@@ -57,7 +57,7 @@ See https://github.com/Versent/redux-crud-actions#actioncreatorsfor
 
 ## .reducersFor
 
-Create a reducer function for the given resource. Redux CRUD generates the following reducers:
+Create a reducer function for the given resource. Redux CRUD assumes that all records will have a unique key, e.g. `id`. Redux CRUD generates the following reducers:
 
 - fetchSuccess
 - createStart
@@ -69,6 +69,8 @@ Create a reducer function for the given resource. Redux CRUD generates the follo
 - deleteStart
 - deleteSuccess
 - deleteError
+
+Note: There are no `fetchStart` and `fetchError` reducers.
 
 ```js
 var crudReducers = require('redux-crud-reducers');
