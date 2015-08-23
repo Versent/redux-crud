@@ -318,7 +318,7 @@ const store = createStoreWithMiddleware(allReducers);
 
 ### Getting data to your components
 
--
+- To do
 
 # Notes
 
@@ -328,13 +328,15 @@ Don't atttempt to store nested resources. e.g. `{id: 1, posts: [{...}]}`. This m
 
 Normalizing records:
 
--
+- to do
 
 ### Use plural resources
 
 Use collection of resources and name them using the plural form e.g. `users` instead of `user`. Redux CRUD always expects to deal with collections.
 
 ### About optimistic updates
+
+- to do
 
 ### Mapping over records in components
 
@@ -362,7 +364,9 @@ var lis = records.toMutable().map(function(record) {
 });
 ```
 
--
+### Why seamless-immutable
+
+[Immutable.js](https://github.com/facebook/immutable-js/) is nice but [seamless-immutable](https://github.com/rtfeldman/seamless-immutable) offers [stronger immutable guarantees](https://github.com/facebook/immutable-js/issues/546).
 
 ## Development
 
