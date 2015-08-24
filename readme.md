@@ -424,7 +424,8 @@ let actionCreators = {
         }, function(response) {
           // rejection
           // dispatch the error action
-          const action = standardActionCreators.updateError(user);
+          // first param is the error
+          const action = standardActionCreators.updateError(response, user);
           dispatch(action);
         }).catch(function(err) {
           console.error(err.toString());
