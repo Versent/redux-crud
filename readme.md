@@ -437,6 +437,42 @@ const allReducers = combineReducers({
 const store = createStoreWithMiddleware(allReducers);
 ```
 
+### Extending reducers
+
+There are many cases when the generated reducers are not enought. For example you might want to delete all `comments` when a `post` is deleted. You can extend a reducer function like this:
+
+```js
+// comments/reducers.js
+
+import SI         from 'seamless-immutable';
+import reduxCrud  from 'redux-crud';
+
+const standardReducers = reduxCrud.reducersFor('comments');
+
+function commentsReducers(state=SI([]), action) {
+  switch(action.type) {
+    case 'POSTS_DELETE_SUCCESS':
+      // ...delete comments for the given post and return a new state
+    default:
+      // pass to the generated reducers
+      return standardReducers(state, action)
+  }
+}
+
+export default reducers;
+```
+
+Then you can use this reducers:
+
+```
+import commentsReducers from './comments/reducers';
+
+const allReducers = combineReducers({
+  comments: commentsReducers,
+  posts: reduxCrud.reducersFor('posts'),
+});
+```
+
 ### Getting data to your components
 
 - TODO
