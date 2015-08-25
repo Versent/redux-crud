@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "lodash": "~3.10.1",
-    "action-names": "~0.2.0",
+    "action-names": "~0.3.0",
     "seamless-immutable": "~3.0.0",
     "siu": "~0.3.1"
   }
