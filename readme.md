@@ -514,7 +514,7 @@ var lis = _.map(records, function(record) {
 ```
 or:
 ```
-var lis = records.toMutable().map(function(record) {
+var lis = records.asMutable().map(function(record) {
   return <li key={record.id}>{record.name}</li>;
 });
 ```
