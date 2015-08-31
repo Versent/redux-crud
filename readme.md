@@ -486,8 +486,66 @@ const allReducers = combineReducers({
 
 Don't atttempt to store nested resources. e.g. `{id: 1, posts: [{...}]}`. This makes harder to keep the information in sync with the UI. Instead always normalize the resources when they arrive from the server and store them in collections of their own.
 
-Normalizing records:
-- TODO
+### Normalizing records
+
+You API might return something like:
+
+```js
+{
+  id: 1,
+  label: 'Some post',
+  comments: [
+    {id: 1, body: '...'},
+    {id: 2, body: '...'},
+  ]
+}
+```
+
+Instead of trying to work with nested records in your views you should normalize them in you async action creator:
+
+```js
+
+const baseActionCreators         = reduxCrud.actionCreatorsFor('posts');
+const baseCommentsActionCreators = reduxCrud.actionCreatorsFor('comments');
+
+fetch() {
+  return function(dispatch) {
+    const action = baseActionCreators.fetchStart();
+    dispatch(action);
+
+    // send the request
+    const url = `/posts/`;
+    const promise = someAjaxLibrary({
+      url: url,
+      method: 'GET'
+    });
+
+    promise.then(function(response) {
+        const posts = response.data.data;
+        const action = baseActionCreators.fetchSuccess(posts);
+        dispatch(action);
+
+        // get the comments out
+        const comments = _(posts).map(function(post) {
+          return post.comments;
+        }).flatten().value();
+
+        const commentsAction = baseCommentsActionCreators.fetchSuccess(comments);
+        dispatch(commentsAction);
+
+      }, function(response) {
+        // dispatch the error action
+        // first param is the error
+        const action = baseActionCreators.fetchError(response);
+        dispatch(action);
+      }).catch(function(err) {
+        console.error(err.toString());
+      });
+
+    return promise;
+  }
+},
+```
 
 ### Use plural resources
 
