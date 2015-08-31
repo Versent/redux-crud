@@ -476,11 +476,11 @@ const allReducers = combineReducers({
 });
 ```
 
+# Notes
+
 ### Getting data to your components
 
-- TODO
-
-# Notes
+With React use [React-Redux](https://github.com/rackt/react-redux)
 
 ## Avoid nesting
 
@@ -513,7 +513,6 @@ fetch() {
     const action = baseActionCreators.fetchStart();
     dispatch(action);
 
-    // send the request
     const url = `/posts/`;
     const promise = someAjaxLibrary({
       url: url,
@@ -525,17 +524,16 @@ fetch() {
         const action = baseActionCreators.fetchSuccess(posts);
         dispatch(action);
 
-        // get the comments out
+        /***********************************************/
+        /* Get the comments and send them to the store */
         const comments = _(posts).map(function(post) {
           return post.comments;
         }).flatten().value();
 
         const commentsAction = baseCommentsActionCreators.fetchSuccess(comments);
         dispatch(commentsAction);
-
+        /**********************************************/
       }, function(response) {
-        // dispatch the error action
-        // first param is the error
         const action = baseActionCreators.fetchError(response);
         dispatch(action);
       }).catch(function(err) {
@@ -551,9 +549,9 @@ fetch() {
 
 Use collection of resources and name them using the plural form e.g. `users` instead of `user`.
 
-### About optimistic updates
+### About optimistic changes
 
-- TODO
+Dispatching `createStart`, `updateStart` and `deleteStart` will result in optimistic changes to your store. See the description of what each reducer does above. `updateStart` and `deleteStart` will just work out of the box. `createStart` needs additional code from you [TODO].
 
 ### Mapping over records in components
 
