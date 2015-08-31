@@ -412,6 +412,8 @@ let actionCreators = {
 }
 ```
 
+[See a list of examples here](./docs/async_action_creators.md)
+
 ### Reducers
 
 Redux CRUD generates standard reducers for __`fetch`__, __`create`__, __`update`__ and __`delete`__.
