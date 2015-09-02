@@ -480,7 +480,7 @@ const allReducers = combineReducers({
 
 ### Getting data to your components
 
-With React use [React-Redux](https://github.com/rackt/react-redux)
+With React use [React-Redux](https://github.com/rackt/react-redux).
 
 ## Avoid nesting
 
@@ -488,7 +488,7 @@ Don't atttempt to store nested resources. e.g. `{id: 1, posts: [{...}]}`. This m
 
 ### Normalizing records
 
-You API might return something like:
+Your API might return something like:
 
 ```js
 {
@@ -501,7 +501,7 @@ You API might return something like:
 }
 ```
 
-Instead of trying to work with nested records in your views you should normalize them in you async action creator:
+Instead of trying to work with nested records in your views, you should normalize them in your async action creator:
 
 ```js
 
@@ -547,7 +547,7 @@ fetch() {
 
 ### Use plural resources
 
-Use collection of resources and name them using the plural form e.g. `users` instead of `user`.
+Use a collection of resources and name them using the plural form e.g. `users` instead of `user`.
 
 ### About optimistic changes
 
