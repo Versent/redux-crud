@@ -4,7 +4,7 @@
   "description": "Redux CRUD",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/tape/bin/tape lib/**/*.test.js | tap-spec"
+    "test": "ava lib/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -21,18 +21,16 @@
   },
   "homepage": "https://github.com/Versent/redux-crud",
   "devDependencies": {
+    "ava": "^0.2.0",
     "gulp": "^3.9.0",
     "gulp-shell": "^0.4.2",
     "gulp-watch": "^4.3.5",
     "rewire": "^2.3.4",
-    "sinon": "^1.16.0",
-    "tap-dot": "^1.0.0",
-    "tap-spec": "^4.1.0",
-    "tape": "^4.2.0",
-    "tape-catch": "^1.0.4"
+    "sinon": "^1.16.0"
   },
   "dependencies": {
     "action-names": "~0.3.1",
+    "invariant": "^2.1.0",
     "lodash": "~3.10.1",
     "seamless-immutable": "~3.0.0",
     "siu": "^0.4.0"

@@ -1,5 +1,6 @@
 import reduxCrud from 'redux-crud';
 import _         from 'lodash';
+import cuid      from 'cuid';
 
 const baseActionCreators = reduxCrud.actionCreatorsFor('users');
 
@@ -36,6 +37,10 @@ let actionCreators = {
 
   create(user) {
     return function(dispatch) {
+      // Generate a cid so we can match the records
+      var cid = cuid();
+      user = user.merge({id: cid});
+
       // optimistic creation
       const action = baseActionCreators.createStart(user);
       dispatch(action);
@@ -52,7 +57,7 @@ let actionCreators = {
 
       promise.then(function(response) {
           const returnedUser = response.data.data;
-          const action = baseActionCreators.createSuccess(createdUser);
+          const action = baseActionCreators.createSuccess(createdUser, cid);
           dispatch(action);
         }, function(response) {
           const action = baseActionCreators.createError(response, user);
