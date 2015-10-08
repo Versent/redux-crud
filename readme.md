@@ -664,3 +664,8 @@ var lis = records.asMutable().map(function(record) {
 ```
 npm test
 ```
+
+# Example 
+
+You can see [a basic example here](./example)
+
