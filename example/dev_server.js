@@ -1,13 +1,14 @@
-var path    = require('path')
-var express = require('express')
-var http    = require('http')
-var webpack = require('webpack')
-var config  = require('./webpack.config')
+var path        = require('path')
+var express     = require('express')
+var http        = require('http')
+var webpack     = require('webpack')
+var jsonServer  = require('json-server')
+var config      = require('./webpack.config')
 
-var app      = express()
-var compiler = webpack(config)
-var host     = 'localhost'
-var port     = 4002
+var app       = express()
+var compiler  = webpack(config)
+var host      = 'localhost'
+var port      = 4002
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
@@ -17,6 +18,9 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'public/index.html'))
 })
+
+var apiRouter = jsonServer.router('db.json')
+app.use(apiRouter)
 
 var server = http.createServer(app)
 

@@ -14,19 +14,14 @@ class Comp extends React.Component {
     return this.props.dispatch
   }
 
-  onShow(user, event) {
+  onEdit(todo, event) {
     event.preventDefault()
-    this.history.pushState(null, '/users/' + user.id)
+    this.history.pushState(null, '/users/' + todo.id + '/edit')
   }
 
-  onEdit(user, event) {
+  onDelete(todo, event) {
     event.preventDefault()
-    this.history.pushState(null, '/users/' + user.id + '/edit')
-  }
-
-  onDelete(user, event) {
-    event.preventDefault()
-    const action = actions.delete(user)
+    const action = actions.delete(todo)
     this.dispatch(action)
   }
 
@@ -40,24 +35,20 @@ class Comp extends React.Component {
     this.dispatch(action)
   }
 
-  renderUsers() {
-    return _.map(this.props.users, (user) => {
+  renderTodos() {
+    return _.map(this.props.todos, (todo) => {
       return (
         <tr>
           <td>
-            {user.attributes.name}
+            {todo.title}
           </td>
-          <td></td>
           <td>
             <a className='btn regular blue'
               href='javascript://'
-              onClick={this.onShow.bind(this, user)}><Icon name='eye' /></a>
+              onClick={this.onEdit.bind(this, todo)}><Icon name='pencil' /></a>
             <a className='btn regular blue'
               href='javascript://'
-              onClick={this.onEdit.bind(this, user)}><Icon name='pencil' /></a>
-            <a className='btn regular blue'
-              href='javascript://'
-              onClick={this.onDelete.bind(this, user)}><Icon name='trash' /></a>
+              onClick={this.onDelete.bind(this, todo)}><Icon name='trash' /></a>
           </td>
         </tr>
       )
@@ -70,21 +61,17 @@ class Comp extends React.Component {
         <table className='table-light'>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Langs</th>
-            <th></th>
+              <th>Title</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
-            {this.renderUsers()}
+            {this.renderTodos()}
           </tbody>
         </table>
         <button
           className='btn'
           onClick={this.onRename.bind(this)}>Rename all Users</button>
-        <button
-          className='btn'
-          onClick={this.onShuffleName.bind(this)}>Shuffle all</button>
       </section>
     )
   }

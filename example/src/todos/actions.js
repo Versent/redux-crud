@@ -20,14 +20,14 @@ let actionCreators = {
       dispatch(action)
 
       // send the request
-      const url = `${host}/users/`
+      const url = '/todos/'
       const promise = axios({
         url: url,
       })
 
       promise.then(function(response) {
           // dispatch the success action
-          const returned = response.data.data
+          const returned = response.data
           const successAction = baseActionCreators.fetchSuccess(returned)
           dispatch(successAction)
         }, function(response) {
@@ -44,42 +44,12 @@ let actionCreators = {
     }
   },
 
-  fetchOne(id) {
-    return function(dispatch) {
-      const action = baseActionCreators.fetchStart()
-      dispatch(action)
-
-      // send the request
-      const url = `${host}/users/${id}`
-      const promise = axios({
-        url: url,
-      })
-
-      promise.then(function(response) {
-          // dispatch the success action
-          const user = response.data.data
-          const successAction = baseActionCreators.fetchSuccess(user)
-          dispatch(successAction)
-        }, function(response) {
-          // log(response)
-          // rejection
-          // dispatch the error action
-          const errorAction = baseActionCreators.fetchError(response)
-          dispatch(errorAction)
-        }).catch(function(err) {
-          console.error(err.toString())
-        })
-
-      return promise
-    }
-  },
-
-  create(user) {
+  create(todo) {
     return function(dispatch) {
       const cid = cuid()
-      user = user.merge({id: cid})
-      // log('user', user)
-      const optimisticAction = baseActionCreators.createStart(user)
+      todo = todo.merge({id: cid})
+      // log('todo', todo)
+      const optimisticAction = baseActionCreators.createStart(todo)
       dispatch(optimisticAction)
 
       const url = host + '/users'
@@ -110,17 +80,17 @@ let actionCreators = {
     }
   },
 
-  update(user) {
+  update(todo) {
     return function(dispatch) {
-      const optimisticAction = baseActionCreators.updateStart(user)
+      const optimisticAction = baseActionCreators.updateStart(todo)
       dispatch(optimisticAction)
 
-      const url = `${host}/users/${user.id}`
+      const url = `${host}/users/${todo.id}`
       const promise = axios({
         url: url,
         method: 'PATCH',
         data: {
-          user: user.attributes,
+          todo: todo.attributes,
         },
       })
 
@@ -132,7 +102,7 @@ let actionCreators = {
         }, function(response) {
           // rejection
           // dispatch the error action
-          const errorAction = baseActionCreators.updateError(response, user)
+          const errorAction = baseActionCreators.updateError(response, todo)
           dispatch(errorAction)
         }).catch(function(err) {
           console.error(err.toString())
@@ -143,12 +113,12 @@ let actionCreators = {
     }
   },
 
-  delete(user) {
+  delete(todo) {
     return function(dispatch) {
-      const optimisticAction = baseActionCreators.deleteStart(user)
+      const optimisticAction = baseActionCreators.deleteStart(todo)
       dispatch(optimisticAction)
 
-      const url = `${host}/users/${user.id}`
+      const url = `/todos/${todo.id}`
       const promise = axios({
         url: url,
         method: 'DELETE',
@@ -156,12 +126,12 @@ let actionCreators = {
 
       promise.then(function(response) {
           // dispatch the success action
-          const successAction = baseActionCreators.deleteSuccess(user)
+          const successAction = baseActionCreators.deleteSuccess(todo)
           dispatch(successAction)
         }, function(response) {
           // rejection
           // dispatch the error action
-          const errorAction = baseActionCreators.deleteError(response, user)
+          const errorAction = baseActionCreators.deleteError(response, todo)
           dispatch(errorAction)
         }).catch(function(err) {
           console.error(err.toString())

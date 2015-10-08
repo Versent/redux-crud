@@ -23,7 +23,6 @@ class Comp extends React.Component {
     return (
       <section className='p1'>
         <h2>Todos</h2>
-        
         <List {...this.props} />
       </section>
     )
@@ -34,14 +33,4 @@ Comp.propTypes = {
   dispatch: PT.func.isRequired,
 }
 
-function mapStateToProps(state) {
-  return {
-    todos: state.todos,
-  }
-}
-
-export default connect(
-  mapStateToProps
-)(Comp)
-
-export default Comp
+export default connect(state => state)(Comp);

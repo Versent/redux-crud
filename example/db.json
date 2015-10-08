@@ -1,0 +1,20 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Learn Elm"
+    },
+    {
+      "id": 2,
+      "title": "Learn Haskell"
+    },
+    {
+      "id": 3,
+      "title": "Learn Elixir"
+    },
+    {
+      "id": 4,
+      "title": "Learn Rust"
+    }
+  ]
+}

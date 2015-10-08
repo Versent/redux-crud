@@ -11,7 +11,7 @@ import { createStore }                   from 'redux'
 import { Provider }                      from 'react-redux'
 import reduxCrud                         from 'redux-crud'
 import todosReducer                      from './todos/reducer'
-import Todos                             from './todos/Index.jsx'
+import TodosIndex                        from './todos/Index.jsx'
 
 const log           = bows('app')
 
@@ -32,7 +32,7 @@ class AppComponent extends React.Component {
   render() {
     return (
       <section className='container clearfix'>
-        <Todos />
+        <TodosIndex />
       </section>
     )
   }

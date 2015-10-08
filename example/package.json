@@ -39,7 +39,7 @@
     "node-uuid": "~1.4.3",
     "react": "~0.13.3",
     "react-fa": "~3.4.0",
-    "react-redux": "^2.1.2",
+    "react-redux": "^3.1.0",
     "redux": "^3.0.0",
     "redux-crud": "^0.5.0",
     "redux-logger": "~1.0.5",
@@ -50,5 +50,8 @@
     "watch": "^0.16.0",
     "webpack": "^1.12.2",
     "webpack-dev-middleware": "^1.2.0"
+  },
+  "dependencies": {
+    "json-server": "^0.8.1"
   }
 }
