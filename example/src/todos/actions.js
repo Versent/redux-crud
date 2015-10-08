@@ -137,12 +137,6 @@ let actionCreators = {
     }
   },
 
-  renameAll() {
-    return {
-      type: actionTypes.renameAll,
-    }
-  },
-
 }
 
 actionCreators = _.extend(actionCreators, baseActionCreators)
