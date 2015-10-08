@@ -2,7 +2,8 @@
   "todos": [
     {
       "id": 1,
-      "title": "Learn Elm"
+      "title": "Learn Elm",
+      "done": true
     },
     {
       "id": 2,
@@ -10,7 +11,8 @@
     },
     {
       "id": 3,
-      "title": "Learn Elixir"
+      "title": "Learn Elixir",
+      "done": true
     },
     {
       "id": 4,

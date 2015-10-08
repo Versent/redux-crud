@@ -43,7 +43,6 @@ class Comp extends React.Component {
     return (
       <section>
         <form>
-          <label for='title'>Title</label>&nbsp;
           <input
             type='text'
             value={this.state.title}

@@ -83,13 +83,11 @@ let actionCreators = {
       const optimisticAction = baseActionCreators.updateStart(todo)
       dispatch(optimisticAction)
 
-      const url = `${host}/todos/${todo.id}`
+      const url = `/todos/${todo.id}`
       const promise = axios({
         url: url,
         method: 'PATCH',
-        data: {
-          todo: todo.attributes,
-        },
+        data: todo,
       })
 
       promise.then(function(response) {

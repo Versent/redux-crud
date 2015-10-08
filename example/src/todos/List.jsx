@@ -14,9 +14,11 @@ class Comp extends React.Component {
     return this.props.dispatch
   }
 
-  onEdit(todo, event) {
+  onToggle(todo, done, event) {
     event.preventDefault()
-    this.history.pushState(null, '/users/' + todo.id + '/edit')
+    todo = todo.merge({done})
+    const action = actions.update(todo)
+    this.dispatch(action)
   }
 
   onDelete(todo, event) {
@@ -35,6 +37,22 @@ class Comp extends React.Component {
     this.dispatch(action)
   }
 
+  renderCheck(todo) {
+    if (todo.done) {
+      return (
+         <a className='btn regular blue'
+            href='javascript://'
+            onClick={this.onToggle.bind(this, todo, false)}><Icon name='check-square-o' /></a>
+      )
+    } else {
+      return (
+         <a className='btn regular blue'
+            href='javascript://'
+            onClick={this.onToggle.bind(this, todo, true)}><Icon name='square-o' /></a>
+      )
+    }
+  }
+
   renderTodos() {
     return _.map(this.props.todos, (todo) => {
       return (
@@ -43,9 +61,7 @@ class Comp extends React.Component {
             {todo.title}
           </td>
           <td>
-            <a className='btn regular blue'
-              href='javascript://'
-              onClick={this.onEdit.bind(this, todo)}><Icon name='pencil' /></a>
+            {this.renderCheck(todo)}
             <a className='btn regular blue'
               href='javascript://'
               onClick={this.onDelete.bind(this, todo)}><Icon name='trash' /></a>
