@@ -85,9 +85,6 @@ class Comp extends React.Component {
             {this.renderTodos()}
           </tbody>
         </table>
-        <button
-          className='btn'
-          onClick={this.onRename.bind(this)}>Rename all Users</button>
       </section>
     )
   }
