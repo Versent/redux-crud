@@ -1,6 +1,7 @@
 import React       from 'react'
 import { connect } from 'react-redux'
 import actions     from './actions'
+import New         from './New.jsx'
 import List        from './List.jsx'
 const PT           = React.PropTypes
 
@@ -23,6 +24,7 @@ class Comp extends React.Component {
     return (
       <section className='p1'>
         <h2>Todos</h2>
+        <New {...this.props} />
         <List {...this.props} />
       </section>
     )

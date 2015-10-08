@@ -52,24 +52,22 @@ let actionCreators = {
       const optimisticAction = baseActionCreators.createStart(todo)
       dispatch(optimisticAction)
 
-      const url = host + '/users'
+      const url = '/todos'
       const promise = axios({
         url: url,
         method: 'POST',
-        data: {
-          user: user.attributes,
-        },
+        data: todo,
       })
 
       promise.then(function(response) {
           // dispatch the success action
-          const returnedUser = response.data.data
-          const successAction = baseActionCreators.createSuccess(returnedUser, cid)
+          const returned = response.data
+          const successAction = baseActionCreators.createSuccess(returned, cid)
           dispatch(successAction)
         }, function(response) {
           // rejection
           // dispatch the error action
-          const errorAction = baseActionCreators.createError(response, user)
+          const errorAction = baseActionCreators.createError(response, todo)
           dispatch(errorAction)
         }).catch(function(err) {
           console.error(err.toString())
@@ -85,7 +83,7 @@ let actionCreators = {
       const optimisticAction = baseActionCreators.updateStart(todo)
       dispatch(optimisticAction)
 
-      const url = `${host}/users/${todo.id}`
+      const url = `${host}/todos/${todo.id}`
       const promise = axios({
         url: url,
         method: 'PATCH',
@@ -96,8 +94,8 @@ let actionCreators = {
 
       promise.then(function(response) {
           // dispatch the success action
-          const returnedUser = response.data.data
-          const successAction = baseActionCreators.updateSuccess(returnedUser)
+          const returned = response.data
+          const successAction = baseActionCreators.updateSuccess(returned)
           dispatch(successAction)
         }, function(response) {
           // rejection
