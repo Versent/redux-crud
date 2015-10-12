@@ -635,9 +635,9 @@ Note how we need to pass the `cid` as the second argument to `createSuccess`. __
 
 `createStart` and `updateStart` will add the following attributes:
 
-**createStart**: Adds `busy` and `pendingCreate`
-**updateStart**: Adds `busy` and `pendingUpdate`
-**updateError**: Removes `busy` but leaves `pendingUpdate`
+- **createStart**: Adds `busy` and `pendingCreate`
+- **updateStart**: Adds `busy` and `pendingUpdate`
+- **updateError**: Removes `busy` but leaves `pendingUpdate`
 
 You can use these special attributes for showing indicators and preventing navigation:
 
