@@ -42,7 +42,7 @@
     "react-redux": "^3.1.0",
     "redux": "^3.0.0",
     "redux-crud": "^0.5.0",
-    "redux-logger": "~1.0.5",
+    "redux-logger": "~2.0.4",
     "redux-thunk": "~0.1.0",
     "seamless-immutable": "~3.0.0",
     "style-loader": "~0.12.3",

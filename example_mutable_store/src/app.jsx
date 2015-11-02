@@ -3,7 +3,7 @@ import '../node_modules/basscss/css/basscss.css'
 import bows                              from 'bows'
 import React                             from 'react'
 import thunkMiddleware                   from 'redux-thunk'
-import loggerMiddleware                  from 'redux-logger'
+import createLogger                      from 'redux-logger'
 import { compose }                       from 'redux'
 import { applyMiddleware }               from 'redux'
 import { combineReducers }               from 'redux'
@@ -18,7 +18,7 @@ const log           = bows('app')
 const finalCreateStore = compose(
   applyMiddleware(
     thunkMiddleware,
-    loggerMiddleware
+    createLogger()
   )
 )(createStore)
 
@@ -47,4 +47,3 @@ React.render(
   </div>,
   mountNode
 )
-

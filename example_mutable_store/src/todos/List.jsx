@@ -3,6 +3,7 @@ import { connect }    from 'react-redux'
 import actions        from './actions'
 import Icon           from 'react-fa'
 import bows           from 'bows'
+import _              from 'lodash'
 
 const PT              = React.PropTypes
 const baseClass       = 'todos--List'
@@ -41,13 +42,13 @@ class Comp extends React.Component {
     if (todo.done) {
       return (
          <a className='btn regular blue'
-            href='javascript://'
+            href='#'
             onClick={this.onToggle.bind(this, todo, false)}><Icon name='check-square-o' /></a>
       )
     } else {
       return (
          <a className='btn regular blue'
-            href='javascript://'
+            href='#'
             onClick={this.onToggle.bind(this, todo, true)}><Icon name='square-o' /></a>
       )
     }
@@ -56,14 +57,14 @@ class Comp extends React.Component {
   renderTodos() {
     return _.map(this.props.todos, (todo) => {
       return (
-        <tr>
+        <tr key={todo.id}>
           <td>
             {todo.title}
           </td>
           <td>
             {this.renderCheck(todo)}
             <a className='btn regular blue'
-              href='javascript://'
+              href='#'
               onClick={this.onDelete.bind(this, todo)}><Icon name='trash' /></a>
           </td>
         </tr>
