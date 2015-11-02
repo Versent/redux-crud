@@ -9,7 +9,7 @@ import { applyMiddleware }               from 'redux'
 import { combineReducers }               from 'redux'
 import { createStore }                   from 'redux'
 import { Provider }                      from 'react-redux'
-import reduxCrud                         from 'redux-crud'
+import reduxCrud                         from './redux-crud'
 import todosReducer                      from './todos/reducer'
 import TodosIndex                        from './todos/Index.jsx'
 

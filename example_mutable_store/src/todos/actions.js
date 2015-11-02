@@ -3,7 +3,7 @@
 import _            from 'lodash'
 import axios        from 'axios'
 import bows         from 'bows'
-import reduxCrud    from 'redux-crud'
+import reduxCrud    from '../redux-crud'
 import cuid         from 'cuid'
 
 import actionTypes  from './actionTypes'
