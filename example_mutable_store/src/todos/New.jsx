@@ -1,5 +1,4 @@
 import React          from 'react'
-import SI             from 'seamless-immutable'
 import bows           from 'bows'
 import actions        from './actions'
 import Form           from './Form.jsx'
@@ -16,9 +15,9 @@ class Comp extends React.Component {
 
   getCleanState() {
     return {
-      todo: SI({
+      todo: {
         title: '',
-      }),
+      },
     }
   }
 

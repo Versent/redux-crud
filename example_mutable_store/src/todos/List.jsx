@@ -17,7 +17,7 @@ class Comp extends React.Component {
 
   onToggle(todo, done, event) {
     event.preventDefault()
-    todo = todo.merge({done})
+    todo = _.assign({}, todo, { done })
     const action = actions.update(todo)
     this.dispatch(action)
   }

@@ -2,6 +2,7 @@ import React          from 'react'
 import actions        from './actions'
 import bows           from 'bows'
 import Icon           from 'react-fa'
+import _              from 'lodash'
 
 const PT              = React.PropTypes
 const log             = bows('todos--Form')
@@ -34,7 +35,7 @@ class Comp extends React.Component {
   onSave(event) {
     event.preventDefault()
     let todo = this.props.todo
-    todo = todo.merge(this.state)
+    todo = _.assign({}, todo, this.state)
 
     this.props.onCommit(todo)
   }
