@@ -703,4 +703,6 @@ You can see [a basic example here](./example)
 
 # Changelog
 
+**0.8.0** Add `data` attribute to actions payload.
+
 **0.7.0** Replaced `unsaved` in createStart and updateStart with `pendingCreate` and `pendingUpdate`.
