@@ -10,5 +10,5 @@ module.exports = {
 };
 
 for (var c in constants) {
-  exports[c] = c.constants;
+  module.exports[c] = constants[c];
 }
