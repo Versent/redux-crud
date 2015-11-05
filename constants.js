@@ -1,4 +1,5 @@
 module.exports = {
-  STORE_MUTABLE:     'mutable',
   DEFAULT_KEY:       'id',
+  STORE_MUTABLE:     'mutable',
+  STORE_SI:          'seamless-immutable',
 };
