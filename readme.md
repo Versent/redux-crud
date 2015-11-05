@@ -10,7 +10,7 @@ Redux CRUD gives you an standard set of:
 - actions: e.g. `updateSuccess`, `updateError`
 - reducers: for the action types above e.g. `updateSuccess`
 
-Redux CRUD uses [__seamless-immutable__](https://github.com/rtfeldman/seamless-immutable) for storing data.
+Redux CRUD uses [__seamless-immutable__](https://github.com/rtfeldman/seamless-immutable) for storing data by default.
 
 # Working with resources in Redux
 
@@ -232,8 +232,8 @@ Creates a reducer function for the given resource. Redux CRUD assumes that all r
 *Note: There are no `fetchStart` and `fetchError` reducers.*
 
 ```js
-var crudReducers = require('redux-crud-reducers');
-var reducers = crudReducers.reducersFor('users');
+var reduxCrud = require('redux-crud');
+var reducers = reduxCrud.reducersFor('users');
 
 // reducers =>
 
@@ -249,17 +249,22 @@ function (state, action) {
 }
 ```
 
-`reducersFor` takes a config object as second argument:
+`reducersFor` takes an optional config object as second argument:
+
 ```
-crudReducers.reducersFor('users', {key: '_id'});
+reduxCrud.reducersFor('users', {key: '_id', store: reduxCrud.STORE_SI});
 ```
 
-__config object:__
-```js
-{
-  key: 'id' // key to be used for merging records
-}
-```
+__config.key__
+
+Key to be used for merging records. Default: 'id'.
+
+__config.store__
+
+Type of store to use. Defaults to seamless-immutable. Options:
+
+- reduxCrud.STORE_SI
+- reduxCrud.STORE_MUTABLE
 
 ## What each reducer does
 
@@ -702,6 +707,8 @@ npm test
 You can see [a basic example here](./example)
 
 # Changelog
+
+**0.9.0** Added mutable store (config.STORE_MUTABLE)
 
 **0.8.0** Add `data` attribute to actions payload.
 
