@@ -36,8 +36,8 @@ There's obvious repetition there. Redux CRUD aims to remove this boilerplate by 
 
 Creates an object with standard CRUD action types:
 ```js
-var crudActions      = require('redux-crud-actions');
-var actionTypes      = crudActions.actionTypesFor('users');
+var reduxCrud      = require('redux-crud');
+var actionTypes    = reduxCrud.actionTypesFor('users');
 
 // actionTypes =>
 
@@ -95,8 +95,8 @@ Generates the following action creators:
 - `deleteError`
 
 ```js
-var crudActions      = require('redux-crud-actions');
-var actionCreators   = crudActions.actionCreatorsFor('users');
+var reduxCrud       = require('redux-crud');
+var actionCreators  = reduxCrud.actionCreatorsFor('users');
 
 // actionCreators =>
 
