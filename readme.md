@@ -708,7 +708,7 @@ You can see [a basic example here](./example)
 
 # Changelog
 
-**0.9.0** Added mutable store (config.STORE_MUTABLE)
+**0.9.0** Added mutable store (config.store: reduxCrud.STORE_MUTABLE)
 
 **0.8.0** Add `data` attribute to actions payload.
 
