@@ -708,6 +708,10 @@ You can see [a basic example here](./example)
 
 # Changelog
 
+**0.10.1** upgrade `action-names` dep, remove left over ES6
+
+**0.10.0** `.reducersFor` does not mutate the config object
+
 **0.9.0** Added mutable store (config.store: reduxCrud.STORE_MUTABLE)
 
 **0.8.0** Add `data` attribute to actions payload.
