@@ -29,7 +29,7 @@
     "sinon": "^1.16.0"
   },
   "dependencies": {
-    "action-names": "~0.3.1",
+    "action-names": "^0.3.2",
     "invariant": "^2.1.0",
     "lodash": "~3.10.1",
     "seamless-immutable": "~3.0.0",
