@@ -6,16 +6,50 @@ const baseActionCreators = reduxCrud.actionCreatorsFor('users');
 
 let actionCreators = {
 
-  fetch() {
+  fetchOne(id) {
     return function(dispatch) {
       const action = baseActionCreators.fetchStart();
       dispatch(action);
 
       // send the request
-      const url = `/users/`;
+      const url = `/users/${id}`;
       const promise = someAjaxLibrary({
         url: url,
         method: 'GET'
+      });
+
+      promise.then(function(response) {
+          const user = response.data.data;
+          const action = baseActionCreators.fetchSuccess(user);
+          dispatch(action);
+        }, function(response) {
+          // dispatch the error action
+          // first param is the error
+          const action = baseActionCreators.fetchError(response);
+          dispatch(action);
+        }).catch(function(err) {
+          console.error(err.toString());
+        });
+
+      return promise;
+    }
+  },
+
+  fetch(page, limit) {
+    return function(dispatch) {
+      const action = baseActionCreators.fetchStart();
+      dispatch(action);
+
+      // send the request
+      // e.g. /users?page=1&limit=20
+      const url = `/users`;
+      const promise = someAjaxLibrary({
+        url: url,
+        method: 'GET',
+        data: {
+          page: page,
+          limit : limit
+        }
       });
 
       promise.then(function(response) {
