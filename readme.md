@@ -292,6 +292,8 @@ Listens for an action like:
 
 Adds the record optimistically to the collection. The record must have a client generated key e.g. `id`, otherwise the reducer will throw an error. This key is necessary for matching records on `createSuccess` and `createError`.
 
+__This action is optional, dispatch this only if you want optimistic creation.__ [Read more about this](#about-optimistic-changes).
+
 For generating keys see [cuid](https://github.com/ericelliott/cuid).
 
 Also adds `busy` and `pendingCreate` to the record so you can display proper indicators in your UI.
