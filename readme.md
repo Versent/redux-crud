@@ -654,6 +654,10 @@ This is an example async action creator with optimistic creation:
 
 Note how we need to pass the `cid` as the second argument to `createSuccess`. __If we don't the reducer will not be able to match the records and you will end up with duplicates__.
 
+Adding a client generated `id` to a record doesn't mean that you need to use that `id` for saving it in the backend. You can still generate ids as usual in your DB. 
+
+When the record comes back saved from the server the reducer will try to match `id` on the optimistically inserted record with `cid` on the `createSuccess` action. If it finds a match it will replace the optimistically inserted record with the given one. That record will now have the normal `id` given by the backend (The client generated id is thrown away at this point).
+
 ### Pending attributes
 
 `createStart` and `updateStart` will add the following attributes:
