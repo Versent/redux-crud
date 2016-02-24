@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "action-names": "^0.3.2",
+    "immutable": "^3.7.6",
     "invariant": "^2.1.0",
     "lodash": "~3.10.1",
     "seamless-immutable": "~3.0.0",
