@@ -715,6 +715,8 @@ You can see [a basic example here](./example)
 
 # Changelog
 
+**1.0** added Immutable.js store
+
 **0.10.1** upgrade `action-names` dep, remove left over ES6
 
 **0.10.0** `.reducersFor` does not mutate the config object
