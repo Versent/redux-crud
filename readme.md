@@ -263,8 +263,9 @@ __config.store__
 
 Type of store to use. Defaults to seamless-immutable. Options:
 
-- reduxCrud.STORE_SI
-- reduxCrud.STORE_MUTABLE
+- reduxCrud.STORE_MUTABLE (Plain mutable JS)
+- reduxCrud.STORE_SI (Seamless-immutable)
+- reduxCrud.STORE_IMMUTABLE (Immutable.js)
 
 ## What each reducer does
 
