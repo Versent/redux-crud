@@ -91,7 +91,7 @@ let actionCreators = {
 
       promise.then(function(response) {
           const returnedUser = response.data.data;
-          const action = baseActionCreators.createSuccess(createdUser, cid);
+          const action = baseActionCreators.createSuccess(returnedUser, cid);
           dispatch(action);
         }, function(response) {
           const action = baseActionCreators.createError(response, user);
