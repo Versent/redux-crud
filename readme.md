@@ -449,8 +449,8 @@ let actionCreators = {
 
       promise.then(function(response) {
           // dispatch the success action
-          const user = response.data.data;
-          const action = standardActionCreators.updateSuccess(user);
+          const returnedUser = response.data.data;
+          const action = standardActionCreators.updateSuccess(returnedUser);
           dispatch(action);
         }, function(response) {
           // rejection
@@ -639,7 +639,7 @@ This is an example async action creator with optimistic creation:
       promise.then(function(response) {
           const returnedUser = response.data.data;
           // We need to pass the cid as the second argument
-          const action = baseActionCreators.createSuccess(createdUser, cid);
+          const action = baseActionCreators.createSuccess(returnedUser, cid);
           dispatch(action);
         }, function(response) {
           const action = baseActionCreators.createError(response, user);
