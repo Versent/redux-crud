@@ -41,5 +41,8 @@
     "lodash.reject": "^4.6.0",
     "seamless-immutable": "~3.0.0",
     "siu": "^0.4.0"
+  },
+  "ava": {
+    "failFast": true
   }
 }
