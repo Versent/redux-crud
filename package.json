@@ -29,8 +29,7 @@
     "sinon": "^1.16.0"
   },
   "dependencies": {
-    "action-names": "^0.3.2",
-    "immutable": "^3.7.6",
+    "action-names": "^0.3.2", 
     "invariant": "^2.1.0",
     "lodash.assign": "^4.2.0",
     "lodash.every": "^4.6.0",
@@ -38,9 +37,7 @@
     "lodash.foreach": "^4.5.0",
     "lodash.isarray": "^4.0.0",
     "lodash.omit": "^4.5.0",
-    "lodash.reject": "^4.6.0",
-    "seamless-immutable": "~3.0.0",
-    "siu": "^0.4.0"
+    "lodash.reject": "^4.6.0"
   },
   "ava": {
     "failFast": true
