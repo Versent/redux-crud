@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/Versent/redux-crud",
   "devDependencies": {
-    "ava": "^0.16.0",
+    "ava": "^0.17.0",
     "gulp": "^3.9.0",
     "gulp-shell": "^0.4.2",
     "gulp-watch": "^4.3.5",
@@ -29,7 +29,7 @@
     "sinon": "^1.16.0"
   },
   "dependencies": {
-    "action-names": "^0.3.2", 
+    "action-names": "^0.3.2",
     "invariant": "^2.1.0",
     "lodash.assign": "^4.2.0",
     "lodash.every": "^4.6.0",
