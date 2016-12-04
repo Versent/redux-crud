@@ -676,13 +676,15 @@ You can see [a basic example here](./example)
 
 ## 2.0
 
-Remove Seamless-Immutable and Immutable.js stores. This stores are not really necessary as operations can be done with plain lodash without mutating the original collection. This libs were also adding a huge amount of weight to the library.
+- Remove Seamless-Immutable and Immutable.js stores. These stores are not really necessary, as operations can be done with plain lodash without mutating the original collections. These libs were also adding a huge amount of weight to the library.
 
-You can wrap the collection with Seamless or Immutable.js after getting them from the store.
+You can wrap the collections with Seamless or Immutable.js after getting them from the store.
 
-Remove dependency on the whole Lodash lib. This library now uses individual lodash functions as needed e.g. `lodash.assign`.
+- Remove dependency on the whole Lodash lib. This library now uses individual lodash functions as needed e.g. `lodash.assign`.
 
-**1.0** added Immutable.js store
+## **1.0** 
+
+Added Immutable.js store
 
 **0.10.1** upgrade `action-names` dep, remove left over ES6
 
