@@ -10,8 +10,6 @@ Redux CRUD gives you an standard set of:
 - actions: e.g. `updateSuccess`, `updateError`
 - reducers: for the action types above e.g. `updateSuccess`
 
-Redux CRUD uses [__seamless-immutable__](https://github.com/rtfeldman/seamless-immutable) for storing data by default.
-
 # Working with resources in Redux
 
 When building an app you might have resources like __`users`__, __`posts`__ and __`comments`__.
@@ -207,8 +205,6 @@ var actionCreators  = reduxCrud.actionCreatorsFor('users');
     };
   }
 }
-
-
 ```
 
 ### The `data` attribute
@@ -258,14 +254,6 @@ reduxCrud.reducersFor('users', {key: '_id', store: reduxCrud.STORE_SI});
 __config.key__
 
 Key to be used for merging records. Default: 'id'.
-
-__config.store__
-
-Type of store to use. Defaults to seamless-immutable. Options:
-
-- reduxCrud.STORE_MUTABLE (Plain mutable JS)
-- reduxCrud.STORE_SI (Seamless-immutable)
-- reduxCrud.STORE_IMMUTABLE (Immutable.js)
 
 ## What each reducer does
 
@@ -503,12 +491,11 @@ There are many cases when the generated reducers are not enough. For example you
 ```js
 // comments/reducers.js
 
-import SI         from 'seamless-immutable';
 import reduxCrud  from 'redux-crud';
 
 const standardReducers = reduxCrud.reducersFor('comments');
 
-function reducers(state=SI([]), action) {
+function reducers(state=[], action) {
   switch(action.type) {
     case 'POSTS_DELETE_SUCCESS':
       // ...delete comments for the given post and return a new state for comments
@@ -673,34 +660,6 @@ You can use these special attributes for showing indicators and preventing navig
 - Do not allow navigation to a resource when `pendingCreate` is true.
 - Show a _retry_ button when an update fails: `busy` is false but `pendingUpdate` is true.
 
-### Mapping over records in components
-
-Most likely you will get a `seamless-immutable` collection in you components. Don't map over it to create a list because then `seamless-immutable` will attempt to make the react components immutable, which doesn't work.
-
-Don't do this:
-```js
-var lis = records.map(function(record) {
-  return <li key={record.id}>{record.name}</li>;
-});
-```
-
-Instead, use lodash to map or convert to mutable first:
-```js
-var lis = _.map(records, function(record) {
-  return <li key={record.id}>{record.name}</li>;
-});
-```
-or:
-```
-var lis = records.asMutable().map(function(record) {
-  return <li key={record.id}>{record.name}</li>;
-});
-```
-
-### Why `seamless-immutable`
-
-[Immutable.js](https://github.com/facebook/immutable-js/) is nice but we prefer [seamless-immutable](https://github.com/rtfeldman/seamless-immutable)'s [stronger immutable guarantees](https://github.com/facebook/immutable-js/issues/546).
-
 ## Development
 
 ### Testing
@@ -714,6 +673,14 @@ npm test
 You can see [a basic example here](./example)
 
 # Changelog
+
+## 2.0
+
+Remove Seamless-Immutable and Immutable.js stores. This stores are not really necessary as operations can be done with plain lodash without mutating the original collection. This libs were also adding a huge amount of weight to the library.
+
+You can wrap the collection with Seamless or Immutable.js after getting them from the store.
+
+Remove dependency on the whole Lodash lib. This library now uses individual lodash functions as needed e.g. `lodash.assign`.
 
 **1.0** added Immutable.js store
 
