@@ -4,7 +4,7 @@
 
 Redux CRUD is a convention driven way of building CRUD applications using Redux. After building several Flux applications we found that we always end up creating the same action types, actions and reducers for all our resources.
 
-Redux CRUD gives you an standard set of:
+Redux CRUD gives you a standard set of:
 
 - action types: e.g. `USER_UPDATE_SUCCESS`
 - actions: e.g. `updateSuccess`, `updateError`
