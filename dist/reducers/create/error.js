@@ -2,8 +2,8 @@
 const assertNotArray_1 = require("../../utils/assertNotArray");
 const common_1 = require("../common");
 const constants_1 = require("../../constants");
-const lodash_omit_1 = require("lodash.omit");
-const lodash_reject_1 = require("lodash.reject");
+const omit = require('lodash.omit');
+const reject = require('lodash.reject');
 function errorList(config, current, addedRecord) {
     var key = config.key;
     function predicate(record) {
@@ -11,11 +11,11 @@ function errorList(config, current, addedRecord) {
         var isSameKey = addedRecord[key] === recordKey;
         return isSameKey;
     }
-    return lodash_reject_1.default(current, predicate);
+    return reject(current, predicate);
 }
 function errorMap(config, current, addedRecord) {
     var key = config.key;
-    return lodash_omit_1.default(current, addedRecord[key]);
+    return omit(current, addedRecord[key]);
 }
 function error(config, current, addedRecord) {
     var reducerName = 'createError';

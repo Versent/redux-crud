@@ -2,13 +2,14 @@
 const actionTypesFor_1 = require("./actionTypesFor");
 const assertNotArray_1 = require("./utils/assertNotArray");
 const constants_1 = require("./constants");
+const getDefaultConfig_1 = require("./getDefaultConfig");
 const invariant = require('invariant');
 function actionCreatorsFor(resourceName, config) {
     if (resourceName == null)
         throw new Error('actionCreatorsFor: Expected resourceName');
-    config = config || {};
-    var actionTypes = actionTypesFor_1.default(resourceName);
-    var key = config.key || constants_1.default.DEFAULT_KEY;
+    config = config || getDefaultConfig_1.default();
+    const actionTypes = actionTypesFor_1.default(resourceName);
+    const key = config.key || constants_1.default.DEFAULT_KEY;
     function assertError(actionCreatorName, error) {
         invariant(error != null, 'Expected error in ' + actionCreatorName);
     }

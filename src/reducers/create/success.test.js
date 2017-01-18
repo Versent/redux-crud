@@ -1,7 +1,8 @@
-var constants       = require('../../../constants');
-var reducer         = require('./success');
+import constants       from '../../constants';
+import reducer         from './success';
+import test            from 'ava';
+
 var subject         = 'createSuccess: ';
-var test            = require('ava');
 var config          = {
   key:           constants.DEFAULT_KEY,
   resourceName:  'users',

@@ -1,6 +1,7 @@
-var reducer         = require('./error');
-var test            = require('ava');
-var constants       = require('../../../constants');
+import constants       from '../../constants';
+import reducer         from './error';
+import test            from 'ava';
+
 var config          = {
   key:           constants.DEFAULT_KEY,
   resourceName:  'users',

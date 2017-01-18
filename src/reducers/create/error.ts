@@ -1,13 +1,16 @@
 import assertNotArray    from '../../utils/assertNotArray';
 import common            from '../common';
 import constants         from '../../constants';
-import omit              from 'lodash.omit';
-import reject            from 'lodash.reject';
 
-function errorList(config, current, addedRecord) {
+const omit              = require('lodash.omit');
+const reject            = require('lodash.reject');
+
+import { Config, ResourceCollection } from '../../types'
+
+function errorList(config: Config, current: ResourceCollection, addedRecord: any) {
   var key = config.key;
 
-  function predicate(record) {
+  function predicate(record: any) {
     var recordKey = record[key];
     var isSameKey = addedRecord[key] === recordKey;
     return isSameKey;
@@ -16,12 +19,12 @@ function errorList(config, current, addedRecord) {
   return reject(current, predicate);
 }
 
-function errorMap(config, current, addedRecord) {
+function errorMap(config: Config, current: ResourceCollection, addedRecord: any) {
   var key = config.key;
   return omit(current, addedRecord[key]);
 }
 
-export default function error(config, current, addedRecord) {
+export default function error(config: Config, current: ResourceCollection, addedRecord: any) {
   var reducerName = 'createError';
   assertNotArray(config, reducerName, addedRecord);
 

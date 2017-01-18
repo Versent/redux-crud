@@ -1,8 +1,9 @@
-var reducer         = require('./error');
-var test            = require('ava');
+import constants       from '../../constants';
+import reducer         from './error';
+import test            from 'ava';
+
 var assign          = require('lodash.assign');
 var values          = require('lodash.values');
-var constants       = require('../../../constants');
 var subject         = 'createError: ';
 var config          = {
   key:           constants.DEFAULT_KEY,
@@ -54,7 +55,7 @@ test(subject + 'removes the record', function(t) {
     id: 'abc',
     name: 'Green'
   };
-  var updated = reducer(config, curr, created, 'abc');
+  var updated = reducer(config, curr, created);
 
   t.deepEqual(updated.length, 1);
 });
@@ -67,7 +68,7 @@ test(subject + 'removes the record with map store', function(t) {
     id: 'abc',
     name: 'Green'
   };
-  var updated = reducer(configAsMap, curr, created, 'abc');
+  var updated = reducer(configAsMap, curr, created);
 
   t.deepEqual(values(updated).length, 2);
 });

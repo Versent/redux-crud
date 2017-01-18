@@ -1,15 +1,19 @@
 import actionTypesFor from './actionTypesFor';
 import assertNotArray from './utils/assertNotArray';
-import constants      from './constants';
+import constants from './constants';
+import getDefaultConfig from './getDefaultConfig';
 
-const invariant      = require('invariant');
+import { Config } from './types'
 
-function actionCreatorsFor(resourceName, config?) {
+const invariant = require('invariant');
+
+function actionCreatorsFor(resourceName: string, config?: Config) {
   if (resourceName == null) throw new Error('actionCreatorsFor: Expected resourceName');
 
-  config = config || {};
-  var actionTypes   = actionTypesFor(resourceName);
-  var key           = config.key || constants.DEFAULT_KEY;
+  config = config || getDefaultConfig();
+
+  const actionTypes = actionTypesFor(resourceName);
+  const key = config.key || constants.DEFAULT_KEY;
 
   function assertError(actionCreatorName, error) {
     invariant(error != null, 'Expected error in ' + actionCreatorName);

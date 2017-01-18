@@ -1,9 +1,10 @@
 import assertHasKey      from '../utils/assertHasKey';
 import assertNotArray    from '../utils/assertNotArray';
 import constants         from '../constants';
-import isArray           from 'lodash.isarray';
-import isObject          from 'lodash.isobject';
 import wrapArray         from '../utils/wrapArray';
+
+const isArray           = require('lodash.isarray');
+const isObject          = require('lodash.isobject');
 
 export default function common(config, current, record, reducerName) {
   if (!config.resourceName)     throw new Error('Expected config.resourceName');

@@ -1,10 +1,12 @@
-var reducer         = require('./success');
-var test            = require('ava');
-var constants       = require('../../../constants');
+import constants       from '../../constants';
+import reducer         from './success';
+import test            from 'ava';
+
 var config          = {
   key:           constants.DEFAULT_KEY,
   resourceName:  'users',
 }
+
 var subject     = 'updateSuccess: ';
 
 function getCurrent() {
