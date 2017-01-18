@@ -1,10 +1,13 @@
 import assertNotArray    from '../../utils/assertNotArray';
-import assign            from 'lodash.assign';
 import common            from '../common';
 import constants         from '../../constants';
 import mergeMutable      from '../../utils/mergeMutable';
 
-export default function start(config, current, record) {
+const assign = require('lodash.assign');
+
+import { Config, ResourceCollection } from '../../types'
+
+export default function start(config: Config, current: any, record: any) {
   var reducerName = 'createStart';
   assertNotArray(config, reducerName, record);
 

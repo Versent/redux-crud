@@ -1,5 +1,6 @@
-import forEach     from 'lodash.foreach';
 import wrapArray   from './wrapArray';
+
+const forEach = require('lodash.foreach');
 
 export default function mergeMutable (current, records, key) {
   records = wrapArray(records);

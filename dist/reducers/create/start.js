@@ -1,8 +1,8 @@
 "use strict";
 const assertNotArray_1 = require("../../utils/assertNotArray");
-const lodash_assign_1 = require("lodash.assign");
 const common_1 = require("../common");
 const mergeMutable_1 = require("../../utils/mergeMutable");
+const assign = require('lodash.assign');
 function start(config, current, record) {
     var reducerName = 'createStart';
     assertNotArray_1.default(config, reducerName, record);
@@ -11,7 +11,7 @@ function start(config, current, record) {
         busy: true,
         pendingCreate: true,
     };
-    var newRecord = lodash_assign_1.default({}, record, recordStatus);
+    var newRecord = assign({}, record, recordStatus);
     // mark record as unsaved and busy
     return mergeMutable_1.default(current, newRecord, config.key);
 }

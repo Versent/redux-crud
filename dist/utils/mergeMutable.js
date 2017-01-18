@@ -1,19 +1,19 @@
 "use strict";
-const lodash_foreach_1 = require("lodash.foreach");
 const wrapArray_1 = require("./wrapArray");
+const forEach = require('lodash.foreach');
 function mergeMutable(current, records, key) {
     records = wrapArray_1.default(records);
     var recordMap = {};
     var indexMap = {};
     var newRecords = current.slice(0);
-    lodash_foreach_1.default(current, function (record, index) {
+    forEach(current, function (record, index) {
         var recordKey = record[key];
         if (recordKey == null)
             throw new Error('Expected record to have ' + key);
         recordMap[recordKey] = record;
         indexMap[recordKey] = index;
     });
-    lodash_foreach_1.default(records, function (record, index) {
+    forEach(records, function (record, index) {
         var recordId = record[key];
         if (recordMap[recordId]) {
             newRecords[indexMap[recordId]] = record;
