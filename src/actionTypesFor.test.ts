@@ -1,6 +1,7 @@
-var actionTypesFor  = require('./actionTypesFor');
-var test            = require('ava');
-var actionTypes     = actionTypesFor('users');
+import actionTypesFor  from './actionTypesFor';
+import test            from 'ava';
+
+const actionTypes     = actionTypesFor('users');
 
 test('returns the action actionTypes', function(t) {
   t.deepEqual(actionTypes.USERS_FETCH_START,   'USERS_FETCH_START');

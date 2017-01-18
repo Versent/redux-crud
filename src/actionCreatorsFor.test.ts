@@ -1,10 +1,10 @@
-var test              = require('ava');
-var actionCreatorsFor = require('./actionCreatorsFor');
+import test               from 'ava';
+import actionCreatorsFor  from './actionCreatorsFor';
 
-var error             = {};
-var actionCreators    = actionCreatorsFor('users');
-var subject           =' actionCreatorsFor: ';
-var arrayRegEx        = /Expected record not to be an array/;
+const error             = {};
+const actionCreators    = actionCreatorsFor('users');
+const subject           =' actionCreatorsFor: ';
+const arrayRegEx        = /Expected record not to be an array/;
 
 function makeUser() {
   return {
@@ -62,8 +62,6 @@ test(subject + 'fetchSuccess', function(t) {
     actionCreators.fetchSuccess();
   }
   t.throws(withoutPayload, /Expected records/);
-
-  
 });
 
 test(subject + 'fetchError', function(t) {

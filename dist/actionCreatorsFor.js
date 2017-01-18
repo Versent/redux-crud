@@ -2,7 +2,7 @@
 const actionTypesFor_1 = require("./actionTypesFor");
 const assertNotArray_1 = require("./utils/assertNotArray");
 const constants_1 = require("./constants");
-const invariant_1 = require("invariant");
+const invariant = require('invariant');
 function actionCreatorsFor(resourceName, config) {
     if (resourceName == null)
         throw new Error('actionCreatorsFor: Expected resourceName');
@@ -10,24 +10,24 @@ function actionCreatorsFor(resourceName, config) {
     var actionTypes = actionTypesFor_1.default(resourceName);
     var key = config.key || constants_1.default.DEFAULT_KEY;
     function assertError(actionCreatorName, error) {
-        invariant_1.default(error != null, 'Expected error in ' + actionCreatorName);
+        invariant(error != null, 'Expected error in ' + actionCreatorName);
     }
     function assertOneRecord(actionCreatorName, record) {
-        invariant_1.default(record != null, 'Expected record in ' + actionCreatorName);
+        invariant(record != null, 'Expected record in ' + actionCreatorName);
         assertNotArray_1.default(config, 'createStart', record);
-        invariant_1.default(record[key] != null, 'Expected record.' + key + ' in ' + actionCreatorName);
+        invariant(record[key] != null, 'Expected record.' + key + ' in ' + actionCreatorName);
     }
     function assertManyRecords(actionCreatorName, records) {
-        invariant_1.default(records != null, 'Expected records ' + actionCreatorName);
+        invariant(records != null, 'Expected records ' + actionCreatorName);
     }
     return {
-        fetchStart: function (data) {
+        fetchStart(data) {
             return {
                 data: data,
                 type: actionTypes.fetchStart,
             };
         },
-        fetchSuccess: function (records, data) {
+        fetchSuccess(records, data) {
             var name = 'fetchSuccess';
             assertManyRecords(name, records);
             return {
@@ -36,7 +36,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.fetchSuccess,
             };
         },
-        fetchError: function (error, data) {
+        fetchError(error, data) {
             var name = 'fetchError';
             assertError(name, error);
             return {
@@ -45,7 +45,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.fetchError,
             };
         },
-        createStart: function (record, data) {
+        createStart(record, data) {
             var name = 'createStart';
             assertOneRecord(name, record);
             return {
@@ -54,7 +54,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.createStart,
             };
         },
-        createSuccess: function (record, clientGeneratedKey, data) {
+        createSuccess(record, clientGeneratedKey, data) {
             var name = 'createSuccess';
             assertOneRecord(name, record);
             return {
@@ -64,7 +64,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.createSuccess,
             };
         },
-        createError: function (error, record, data) {
+        createError(error, record, data) {
             var name = 'createError';
             assertError(name, error);
             assertOneRecord(name, record);
@@ -75,7 +75,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.createError,
             };
         },
-        updateStart: function (record, data) {
+        updateStart(record, data) {
             var name = 'updateStart';
             assertOneRecord(name, record);
             return {
@@ -84,7 +84,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.updateStart,
             };
         },
-        updateSuccess: function (record, data) {
+        updateSuccess(record, data) {
             var name = 'updateSuccess';
             assertOneRecord(name, record);
             return {
@@ -93,7 +93,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.updateSuccess,
             };
         },
-        updateError: function (error, record, data) {
+        updateError(error, record, data) {
             var name = 'updateError';
             assertError(name, error);
             assertOneRecord(name, record);
@@ -104,7 +104,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.updateError,
             };
         },
-        deleteStart: function (record, data) {
+        deleteStart(record, data) {
             var name = 'deleteStart';
             assertOneRecord(name, record);
             return {
@@ -113,7 +113,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.deleteStart,
             };
         },
-        deleteSuccess: function (record, data) {
+        deleteSuccess(record, data) {
             var name = 'deleteSuccess';
             assertOneRecord(name, record);
             return {
@@ -122,7 +122,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.deleteSuccess,
             };
         },
-        deleteError: function (error, record, data) {
+        deleteError(error, record, data) {
             var name = 'deleteError';
             assertError(name, error);
             assertOneRecord(name, record);
