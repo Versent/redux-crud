@@ -2,7 +2,7 @@
 const common_1 = require("../common");
 const findByKey_1 = require("../../utils/findByKey");
 const mergeMutable_1 = require("../../utils/mergeMutable");
-const lodash_omit_1 = require("lodash.omit");
+const omit = require('lodash.omit');
 function error(config, current, record) {
     // We don't want to rollback
     var reducerName = 'updateError';
@@ -11,7 +11,7 @@ function error(config, current, record) {
     var updatedId = record[key];
     var updatedRecord = findByKey_1.default(current, key, updatedId);
     if (updatedRecord) {
-        updatedRecord = lodash_omit_1.default(updatedRecord, 'busy');
+        updatedRecord = omit(updatedRecord, 'busy');
         return mergeMutable_1.default(current, updatedRecord, key);
     }
     else {

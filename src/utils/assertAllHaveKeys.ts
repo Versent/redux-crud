@@ -1,4 +1,4 @@
-import every from 'lodash.every';
+const every = require('lodash.every');
 
 export default function(config, reducerName, records) {
   // All given records must have a key

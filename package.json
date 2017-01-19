@@ -2,7 +2,7 @@
   "name": "redux-crud",
   "version": "1.0.1",
   "description": "Redux CRUD",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "tsc && ava dist/**/*.test.js"
   },

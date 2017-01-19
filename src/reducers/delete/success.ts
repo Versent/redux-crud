@@ -1,6 +1,7 @@
-import reject            from 'lodash.reject';
 import common            from '../common';
 import constants         from '../../constants';
+
+const reject            = require('lodash.reject');
 
 export default function success(config, current, record) {
   var reducerName = 'deleteSuccess';

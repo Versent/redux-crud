@@ -1,7 +1,7 @@
 "use strict";
-const lodash_assign_1 = require("lodash.assign");
 const common_1 = require("../common");
 const mergeMutable_1 = require("../../utils/mergeMutable");
+const assign = require('lodash.assign');
 function start(config, current, record) {
     var reducerName = 'updateStart';
     record = common_1.default(config, current, record, reducerName);
@@ -10,7 +10,7 @@ function start(config, current, record) {
         busy: true,
         pendingUpdate: true,
     };
-    var newRecord = lodash_assign_1.default({}, record, recordStatus);
+    var newRecord = assign({}, record, recordStatus);
     // replace record
     return mergeMutable_1.default(current, newRecord, config.key);
 }

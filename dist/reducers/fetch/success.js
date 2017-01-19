@@ -1,13 +1,13 @@
 "use strict";
 const assertAllHaveKeys_1 = require("../../utils/assertAllHaveKeys");
-const lodash_isarray_1 = require("lodash.isarray");
 const mergeMutable_1 = require("../../utils/mergeMutable");
 const wrapArray_1 = require("../../utils/wrapArray");
+const isArray = require('lodash.isarray');
 function success(config, current, records) {
     var reducerName = config.resourceName + '.fetchSuccess';
     if (!config.key)
         throw new Error(reducerName + ': Expected config.key');
-    if (!lodash_isarray_1.default(current))
+    if (!isArray(current))
         throw new Error(reducerName + ': Expected current to be an array');
     if (!records)
         throw new Error(reducerName + ': Expected records');

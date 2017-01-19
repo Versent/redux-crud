@@ -3,7 +3,7 @@ import constants         from '../../constants';
 
 import { Config, ResourceCollection } from '../../types'
 
-export default function success(config: Config, current: any, addedRecord, clientGenKey) {
+export default function success(config: Config, current: any, addedRecord: any, clientGenKey?: string) {
   var reducerName = 'createSuccess';
 
   addedRecord = common(config, current, addedRecord, reducerName);

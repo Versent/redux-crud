@@ -1,8 +1,9 @@
 import assertAllHaveKeys  from '../../utils/assertAllHaveKeys';
 import constants          from '../../constants';
-import isArray            from 'lodash.isarray';
 import mergeMutable       from '../../utils/mergeMutable';
 import wrapArray          from '../../utils/wrapArray';
+
+const isArray            = require('lodash.isarray');
 
 export default function success(config, current, records) {
   var reducerName = config.resourceName + '.fetchSuccess';

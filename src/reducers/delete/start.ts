@@ -1,8 +1,9 @@
-import assign            from 'lodash.assign';
 import common            from '../common';
 import constants         from '../../constants';
 import findByKey         from '../../utils/findByKey';
 import mergeMutable      from '../../utils/mergeMutable';
+
+const assign            = require('lodash.assign');
 
 export default function start(config, current, record) {
   var reducerName = 'deleteStart';

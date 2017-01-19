@@ -1,6 +1,6 @@
 "use strict";
-const lodash_reject_1 = require("lodash.reject");
 const common_1 = require("../common");
+const reject = require('lodash.reject');
 function success(config, current, record) {
     var reducerName = 'deleteSuccess';
     record = common_1.default(config, current, record, reducerName);
@@ -10,7 +10,7 @@ function success(config, current, record) {
         return deleteId == existingRecord[key];
     }
     ;
-    return lodash_reject_1.default(current, predicate);
+    return reject(current, predicate);
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = success;

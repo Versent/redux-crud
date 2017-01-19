@@ -1,4 +1,4 @@
-import find from 'lodash.find';
+const find = require('lodash.find');
 
 export default function findByKey(collection, key, id) {
   function predicate(record) {
