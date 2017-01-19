@@ -2,7 +2,7 @@
 const common_1 = require("../common");
 const reject = require('lodash.reject');
 function success(config, current, record) {
-    var reducerName = 'deleteSuccess';
+    const reducerName = 'deleteSuccess';
     record = common_1.default(config, current, record, reducerName);
     var key = config.key;
     var deleteId = record[key];

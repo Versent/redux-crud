@@ -1,12 +1,14 @@
 import constants from '../constants';
+import makeScope from '../utils/makeScope'
 
-export default function(config, reducerName, record) {
+import { Config, ReducerName } from '../types'
 
-  function throwErr() {
-    throw new Error(reducerName + ': Expected to record to have ' + config.key);
-  }
+export default function assertHasKey(config: Config, reducerName: ReducerName, record: any): void {
+  var key = config.key
 
-  if (record[config.key] == null) {
-    throwErr();
+  var scope = makeScope(config, reducerName)
+
+  if (record[key] == null) {
+    throw new Error(scope + ': Expected record to have .' + key)
   }
 }

@@ -1,7 +1,8 @@
 "use strict";
-function getDefaultConfig() {
+function getDefaultConfig(resourceName) {
     return {
         key: 'id',
+        resourceName,
     };
 }
 Object.defineProperty(exports, "__esModule", { value: true });

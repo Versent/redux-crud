@@ -90,7 +90,7 @@ ava_1.default(subject + 'it throws when record doesnt have an id', function (t) 
     var f = function () {
         success_1.default(config, curr, record);
     };
-    t.throws(f, /users.createSuccess: Expected to record to have id/);
+    t.throws(f, /users.createSuccess: Expected record to have .id/);
 });
 ava_1.default(subject + 'it uses the cid', function (t) {
     var cid = 'abc';

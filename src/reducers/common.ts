@@ -1,26 +1,30 @@
-import assertHasKey      from '../utils/assertHasKey';
-import assertNotArray    from '../utils/assertNotArray';
-import constants         from '../constants';
-import wrapArray         from '../utils/wrapArray';
+import assertHasKey      from '../utils/assertHasKey'
+import assertNotArray    from '../utils/assertNotArray'
+import constants         from '../constants'
+import makeScope         from '../utils/makeScope'
+import wrapArray         from '../utils/wrapArray'
 
-const isArray           = require('lodash.isarray');
-const isObject          = require('lodash.isobject');
+const isArray           = require('lodash.isarray')
+const isObject          = require('lodash.isobject')
 
-export default function common(config, current, record, reducerName) {
-  if (!config.resourceName)     throw new Error('Expected config.resourceName');
-  reducerName = config.resourceName + '.' + reducerName;
+import { Config, ResourceCollection, ReducerName } from '../types'
 
-  if (!config.key)              throw new Error(reducerName + ': Expected config.key');
-  if (!record)                  throw new Error(reducerName + ': Expected record');
+export default function common(config: Config, current: any, record: any, reducerName: ReducerName) {
+  if (!config.resourceName)     throw new Error('Expected config.resourceName')
+
+  const scope = makeScope(config, reducerName)
+
+  if (!config.key)              throw new Error(scope + ': Expected config.key')
+  if (!record)                  throw new Error(scope + ': Expected record')
 
   if (config.store === constants.STORE_MAP) {
-    if (!isObject(current)) throw new Error(reducerName + ': Expected current to be an object');
+    if (!isObject(current)) throw new Error(scope + ': Expected current to be an object')
   } else {
-    if (!isArray(current)) throw new Error(reducerName + ': Expected current to be an array');
+    if (!isArray(current)) throw new Error(scope + ': Expected current to be an array')
   }
 
-  assertNotArray(config, reducerName, record);
-  assertHasKey(config, reducerName, record);
+  assertNotArray(config, reducerName, record)
+  assertHasKey(config, reducerName, record)
 
-  return record;
+  return record
 }

@@ -104,7 +104,7 @@ test(subject + 'it throws when record doesnt have an id', function(t) {
   var f = function() {
     reducer(config, curr, record);
   }
-  t.throws(f, /users.createSuccess: Expected to record to have id/);
+  t.throws(f, /users.createSuccess: Expected record to have .id/);
 });
 
 test(subject + 'it uses the cid', function(t) {

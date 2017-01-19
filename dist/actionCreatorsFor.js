@@ -3,11 +3,13 @@ const actionTypesFor_1 = require("./actionTypesFor");
 const assertNotArray_1 = require("./utils/assertNotArray");
 const constants_1 = require("./constants");
 const getDefaultConfig_1 = require("./getDefaultConfig");
+const assign = require('lodash.assign');
 const invariant = require('invariant');
 function actionCreatorsFor(resourceName, config) {
     if (resourceName == null)
         throw new Error('actionCreatorsFor: Expected resourceName');
-    config = config || getDefaultConfig_1.default();
+    config = config || getDefaultConfig_1.default(resourceName);
+    config = assign(config, { resourceName });
     const actionTypes = actionTypesFor_1.default(resourceName);
     const key = config.key || constants_1.default.DEFAULT_KEY;
     function assertError(actionCreatorName, error) {

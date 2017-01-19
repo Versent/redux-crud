@@ -1,7 +1,7 @@
 "use strict";
 const common_1 = require("../common");
 function success(config, current, addedRecord, clientGenKey) {
-    var reducerName = 'createSuccess';
+    const reducerName = "createSuccess";
     addedRecord = common_1.default(config, current, addedRecord, reducerName);
     var key = config.key;
     var done = false;

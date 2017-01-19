@@ -4,10 +4,12 @@ import constants         from '../../constants';
 
 const assign = require('lodash.assign');
 
-export default function start(config, current, record) {
-  var reducerName = 'updateStart';
+import { Config, ResourceCollection, ReducerName } from '../../types'
 
-  record = common(config, current, record, reducerName);
+export default function start(config, current, record) {
+  var reducerName: ReducerName = 'updateStart';
+
+  record = common(config, current, record, reducerName)
 
   // mark record as unsaved and busy
   var recordStatus = {

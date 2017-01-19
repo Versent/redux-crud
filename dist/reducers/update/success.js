@@ -2,7 +2,7 @@
 const common_1 = require("../common");
 const mergeMutable_1 = require("../../utils/mergeMutable");
 function success(config, current, record) {
-    var reducerName = 'updateSuccess';
+    let reducerName = 'updateSuccess';
     record = common_1.default(config, current, record, reducerName);
     // replace record
     return mergeMutable_1.default(current, record, config.key);

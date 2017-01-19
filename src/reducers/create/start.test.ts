@@ -51,16 +51,15 @@ test(subject + 'adds the new record', function(t) {
 });
 
 test(subject + 'it throws when record doesnt have an id', function(t) {
-  var curr   = getCurrent();
+  var curr   = getCurrent()
   var record = {
     name: 'Green'
-  };
+  }
 
   var f = function() {
-    reducer(config, curr, record);
+    reducer(config, curr, record)
   }
-  t.throws(f, /users.createStart: Expected to record to have id/);
-  
+  t.throws(f, /users.createStart: Expected record to have .id/)
 });
 
 test(subject + 'adds busy and pendingCreate', function(t) {

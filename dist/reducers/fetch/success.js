@@ -1,16 +1,18 @@
 "use strict";
 const assertAllHaveKeys_1 = require("../../utils/assertAllHaveKeys");
+const makeScope_1 = require("../../utils/makeScope");
 const mergeMutable_1 = require("../../utils/mergeMutable");
 const wrapArray_1 = require("../../utils/wrapArray");
 const isArray = require('lodash.isarray');
 function success(config, current, records) {
-    var reducerName = config.resourceName + '.fetchSuccess';
+    var reducerName = 'fetchSuccess';
+    var scope = makeScope_1.default(config, reducerName);
     if (!config.key)
-        throw new Error(reducerName + ': Expected config.key');
+        throw new Error(scope + ': Expected config.key');
     if (!isArray(current))
-        throw new Error(reducerName + ': Expected current to be an array');
+        throw new Error(scope + ': Expected current to be an array');
     if (!records)
-        throw new Error(reducerName + ': Expected records');
+        throw new Error(scope + ': Expected records');
     // wrap array
     records = wrapArray_1.default(records);
     // All given records must have a key

@@ -1,23 +1,25 @@
-import common            from '../common';
-import constants         from '../../constants';
-import findByKey         from '../../utils/findByKey';
-import mergeMutable      from '../../utils/mergeMutable';
+import common            from '../common'
+import constants         from '../../constants'
+import findByKey         from '../../utils/findByKey'
+import mergeMutable      from '../../utils/mergeMutable'
 
-const assign            = require('lodash.assign');
+const assign            = require('lodash.assign')
 
-export default function start(config, current, record) {
-  var reducerName = 'deleteStart';
+import { Config, ResourceCollection, ReducerName } from '../../types'
 
-  record = common(config, current, record, reducerName);
+export default function start(config: Config, current: any, record: any): any {
+  const reducerName: ReducerName = 'deleteStart'
 
-  var key = config.key;
-  var deleteId = record[key];
+  record = common(config, current, record, reducerName)
+
+  var key = config.key
+  var deleteId = record[key]
   var recordStatus = {
     deleted: true,
     busy:    true,
   };
-  var deleteRecord = findByKey(current, key, deleteId);
-  deleteRecord = assign({}, deleteRecord, recordStatus);
+  var deleteRecord = findByKey(current, key, deleteId)
+  deleteRecord = assign({}, deleteRecord, recordStatus)
 
-  return mergeMutable(current, deleteRecord, key);
+  return mergeMutable(current, deleteRecord, key)
 }

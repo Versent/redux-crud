@@ -4,7 +4,7 @@ const findByKey_1 = require("../../utils/findByKey");
 const mergeMutable_1 = require("../../utils/mergeMutable");
 const omit = require('lodash.omit');
 function error(config, current, record) {
-    var reducerName = 'deleteError';
+    const reducerName = 'deleteError';
     record = common_1.default(config, current, record, reducerName);
     var key = config.key;
     var deleteId = record[key];

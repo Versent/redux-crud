@@ -5,7 +5,7 @@ const constants_1 = require("../../constants");
 const remove_1 = require("../../stores/list/remove");
 const remove_2 = require("../../stores/map/remove");
 function error(config, current, addedRecord) {
-    var reducerName = 'createError';
+    var reducerName = "createError";
     assertNotArray_1.default(config, reducerName, addedRecord);
     addedRecord = common_1.default(config, current, addedRecord, reducerName);
     if (config.store === constants_1.default.STORE_MAP) {

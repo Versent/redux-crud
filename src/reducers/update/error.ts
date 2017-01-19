@@ -5,9 +5,11 @@ import mergeMutable      from '../../utils/mergeMutable';
 
 const omit = require('lodash.omit');
 
-export default function error(config, current, record) {
+import { Config, ResourceCollection, ReducerName } from '../../types'
+
+export default function error(config: Config, current: any, record: any): any {
   // We don't want to rollback
-  var reducerName = 'updateError';
+  var reducerName: ReducerName = 'updateError';
 
   record = common(config, current, record, reducerName);
 

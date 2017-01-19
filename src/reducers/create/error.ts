@@ -4,10 +4,11 @@ import constants         from '../../constants'
 import removeFromList    from '../../stores/list/remove'
 import removeFromMap     from '../../stores/map/remove'
 
-import { Config, ResourceCollection } from '../../types'
+import { Config, ResourceCollection, ReducerName } from '../../types'
 
 export default function error(config: Config, current: ResourceCollection, addedRecord: any) {
-  var reducerName = 'createError'
+  var reducerName: ReducerName = "createError"
+
   assertNotArray(config, reducerName, addedRecord)
 
   addedRecord = common(config, current, addedRecord, reducerName)

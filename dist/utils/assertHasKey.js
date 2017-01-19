@@ -1,11 +1,11 @@
 "use strict";
-function default_1(config, reducerName, record) {
-    function throwErr() {
-        throw new Error(reducerName + ': Expected to record to have ' + config.key);
-    }
-    if (record[config.key] == null) {
-        throwErr();
+const makeScope_1 = require("../utils/makeScope");
+function assertHasKey(config, reducerName, record) {
+    var key = config.key;
+    var scope = makeScope_1.default(config, reducerName);
+    if (record[key] == null) {
+        throw new Error(scope + ': Expected record to have .' + key);
     }
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = default_1;
+exports.default = assertHasKey;

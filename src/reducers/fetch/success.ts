@@ -1,16 +1,20 @@
-import assertAllHaveKeys  from '../../utils/assertAllHaveKeys';
-import constants          from '../../constants';
-import mergeMutable       from '../../utils/mergeMutable';
-import wrapArray          from '../../utils/wrapArray';
+import assertAllHaveKeys  from '../../utils/assertAllHaveKeys'
+import constants          from '../../constants'
+import makeScope          from '../../utils/makeScope'
+import mergeMutable       from '../../utils/mergeMutable'
+import wrapArray          from '../../utils/wrapArray'
 
-const isArray            = require('lodash.isarray');
+const isArray            = require('lodash.isarray')
 
-export default function success(config, current, records) {
-  var reducerName = config.resourceName + '.fetchSuccess';
+import { Config, ResourceCollection, ReducerName } from '../../types'
 
-  if (!config.key)              throw new Error(reducerName + ': Expected config.key');
-  if (!isArray(current))        throw new Error(reducerName + ': Expected current to be an array');
-  if (!records)                 throw new Error(reducerName + ': Expected records');
+export default function success(config: Config, current: any, records: any): any {
+  var reducerName: ReducerName = 'fetchSuccess'
+  var scope = makeScope(config, reducerName)
+
+  if (!config.key)              throw new Error(scope + ': Expected config.key');
+  if (!isArray(current))        throw new Error(scope + ': Expected current to be an array');
+  if (!records)                 throw new Error(scope + ': Expected records');
 
   // wrap array
   records = wrapArray(records);
