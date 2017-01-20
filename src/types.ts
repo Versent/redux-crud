@@ -1,27 +1,34 @@
 export interface Config {
-  key?: string;
-  resourceName: string;
-  store?: string;
+	key?: string;
+	resourceName: string;
+	store?: StoreKind;
 }
 
-interface Map<T> {
-    [key: string]: T;
+export interface Map<T> {
+		[key: string]: T;
 }
 
 export type ReducerName
-  = "createError"
-  | "createSuccess"
-  | "createStart"
-  | "deleteError"
-  | "deleteSuccess"
-  | "deleteStart"
-  | "fetchSuccess"
-  | "fetchError"
-  | "updateError"
-  | "updateSuccess"
-  | "updateStart"
+	= "createError"
+	| "createSuccess"
+	| "createStart"
+	| "deleteError"
+	| "deleteSuccess"
+	| "deleteStart"
+	| "fetchSuccess"
+	| "fetchError"
+	| "updateError"
+	| "updateSuccess"
+	| "updateStart"
 
-export type ResourceCollection
-  = Array<any>
-  | Map<any>
+type StoreKind
+	= 'map'
+	| 'list'
 
+export interface StoreList {
+	remove: (config: Config, current: Array<any>, record: any) => Array<any>
+}
+
+export interface StoreMap {
+	remove: (config: Config, current: Map<any>, record: any) => Map<any>
+}

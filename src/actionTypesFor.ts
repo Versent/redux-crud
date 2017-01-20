@@ -1,3 +1,3 @@
-const actionTypesFor = require('action-names');
+const actionTypesFor = require('action-names')
 
-export default actionTypesFor;
+export default actionTypesFor

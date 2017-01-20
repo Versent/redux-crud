@@ -5,4 +5,3 @@ function wrapArray(recordOrRecords) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = wrapArray;
-;
