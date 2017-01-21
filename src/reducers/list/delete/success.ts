@@ -1,4 +1,4 @@
-import common            from '../../common'
+import common            from '../common'
 import constants         from '../../../constants'
 
 const reject            = require('lodash.reject')

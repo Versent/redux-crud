@@ -1,4 +1,4 @@
-import common            from '../../common'
+import common            from '../common'
 import constants         from '../../../constants'
 import findByKey         from '../../../utils/findByKey'
 import mergeMutable      from '../../../utils/mergeMutable'

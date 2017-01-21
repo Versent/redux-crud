@@ -1,5 +1,5 @@
 import assertNotArray    from '../../../utils/assertNotArray'
-import common            from '../../common'
+import common            from '../common'
 import constants         from '../../../constants'
 import mergeMutable      from '../../../utils/mergeMutable'
 

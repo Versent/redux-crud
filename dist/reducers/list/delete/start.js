@@ -1,5 +1,5 @@
 "use strict";
-const common_1 = require("../../common");
+const common_1 = require("../common");
 const findByKey_1 = require("../../../utils/findByKey");
 const mergeMutable_1 = require("../../../utils/mergeMutable");
 const assign = require('lodash.assign');

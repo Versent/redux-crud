@@ -12,15 +12,16 @@ var config          = {
 }
 
 function getCurrent() {
-	return [
-		{
+	return {
+		1: {
 			id: 1,
 			name: 'Blue'
-		},{
+		},
+		2: {
 			id: 'abc',
 			name: 'Green'
 		}
-	]
+	}
 }
 
 test(subject + 'throws if given an array', function(t) {
@@ -35,12 +36,14 @@ test(subject + 'throws if given an array', function(t) {
 })
 
 test(subject + 'removes the record', function(t) {
-	var curr    = getCurrent()
-	var created = {
-		id: 'abc',
-		name: 'Green'
-	}
-	var updated = reducer(config, curr, created)
+  var curr    = getCurrent()
+  t.deepEqual(values(curr).length, 2)
 
-	t.deepEqual(updated.length, 1)
+  var created = {
+    id: 'abc',
+    name: 'Green'
+  }
+  var updated = reducer(config, curr, created)
+
+  t.deepEqual(values(updated).length, 2)
 })

@@ -1,5 +1,5 @@
 "use strict";
-const common_1 = require("../../common");
+const common_1 = require("../common");
 const mergeMutable_1 = require("../../../utils/mergeMutable");
 function success(config, current, record) {
     let reducerName = 'updateSuccess';

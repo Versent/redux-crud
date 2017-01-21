@@ -1,6 +1,6 @@
 "use strict";
 const assertNotArray_1 = require("../../../utils/assertNotArray");
-const common_1 = require("../../common");
+const common_1 = require("../common");
 const mergeMutable_1 = require("../../../utils/mergeMutable");
 const assign = require('lodash.assign');
 function start(config, current, record) {

@@ -1,5 +1,5 @@
 "use strict";
-const common_1 = require("../../common");
+const common_1 = require("../common");
 const reject = require('lodash.reject');
 function success(config, current, record) {
     const reducerName = 'deleteSuccess';

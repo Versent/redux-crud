@@ -1,7 +1,6 @@
 export interface Config {
 	key?: string;
 	resourceName: string;
-	store?: StoreKind;
 }
 
 export interface Map<T> {
@@ -20,10 +19,6 @@ export type ReducerName
 	| "updateError"
 	| "updateSuccess"
 	| "updateStart"
-
-type StoreKind
-	= 'map'
-	| 'list'
 
 export interface StoreList {
 	remove: (config: Config, current: Array<any>, record: any) => Array<any>

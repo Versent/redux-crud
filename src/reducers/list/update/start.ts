@@ -1,4 +1,4 @@
-import common            from '../../common'
+import common            from '../common'
 import mergeMutable      from '../../../utils/mergeMutable'
 import constants         from '../../../constants'
 
