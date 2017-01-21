@@ -1,16 +1,15 @@
-import common            from '../common'
-import constants         from '../../../constants'
-import findByKey         from '../../../utils/findByKey'
-import mergeMutable      from '../../../utils/mergeMutable'
-
-const omit = require('lodash.omit')
+import constants from '../../../constants'
+import findByKey from '../../../utils/findByKey'
+import invariants from '../invariants'
+import mergeMutable from '../../../utils/mergeMutable'
 
 import { Config, ReducerName } from '../../../types'
 
-export default function error(config: Config, current: Array<any>, record: any): Array<any> {
-	const reducerName: ReducerName = 'deleteError'
+var omit = require('lodash.omit')
+var reducerName: ReducerName = 'deleteError'
 
-	record = common(config, current, record, reducerName)
+export default function error(config: Config, current: Array<any>, record: any): Array<any> {
+	invariants(config, current, record, reducerName)
 
 	var key = config.key
 	var deleteId = record[key]

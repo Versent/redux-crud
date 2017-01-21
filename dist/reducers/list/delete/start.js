@@ -1,11 +1,11 @@
 "use strict";
-const common_1 = require("../common");
+const invariants_1 = require("../invariants");
 const findByKey_1 = require("../../../utils/findByKey");
 const mergeMutable_1 = require("../../../utils/mergeMutable");
-const assign = require('lodash.assign');
+var assign = require('lodash.assign');
+var reducerName = 'deleteStart';
 function start(config, current, record) {
-    const reducerName = 'deleteStart';
-    record = common_1.default(config, current, record, reducerName);
+    invariants_1.default(config, current, record, reducerName);
     var key = config.key;
     var deleteId = record[key];
     var recordStatus = {

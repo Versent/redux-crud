@@ -3,9 +3,9 @@ const assertAllHaveKeys_1 = require("../../../utils/assertAllHaveKeys");
 const makeScope_1 = require("../../../utils/makeScope");
 const mergeMutable_1 = require("../../../utils/mergeMutable");
 const wrapArray_1 = require("../../../utils/wrapArray");
-const isArray = require('lodash.isarray');
+var isArray = require('lodash.isarray');
+var reducerName = 'fetchSuccess';
 function success(config, current, records) {
-    var reducerName = 'fetchSuccess';
     var scope = makeScope_1.default(config, reducerName);
     if (!config.key)
         throw new Error(scope + ': Expected config.key');

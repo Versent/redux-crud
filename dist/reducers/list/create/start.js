@@ -1,12 +1,12 @@
 "use strict";
 const assertNotArray_1 = require("../../../utils/assertNotArray");
-const common_1 = require("../common");
+const invariants_1 = require("../invariants");
 const mergeMutable_1 = require("../../../utils/mergeMutable");
-const assign = require('lodash.assign');
+var assign = require('lodash.assign');
+var reducerName = "createStart";
 function start(config, current, record) {
-    var reducerName = "createStart";
     assertNotArray_1.default(config, reducerName, record);
-    record = common_1.default(config, current, record, reducerName);
+    invariants_1.default(config, current, record, reducerName);
     var recordStatus = {
         busy: true,
         pendingCreate: true,

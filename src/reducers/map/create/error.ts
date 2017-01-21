@@ -1,12 +1,14 @@
 import assertNotArray    from '../../../utils/assertNotArray'
-import common            from '../common'
 import constants         from '../../../constants'
+import invariants        from '../invariants'
 import remove            from '../store/remove'
 
 import { Config, Map, ReducerName } from '../../../types'
 
+var reducerName: ReducerName = constants.REDUCER_NAMES.CREATE_ERROR
+
 export default function error(config: Config, current: Map<any>, record: any):  Map<any> {
-	var reducerName: ReducerName = constants.REDUCER_NAMES.CREATE_ERROR
-	record = common(config, current, record, reducerName)
+	invariants(config, current, record, reducerName)
+
 	return remove(config, current, record)
 }

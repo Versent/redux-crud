@@ -4,12 +4,12 @@ import makeScope          from '../../../utils/makeScope'
 import mergeMutable       from '../../../utils/mergeMutable'
 import wrapArray          from '../../../utils/wrapArray'
 
-const isArray            = require('lodash.isarray')
-
 import { Config, ReducerName } from '../../../types'
 
+var isArray = require('lodash.isarray')
+var reducerName: ReducerName = 'fetchSuccess'
+
 export default function success(config: Config, current: Array<any>, records: any): Array<any> {
-	var reducerName: ReducerName = 'fetchSuccess'
 	var scope = makeScope(config, reducerName)
 
 	if (!config.key)              throw new Error(scope + ': Expected config.key')

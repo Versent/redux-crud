@@ -1,16 +1,15 @@
-import common            from '../common'
+import invariants from '../invariants'
 import constants         from '../../../constants'
 import findByKey         from '../../../utils/findByKey'
 import mergeMutable      from '../../../utils/mergeMutable'
 
-const assign            = require('lodash.assign')
-
 import { Config, ReducerName } from '../../../types'
 
-export default function start(config: Config, current: Array<any>, record: any): Array<any> {
-	const reducerName: ReducerName = 'deleteStart'
+var assign            = require('lodash.assign')
+var reducerName: ReducerName = 'deleteStart'
 
-	record = common(config, current, record, reducerName)
+export default function start(config: Config, current: Array<any>, record: any): Array<any> {
+	invariants(config, current, record, reducerName)
 
 	var key = config.key
 	var deleteId = record[key]

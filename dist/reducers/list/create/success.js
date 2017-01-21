@@ -1,8 +1,8 @@
 "use strict";
-const common_1 = require("../common");
+const invariants_1 = require("../invariants");
+var reducerName = "createSuccess";
 function success(config, current, addedRecord, clientGenKey) {
-    const reducerName = "createSuccess";
-    addedRecord = common_1.default(config, current, addedRecord, reducerName);
+    invariants_1.default(config, current, addedRecord, reducerName);
     var key = config.key;
     var done = false;
     // Update existing records

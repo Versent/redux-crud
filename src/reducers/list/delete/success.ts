@@ -1,14 +1,14 @@
-import common            from '../common'
+import invariants            from '../invariants'
 import constants         from '../../../constants'
 
 const reject            = require('lodash.reject')
 
 import { Config, ReducerName } from '../../../types'
 
-export default function success(config: Config, current: Array<any>, record: any): Array<any> {
-	const reducerName: ReducerName = 'deleteSuccess'
+var reducerName: ReducerName = 'deleteSuccess'
 
-	record = common(config, current, record, reducerName)
+export default function success(config: Config, current: Array<any>, record: any): Array<any> {
+	invariants(config, current, record, reducerName)
 
 	var key = config.key
 	var deleteId = record[key]

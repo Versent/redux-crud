@@ -1,10 +1,10 @@
 "use strict";
-const common_1 = require("../common");
+const invariants_1 = require("../invariants");
 const mergeMutable_1 = require("../../../utils/mergeMutable");
-const assign = require('lodash.assign');
+var assign = require('lodash.assign');
+var reducerName = 'updateStart';
 function start(config, current, record) {
-    var reducerName = 'updateStart';
-    record = common_1.default(config, current, record, reducerName);
+    invariants_1.default(config, current, record, reducerName);
     // mark record as unsaved and busy
     var recordStatus = {
         busy: true,

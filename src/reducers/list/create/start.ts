@@ -1,17 +1,17 @@
-import assertNotArray    from '../../../utils/assertNotArray'
-import common            from '../common'
-import constants         from '../../../constants'
-import mergeMutable      from '../../../utils/mergeMutable'
+import assertNotArray from '../../../utils/assertNotArray'
+import constants from '../../../constants'
+import invariants from '../invariants'
+import mergeMutable from '../../../utils/mergeMutable'
 
-const assign = require('lodash.assign')
+var assign = require('lodash.assign')
 
 import { Config, ReducerName } from '../../../types'
 
-export default function start(config: Config, current: Array<any>, record: any): Array<any> {
-	var reducerName: ReducerName = "createStart"
-	assertNotArray(config, reducerName, record)
+var reducerName: ReducerName = "createStart"
 
-	record = common(config, current, record, reducerName)
+export default function start(config: Config, current: Array<any>, record: any): Array<any> {
+	assertNotArray(config, reducerName, record)
+	invariants(config, current, record, reducerName)
 
 	var recordStatus = {
 		busy:          true,

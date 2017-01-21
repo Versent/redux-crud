@@ -1,12 +1,12 @@
-import common            from '../common'
-import constants         from '../../../constants'
+import constants from '../../../constants'
+import invariants from '../invariants'
 
 import { Config, ReducerName } from '../../../types'
 
-export default function success(config: Config, current: Array<any>, addedRecord: any, clientGenKey?: string): Array<any> {
-	const reducerName: ReducerName = "createSuccess"
+var reducerName: ReducerName = "createSuccess"
 
-	addedRecord = common(config, current, addedRecord, reducerName)
+export default function success(config: Config, current: Array<any>, addedRecord: any, clientGenKey?: string): Array<any> {
+	invariants(config, current, addedRecord, reducerName)
 
 	var key = config.key
 	var done = false
