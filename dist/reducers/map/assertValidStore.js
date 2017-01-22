@@ -1,7 +1,7 @@
 "use strict";
-const isObject = require('lodash.isobject');
+const r = require("ramda");
 function assertValidStore(scope, current) {
-    if (!isObject(current))
+    if (!r.is(Object, current))
         throw new Error(scope + ': Expected current to be an object');
 }
 Object.defineProperty(exports, "__esModule", { value: true });

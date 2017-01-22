@@ -1,9 +1,10 @@
 "use strict";
 const makeScope_1 = require("../utils/makeScope");
-const isArray = require('lodash.isarray');
+const r = require("ramda");
 function default_1(config, reducerName, record) {
-    const scope = makeScope_1.default(config, reducerName);
-    if (isArray(record))
+    var scope = makeScope_1.default(config, reducerName);
+    var isArray = r.is(Array, record);
+    if (isArray)
         throw new TypeError(scope + ': Expected record not to be an array');
 }
 Object.defineProperty(exports, "__esModule", { value: true });

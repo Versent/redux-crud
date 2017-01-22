@@ -1,8 +1,9 @@
+import test from 'ava'
+import * as td from 'testdouble'
+
+
 import constants       from '../../constants'
 import reducersFor     from './reducersFor'
-import sinon           from 'sinon'
-import test            from 'ava'
-const td               = require('testdouble')
 
 const current         = [{}]
 const user            = {}

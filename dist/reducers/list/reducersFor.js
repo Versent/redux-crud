@@ -10,7 +10,7 @@ const success_3 = require("./fetch/success");
 const error_3 = require("./update/error");
 const start_3 = require("./update/start");
 const success_4 = require("./update/success");
-const assign = require('lodash.assign');
+const r = require("ramda");
 const baseReducers = {
     createError: error_1.default,
     createStart: start_1.default,
@@ -24,7 +24,7 @@ const baseReducers = {
     updateSuccess: success_4.default,
 };
 function reducersFor(resourceName, args = {}, deps) {
-    const reducers = assign(baseReducers, deps);
+    const reducers = r.merge(baseReducers, deps);
     return reducersFor_1.default(resourceName, args, [], reducers);
 }
 Object.defineProperty(exports, "__esModule", { value: true });

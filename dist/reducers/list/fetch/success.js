@@ -1,15 +1,15 @@
 "use strict";
+const r = require("ramda");
 const assertAllHaveKeys_1 = require("../../../utils/assertAllHaveKeys");
 const makeScope_1 = require("../../../utils/makeScope");
 const mergeMutable_1 = require("../../../utils/mergeMutable");
 const wrapArray_1 = require("../../../utils/wrapArray");
-var isArray = require('lodash.isarray');
 var reducerName = 'fetchSuccess';
 function success(config, current, records) {
     var scope = makeScope_1.default(config, reducerName);
     if (!config.key)
         throw new Error(scope + ': Expected config.key');
-    if (!isArray(current))
+    if (!r.is(Array, current))
         throw new Error(scope + ': Expected current to be an array');
     if (!records)
         throw new Error(scope + ': Expected records');

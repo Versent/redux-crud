@@ -1,8 +1,8 @@
 "use strict";
+const ava_1 = require("ava");
+const td = require("testdouble");
 const constants_1 = require("../../constants");
 const reducersFor_1 = require("./reducersFor");
-const ava_1 = require("ava");
-const td = require('testdouble');
 const current = [{}];
 const user = {};
 const error = '';

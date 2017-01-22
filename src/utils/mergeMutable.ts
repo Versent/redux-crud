@@ -1,6 +1,6 @@
-import wrapArray   from './wrapArray'
+import * as r from 'ramda'
 
-const forEach = require('lodash.foreach')
+import wrapArray from './wrapArray'
 
 export default function mergeMutable (current, records, key) {
 	records = wrapArray(records)
@@ -8,14 +8,14 @@ export default function mergeMutable (current, records, key) {
 	var indexMap = {}
 	var newRecords = current.slice(0)
 
-	forEach(current, function (record, index) {
+	current.forEach(function (record, index) {
 		var recordKey = record[key]
 		if (recordKey == null) throw new Error('Expected record to have ' + key)
 		recordMap[recordKey] = record
 		indexMap[recordKey] = index
 	})
 
-	forEach(records, function (record, index) {
+	records.forEach(function (record, index) {
 		var recordId = record[key]
 		if (recordMap[recordId]) {
 			newRecords[indexMap[recordId]] = record

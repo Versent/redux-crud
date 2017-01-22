@@ -1,7 +1,7 @@
+import * as r from 'ramda'
+
 import actionTypesFor from '../../actionTypesFor'
 import constants from '../../constants'
-
-const assign           = require('lodash.assign')
 
 import { Config, ReducerName } from '../../types'
 
@@ -13,7 +13,7 @@ function reducersFor(resourceName: string, args = {}, emptyState, reducers) {
 		resourceName: resourceName,
 	}
 
-	var config = assign(defaults, args)
+	var config = r.merge(defaults, args)
 
 	return function getReducer(state, action) {
 		state = state || emptyState

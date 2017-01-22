@@ -1,11 +1,12 @@
 import makeScope from '../utils/makeScope'
 
-const isArray = require('lodash.isarray')
+import * as r from 'ramda'
 
 import { Config, ReducerName } from '../types'
 
 export default function(config: Config, reducerName: ReducerName, record: any) {
-	const scope = makeScope(config, reducerName)
+	var scope = makeScope(config, reducerName)
+	var isArray = r.is(Array, record)
 
-	if (isArray(record)) throw new TypeError(scope + ': Expected record not to be an array')
+	if (isArray) throw new TypeError(scope + ': Expected record not to be an array')
 }

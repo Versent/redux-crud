@@ -1,7 +1,7 @@
 "use strict";
+const r = require("ramda");
 const invariants_1 = require("../invariants");
 const mergeMutable_1 = require("../../../utils/mergeMutable");
-var assign = require('lodash.assign');
 var reducerName = 'updateStart';
 function start(config, current, record) {
     invariants_1.default(config, current, record, reducerName);
@@ -10,7 +10,7 @@ function start(config, current, record) {
         busy: true,
         pendingUpdate: true,
     };
-    var newRecord = assign({}, record, recordStatus);
+    var newRecord = r.merge(record, recordStatus);
     // replace record
     return mergeMutable_1.default(current, newRecord, config.key);
 }

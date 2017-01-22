@@ -1,5 +1,5 @@
 "use strict";
-const reject = require('lodash.reject');
+const r = require("ramda");
 function remove(config, current, addedRecord) {
     var key = config.key;
     function predicate(record) {
@@ -7,7 +7,7 @@ function remove(config, current, addedRecord) {
         var isSameKey = addedRecord[key] === recordKey;
         return isSameKey;
     }
-    return reject(current, predicate);
+    return r.reject(predicate, current);
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = remove;

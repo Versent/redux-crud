@@ -1,5 +1,6 @@
-var isArray = require('lodash.isarray')
+import * as r from 'ramda'
 
 export default function assertValidStore(scope: string, current: Array<any>): void {
-	if (!isArray(current)) throw new Error(scope + ': Expected current to be an array')
+	var isArray = r.is(Array, current)
+	if (!isArray) throw new Error(scope + ': Expected current to be an array')
 }

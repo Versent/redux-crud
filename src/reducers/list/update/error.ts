@@ -1,3 +1,5 @@
+import * as r from 'ramda'
+
 import invariants from '../invariants'
 import constants         from '../../../constants'
 import findByKey         from '../../../utils/findByKey'
@@ -5,7 +7,6 @@ import mergeMutable      from '../../../utils/mergeMutable'
 
 import { Config, ReducerName } from '../../../types'
 
-var omit = require('lodash.omit')
 var reducerName: ReducerName = 'updateError'
 
 export default function error(config: Config, current: Array<any>, record: any): Array<any> {
@@ -17,7 +18,7 @@ export default function error(config: Config, current: Array<any>, record: any):
 	var updatedRecord = findByKey(current, key, updatedId)
 
 	if (updatedRecord) {
-		updatedRecord = omit(updatedRecord, 'busy')
+		updatedRecord = r.omit(['busy'], updatedRecord)
 		return mergeMutable(current, updatedRecord, key)
 	} else {
 		return current

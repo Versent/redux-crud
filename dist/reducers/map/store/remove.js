@@ -1,8 +1,8 @@
 "use strict";
-const omit = require('lodash.omit');
+const r = require("ramda");
 function remove(config, current, addedRecord) {
     var key = config.key;
-    return omit(current, addedRecord[key]);
+    return r.omit([addedRecord[key]], current);
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = remove;

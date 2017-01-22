@@ -1,9 +1,8 @@
-import constants       from '../../../constants'
-import reducer         from './error'
-import test            from 'ava'
+import * as r from 'ramda'
+import test from 'ava'
 
-var assign          = require('lodash.assign')
-var values          = require('lodash.values')
+import constants from '../../../constants'
+import reducer from './error'
 
 var subject         = constants.REDUCER_NAMES.CREATE_ERROR
 var config          = {
@@ -37,7 +36,7 @@ test(subject + 'throws if given an array', function(t) {
 
 test(subject + 'removes the record', function(t) {
   var curr    = getCurrent()
-  t.deepEqual(values(curr).length, 2)
+  t.deepEqual(r.values(curr).length, 2)
 
   var created = {
     id: 'abc',
@@ -45,5 +44,5 @@ test(subject + 'removes the record', function(t) {
   }
   var updated = reducer(config, curr, created)
 
-  t.deepEqual(values(updated).length, 2)
+  t.deepEqual(r.values(updated).length, 2)
 })

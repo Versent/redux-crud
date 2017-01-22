@@ -1,3 +1,5 @@
+import * as r from 'ramda'
+
 import assertAllHaveKeys  from '../../../utils/assertAllHaveKeys'
 import constants          from '../../../constants'
 import makeScope          from '../../../utils/makeScope'
@@ -6,14 +8,13 @@ import wrapArray          from '../../../utils/wrapArray'
 
 import { Config, ReducerName } from '../../../types'
 
-var isArray = require('lodash.isarray')
 var reducerName: ReducerName = 'fetchSuccess'
 
 export default function success(config: Config, current: Array<any>, records: any): Array<any> {
 	var scope = makeScope(config, reducerName)
 
 	if (!config.key)              throw new Error(scope + ': Expected config.key')
-	if (!isArray(current))        throw new Error(scope + ': Expected current to be an array')
+	if (!r.is(Array, current))    throw new Error(scope + ': Expected current to be an array')
 	if (!records)                 throw new Error(scope + ': Expected records')
 
 	// wrap array

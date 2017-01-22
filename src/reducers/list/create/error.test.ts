@@ -1,9 +1,8 @@
+import test            from 'ava'
+import * as r from 'ramda'
+
 import constants       from '../../../constants'
 import reducer         from './error'
-import test            from 'ava'
-
-var assign          = require('lodash.assign')
-var values          = require('lodash.values')
 
 var subject         = constants.REDUCER_NAMES.CREATE_ERROR
 var config          = {

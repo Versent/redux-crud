@@ -1,4 +1,4 @@
-const reject            = require('lodash.reject')
+import * as r from 'ramda'
 
 import { Config } from '../../../types'
 
@@ -11,5 +11,5 @@ export default function remove(config: Config, current: Array<any>, addedRecord:
 		return isSameKey
 	}
 
-	return reject(current, predicate)
+	return r.reject(predicate, current)
 }

@@ -11,8 +11,7 @@ import fetchSuccess        from './fetch/success'
 import updateError         from './update/error'
 import updateStart         from './update/start'
 import updateSuccess       from './update/success'
-
-const assign           = require('lodash.assign')
+import * as r from 'ramda'
 
 import { Config, ReducerName } from '../../types'
 
@@ -30,6 +29,6 @@ const baseReducers = {
 }
 
 export default function reducersFor(resourceName: string, args = {}, deps?) {
-	const reducers = assign(baseReducers, deps)
+	const reducers = r.merge(baseReducers, deps)
 	return commonReducersFor(resourceName, args, [], reducers)
 }

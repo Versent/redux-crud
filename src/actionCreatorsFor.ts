@@ -1,19 +1,20 @@
+import * as r from 'ramda'
+import * as invariant from 'invariant'
+
 import actionTypesFor from './actionTypesFor'
 import assertNotArray from './utils/assertNotArray'
 import constants from './constants'
 import getDefaultConfig from './getDefaultConfig'
 
-const assign = require('lodash.assign')
-
 import { Config, ReducerName } from './types'
 
-const invariant = require('invariant')
+// const invariant = require('invariant')
 
 function actionCreatorsFor(resourceName: string, config?: Config) {
 	if (resourceName == null) throw new Error('actionCreatorsFor: Expected resourceName')
 
 	config = config || getDefaultConfig(resourceName)
-	config = assign(config, {resourceName})
+	config = r.merge(config, {resourceName})
 
 	const actionTypes = actionTypesFor(resourceName)
 	const key = config.key || constants.DEFAULT_KEY

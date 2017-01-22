@@ -1,10 +1,10 @@
 "use strict";
-const find = require('lodash.find');
+const r = require("ramda");
 function findByKey(collection, key, id) {
     function predicate(record) {
         return record[key] === id;
     }
-    return find(collection, predicate);
+    return r.find(predicate, collection);
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = findByKey;

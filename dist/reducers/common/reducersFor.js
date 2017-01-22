@@ -1,7 +1,7 @@
 "use strict";
+const r = require("ramda");
 const actionTypesFor_1 = require("../../actionTypesFor");
 const constants_1 = require("../../constants");
-const assign = require('lodash.assign');
 function reducersFor(resourceName, args = {}, emptyState, reducers) {
     if (resourceName == null)
         throw new Error('reducersFor: Expected resourceName');
@@ -9,7 +9,7 @@ function reducersFor(resourceName, args = {}, emptyState, reducers) {
         key: constants_1.default.DEFAULT_KEY,
         resourceName: resourceName,
     };
-    var config = assign(defaults, args);
+    var config = r.merge(defaults, args);
     return function getReducer(state, action) {
         state = state || emptyState;
         if (action == null)

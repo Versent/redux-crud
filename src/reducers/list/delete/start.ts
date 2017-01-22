@@ -1,3 +1,5 @@
+import * as r from 'ramda'
+
 import invariants from '../invariants'
 import constants         from '../../../constants'
 import findByKey         from '../../../utils/findByKey'
@@ -5,7 +7,6 @@ import mergeMutable      from '../../../utils/mergeMutable'
 
 import { Config, ReducerName } from '../../../types'
 
-var assign            = require('lodash.assign')
 var reducerName: ReducerName = 'deleteStart'
 
 export default function start(config: Config, current: Array<any>, record: any): Array<any> {
@@ -18,7 +19,7 @@ export default function start(config: Config, current: Array<any>, record: any):
 		busy:    true,
 	}
 	var deleteRecord = findByKey(current, key, deleteId)
-	deleteRecord = assign({}, deleteRecord, recordStatus)
+	deleteRecord = r.merge(deleteRecord, recordStatus)
 
 	return mergeMutable(current, deleteRecord, key)
 }

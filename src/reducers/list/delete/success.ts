@@ -1,7 +1,7 @@
+import * as r from 'ramda'
+
 import invariants            from '../invariants'
 import constants         from '../../../constants'
-
-const reject            = require('lodash.reject')
 
 import { Config, ReducerName } from '../../../types'
 
@@ -17,5 +17,5 @@ export default function success(config: Config, current: Array<any>, record: any
 		return deleteId == existingRecord[key]
 	}
 	
-	return reject(current, predicate)
+	return r.reject(predicate, current)
 }

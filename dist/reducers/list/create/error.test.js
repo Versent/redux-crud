@@ -1,9 +1,7 @@
 "use strict";
+const ava_1 = require("ava");
 const constants_1 = require("../../../constants");
 const error_1 = require("./error");
-const ava_1 = require("ava");
-var assign = require('lodash.assign');
-var values = require('lodash.values');
 var subject = constants_1.default.REDUCER_NAMES.CREATE_ERROR;
 var config = {
     key: constants_1.default.DEFAULT_KEY,

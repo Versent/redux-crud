@@ -1,8 +1,8 @@
 "use strict";
+const r = require("ramda");
 const assertNotArray_1 = require("../../../utils/assertNotArray");
 const invariants_1 = require("../invariants");
 const mergeMutable_1 = require("../../../utils/mergeMutable");
-var assign = require('lodash.assign');
 var reducerName = "createStart";
 function start(config, current, record) {
     assertNotArray_1.default(config, reducerName, record);
@@ -11,7 +11,7 @@ function start(config, current, record) {
         busy: true,
         pendingCreate: true,
     };
-    var newRecord = assign({}, record, recordStatus);
+    var newRecord = r.merge(record, recordStatus);
     // mark record as unsaved and busy
     return mergeMutable_1.default(current, newRecord, config.key);
 }

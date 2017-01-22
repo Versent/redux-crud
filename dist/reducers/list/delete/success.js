@@ -1,6 +1,6 @@
 "use strict";
+const r = require("ramda");
 const invariants_1 = require("../invariants");
-const reject = require('lodash.reject');
 var reducerName = 'deleteSuccess';
 function success(config, current, record) {
     invariants_1.default(config, current, record, reducerName);
@@ -9,7 +9,7 @@ function success(config, current, record) {
     function predicate(existingRecord) {
         return deleteId == existingRecord[key];
     }
-    return reject(current, predicate);
+    return r.reject(predicate, current);
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = success;
