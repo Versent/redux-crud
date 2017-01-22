@@ -1,6 +1,4 @@
-import * as r from 'ramda'
-
-import wrapArray from './wrapArray'
+import wrapArray from "./wrapArray"
 
 export default function mergeMutable (current, records, key) {
 	records = wrapArray(records)
@@ -10,12 +8,12 @@ export default function mergeMutable (current, records, key) {
 
 	current.forEach(function (record, index) {
 		var recordKey = record[key]
-		if (recordKey == null) throw new Error('Expected record to have ' + key)
+		if (recordKey == null) throw new Error("Expected record to have " + key)
 		recordMap[recordKey] = record
 		indexMap[recordKey] = index
 	})
 
-	records.forEach(function (record, index) {
+	records.forEach(function (record) {
 		var recordId = record[key]
 		if (recordMap[recordId]) {
 			newRecords[indexMap[recordId]] = record

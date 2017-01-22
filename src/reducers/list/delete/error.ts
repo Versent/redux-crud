@@ -1,4 +1,4 @@
-import * as r from 'ramda'
+import * as r from "ramda"
 
 import constants from '../../../constants'
 import findByKey from '../../../utils/findByKey'

@@ -1,4 +1,4 @@
-import * as r from 'ramda'
+import * as r from "ramda"
 
 import assertAllHaveKeys  from '../../../utils/assertAllHaveKeys'
 import constants          from '../../../constants'

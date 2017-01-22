@@ -1,4 +1,4 @@
-import * as r from 'ramda'
+import * as r from "ramda"
 
 export default function assertValidStore(scope: string, current: Array<any>): void {
 	var isArray = r.is(Array, current)

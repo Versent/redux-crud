@@ -4,7 +4,7 @@ function assertHasKey(config, reducerName, record) {
     var key = config.key;
     var scope = makeScope_1.default(config, reducerName);
     if (record[key] == null) {
-        throw new Error(scope + ': Expected record to have .' + key);
+        throw new Error(scope + ": Expected record to have ." + key);
     }
 }
 Object.defineProperty(exports, "__esModule", { value: true });

@@ -1,4 +1,4 @@
-import * as r from 'ramda'
+import * as r from "ramda"
 import test from 'ava'
 
 import constants from '../../../constants'

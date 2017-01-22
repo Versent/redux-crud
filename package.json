@@ -4,7 +4,8 @@
   "description": "Redux CRUD",
   "main": "dist/index.js",
   "scripts": {
-    "test": "tsc && ava dist/**/*.test.js"
+    "test": "tsc && ava dist/**/*.test.js",
+    "lint": "tslint src/**/*.ts"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,9 @@
   "homepage": "https://github.com/Versent/redux-crud",
   "devDependencies": {
     "ava": "^0.17.0",
-    "testdouble": "^1.11.0"
+    "testdouble": "^1.11.0",
+    "tslint": "^4.3.1",
+    "typescript": "^2.1.5"
   },
   "dependencies": {
     "action-names": "^0.3.2",

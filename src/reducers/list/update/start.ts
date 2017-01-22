@@ -1,4 +1,4 @@
-import * as r from 'ramda'
+import * as r from "ramda"
 
 import invariants from '../invariants'
 import mergeMutable      from '../../../utils/mergeMutable'

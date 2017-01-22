@@ -1,4 +1,4 @@
-import * as r from 'ramda'
+import * as r from "ramda"
 
 import actionTypesFor from '../../actionTypesFor'
 import constants from '../../constants'

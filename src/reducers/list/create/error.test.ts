@@ -1,5 +1,5 @@
 import test            from 'ava'
-import * as r from 'ramda'
+import * as r from "ramda"
 
 import constants       from '../../../constants'
 import reducer         from './error'

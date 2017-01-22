@@ -8,11 +8,11 @@ function mergeMutable(current, records, key) {
     current.forEach(function (record, index) {
         var recordKey = record[key];
         if (recordKey == null)
-            throw new Error('Expected record to have ' + key);
+            throw new Error("Expected record to have " + key);
         recordMap[recordKey] = record;
         indexMap[recordKey] = index;
     });
-    records.forEach(function (record, index) {
+    records.forEach(function (record) {
         var recordId = record[key];
         if (recordMap[recordId]) {
             newRecords[indexMap[recordId]] = record;
