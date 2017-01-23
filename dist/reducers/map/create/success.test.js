@@ -38,6 +38,7 @@ ava_1.default(subject + "doesnt mutate the original collection", function (t) {
         name: "Green"
     };
     var updated = success_1.default(config, curr, record);
+    t.is(r.values(updated).length, 3);
     t.is(r.values(curr).length, 2);
 });
 ava_1.default(subject + "throws if given an array", function (t) {
@@ -58,6 +59,20 @@ ava_1.default(subject + "adds the record", function (t) {
     var actual = r.keys(updated);
     var expected = ["1", "2", "3"];
     t.deepEqual(actual, expected);
+});
+ava_1.default(subject + " doesnt mutate the given record", function (t) {
+    var curr = getCurrent();
+    function getRecord() {
+        return {
+            busy: true,
+            id: 3,
+            name: "Green"
+        };
+    }
+    var original = getRecord();
+    var expected = getRecord();
+    var updated = success_1.default(config, curr, original);
+    t.deepEqual(original, expected);
 });
 ava_1.default(subject + "merges if exists", function (t) {
     var curr = getCurrent();

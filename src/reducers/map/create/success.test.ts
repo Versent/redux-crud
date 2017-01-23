@@ -43,6 +43,7 @@ test(subject + "doesnt mutate the original collection", function(t){
 	}
 	var updated = reducer(config, curr, record)
 
+	t.is(r.values(updated).length, 3)
 	t.is(r.values(curr).length, 2)
 })
 
@@ -67,6 +68,24 @@ test(subject + "adds the record", function(t) {
 	var expected = ["1", "2", "3"]
 
 	t.deepEqual(actual, expected)
+})
+
+test(subject + " doesnt mutate the given record", function(t) {
+	var curr = getCurrent()
+
+	function getRecord() {
+		return {
+			busy: true,
+			id: 3,
+			name: "Green"
+		}
+	}
+	var original = getRecord()
+	var expected = getRecord()
+
+	var updated = reducer(config, curr, original)
+
+	t.deepEqual(original, expected)
 })
 
 test(subject + "merges if exists", function(t) {
