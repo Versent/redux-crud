@@ -1,11 +1,11 @@
 import * as r from "ramda"
 
-import invariants from '../invariants'
-import constants         from '../../../constants'
-import findByKey         from '../../../utils/findByKey'
-import store from '../store'
+import invariants from "../invariants"
+import constants         from "../../../constants"
+import findByKey         from "../../../utils/findByKey"
+import store from "../store"
 
-import { Config, ReducerName } from '../../../types'
+import { Config, ReducerName } from "../../../types"
 
 var reducerName: ReducerName = constants.REDUCER_NAMES.DELETE_START
 

@@ -1,6 +1,6 @@
 import constants from "../../../constants"
 import invariants from "../invariants"
-import store from '../store'
+import store from "../store"
 
 import { Config, ReducerName } from "../../../types"
 

@@ -1,9 +1,9 @@
-import test               from 'ava'
-import actionCreatorsFor  from './actionCreatorsFor'
+import test               from "ava"
+import actionCreatorsFor  from "./actionCreatorsFor"
 
 const error             = {}
-const actionCreators    = actionCreatorsFor('users')
-const subject           =' actionCreatorsFor: '
+const actionCreators    = actionCreatorsFor("users")
+const subject           =" actionCreatorsFor: "
 const arrayRegEx        = /Expected record not to be an array/
 
 function makeUser() {
@@ -16,7 +16,7 @@ function makeUsers() {
 	return [makeUser()]
 }
 
-test(subject + 'returns the actionCreators', function(t) {
+test(subject + "returns the actionCreators", function(t) {
 
 	t.truthy(actionCreators.fetchStart)
 	t.truthy(actionCreators.fetchSuccess)
@@ -33,30 +33,28 @@ test(subject + 'returns the actionCreators', function(t) {
 	t.truthy(actionCreators.deleteStart)
 	t.truthy(actionCreators.deleteSuccess)
 	t.truthy(actionCreators.deleteError)
-
-	
 })
 
-test(subject + 'fetchStart', function(t) {
+test(subject + "fetchStart", function(t) {
 	var data = {foo: 1}
 	
 	var action = actionCreators.fetchStart(data)
 	
-	t.deepEqual(action.type, 'USERS_FETCH_START')
-	t.deepEqual(action.data, data, 'has the data')
+	t.deepEqual(action.type, "USERS_FETCH_START")
+	t.deepEqual(action.data, data, "has the data")
 
 	
 })
 
-test(subject + 'fetchSuccess', function(t) {
+test(subject + "fetchSuccess", function(t) {
 	var data  = {foo: 1}
 	var users = makeUsers()
 	
 	var action = actionCreators.fetchSuccess(users, data)
 
-	t.deepEqual(action.type, 'USERS_FETCH_SUCCESS')
-	t.deepEqual(action.records, users, 'has the user')
-	t.deepEqual(action.data, data, 'has the data')
+	t.deepEqual(action.type, "USERS_FETCH_SUCCESS")
+	t.deepEqual(action.records, users, "has the user")
+	t.deepEqual(action.data, data, "has the data")
 
 	function withoutPayload() {
 		actionCreators.fetchSuccess()
@@ -64,27 +62,27 @@ test(subject + 'fetchSuccess', function(t) {
 	t.throws(withoutPayload, /Expected records/)
 })
 
-test(subject + 'fetchError', function(t) {
+test(subject + "fetchError", function(t) {
 	var data = {foo: 1}
 	
 	var action = actionCreators.fetchError(error, data)
 
-	t.deepEqual(action.type, 'USERS_FETCH_ERROR')
-	t.deepEqual(action.error, error, 'has the error')
-	t.deepEqual(action.data, data, 'has the data')
+	t.deepEqual(action.type, "USERS_FETCH_ERROR")
+	t.deepEqual(action.error, error, "has the error")
+	t.deepEqual(action.data, data, "has the data")
 
 	
 })
 
-test(subject + 'createStart', function(t) {
+test(subject + "createStart", function(t) {
 	var user = makeUser()
 	var data = {foo: 1}
 
 	var action = actionCreators.createStart(user, data)
 
-	t.deepEqual(action.type, 'USERS_CREATE_START')
-	t.deepEqual(action.record, user, 'has the user')
-	t.deepEqual(action.data, data, 'has the data')
+	t.deepEqual(action.type, "USERS_CREATE_START")
+	t.deepEqual(action.record, user, "has the user")
+	t.deepEqual(action.data, data, "has the data")
 
 	function withoutPayload() {
 		actionCreators.createStart()
@@ -107,16 +105,16 @@ test(subject + 'createStart', function(t) {
 	
 })
 
-test(subject + 'createSuccess', function(t) {
+test(subject + "createSuccess", function(t) {
 	var user = makeUser()
 	var data = {foo: 1}
 
-	var action = actionCreators.createSuccess(user, 'abc', data)
+	var action = actionCreators.createSuccess(user, "abc", data)
 	
-	t.deepEqual(action.type, 'USERS_CREATE_SUCCESS')
-	t.deepEqual(action.record, user, 'has the user')
-	t.deepEqual(action.cid, 'abc', 'has the cid')
-	t.deepEqual(action.data, data, 'has the data')
+	t.deepEqual(action.type, "USERS_CREATE_SUCCESS")
+	t.deepEqual(action.record, user, "has the user")
+	t.deepEqual(action.cid, "abc", "has the cid")
+	t.deepEqual(action.data, data, "has the data")
 
 	function withoutPayload() {
 		actionCreators.createSuccess()
@@ -132,16 +130,16 @@ test(subject + 'createSuccess', function(t) {
 	
 })
 
-test(subject + 'createError', function(t) {
+test(subject + "createError", function(t) {
 	var user = makeUser()
 	var data = {foo: 1}
 
 	var action = actionCreators.createError(error, user, data)
 
-	t.deepEqual(action.type, 'USERS_CREATE_ERROR')
+	t.deepEqual(action.type, "USERS_CREATE_ERROR")
 	t.deepEqual(action.error, error)
-	t.deepEqual(action.record, user, 'has the user')
-	t.deepEqual(action.data, data, 'has the data')
+	t.deepEqual(action.record, user, "has the user")
+	t.deepEqual(action.data, data, "has the data")
 
 	function withoutPayload() {
 		actionCreators.createError(error)
@@ -163,15 +161,15 @@ test(subject + 'createError', function(t) {
 	
 })
 
-test(subject + 'updateStart', function(t) {
+test(subject + "updateStart", function(t) {
 	var user   = makeUser()
 	var data = {foo: 1}
 
 	var action = actionCreators.updateStart(user, data)
 	
-	t.deepEqual(action.type, 'USERS_UPDATE_START')
-	t.deepEqual(action.record, user, 'has the user')
-	t.deepEqual(action.data, data, 'has the data')
+	t.deepEqual(action.type, "USERS_UPDATE_START")
+	t.deepEqual(action.record, user, "has the user")
+	t.deepEqual(action.data, data, "has the data")
 
 	function withoutPayload() {
 		actionCreators.updateStart()
@@ -187,15 +185,15 @@ test(subject + 'updateStart', function(t) {
 	
 })
 
-test(subject + 'updateSuccess', function(t) {
+test(subject + "updateSuccess", function(t) {
 	var user   = makeUser()
 	var data = {foo: 1}
 
 	var action = actionCreators.updateSuccess(user, data)
 	
-	t.deepEqual(action.type, 'USERS_UPDATE_SUCCESS')
-	t.deepEqual(action.record, user, 'has the user')
-	t.deepEqual(action.data, data, 'has the data')
+	t.deepEqual(action.type, "USERS_UPDATE_SUCCESS")
+	t.deepEqual(action.record, user, "has the user")
+	t.deepEqual(action.data, data, "has the data")
 
 	function withoutPayload() {
 		actionCreators.updateSuccess()
@@ -211,16 +209,16 @@ test(subject + 'updateSuccess', function(t) {
 	
 })
 
-test(subject + 'updateError', function(t) {
+test(subject + "updateError", function(t) {
 	var user   = makeUser()
 	var data = {foo: 1}
 	
 	var action = actionCreators.updateError(error, user, data)
 	
-	t.deepEqual(action.type, 'USERS_UPDATE_ERROR')
+	t.deepEqual(action.type, "USERS_UPDATE_ERROR")
 	t.deepEqual(action.error, error)
-	t.deepEqual(action.record, user, 'has the user')
-	t.deepEqual(action.data, data, 'has the data')
+	t.deepEqual(action.record, user, "has the user")
+	t.deepEqual(action.data, data, "has the data")
 
 	function withoutPayload() {
 		actionCreators.updateError(error)
@@ -236,15 +234,15 @@ test(subject + 'updateError', function(t) {
 	
 })
 
-test(subject + 'deleteStart', function(t) {
+test(subject + "deleteStart", function(t) {
 	var user   = makeUser()
 	var data = {foo: 1}
 
 	var action = actionCreators.deleteStart(user, data)
 	
-	t.deepEqual(action.type, 'USERS_DELETE_START')
-	t.deepEqual(action.record, user, 'has the user')
-	t.deepEqual(action.data, data, 'has the data')
+	t.deepEqual(action.type, "USERS_DELETE_START")
+	t.deepEqual(action.record, user, "has the user")
+	t.deepEqual(action.data, data, "has the data")
 
 	function withoutPayload() {
 		actionCreators.deleteStart()
@@ -260,15 +258,15 @@ test(subject + 'deleteStart', function(t) {
 	
 })
 
-test(subject + 'deleteSuccess', function(t) {
+test(subject + "deleteSuccess", function(t) {
 	var user   = makeUser()
 	var data = {foo: 1}
 
 	var action = actionCreators.deleteSuccess(user, data)
 	
-	t.deepEqual(action.type, 'USERS_DELETE_SUCCESS')
-	t.deepEqual(action.record, user, 'has the user')
-	t.deepEqual(action.data, data, 'has the data')
+	t.deepEqual(action.type, "USERS_DELETE_SUCCESS")
+	t.deepEqual(action.record, user, "has the user")
+	t.deepEqual(action.data, data, "has the data")
 
 	function withoutPayload() {
 		actionCreators.deleteSuccess()
@@ -284,16 +282,16 @@ test(subject + 'deleteSuccess', function(t) {
 	
 })
 
-test(subject + 'deleteError', function(t) {
+test(subject + "deleteError", function(t) {
 	var user    = makeUser()
 	var data = {foo: 1}
 	
 	var action = actionCreators.deleteError(error, user, data)
 	
-	t.deepEqual(action.type, 'USERS_DELETE_ERROR')
+	t.deepEqual(action.type, "USERS_DELETE_ERROR")
 	t.deepEqual(action.error, error)
-	t.deepEqual(action.record, user, 'has the user')
-	t.deepEqual(action.data, data, 'has the data')
+	t.deepEqual(action.record, user, "has the user")
+	t.deepEqual(action.data, data, "has the data")
 
 	function withoutPayload() {
 		actionCreators.deleteError(error)

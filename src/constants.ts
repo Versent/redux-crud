@@ -1,4 +1,4 @@
-import { ReducerName } from './types'
+import { ReducerName } from "./types"
 
 const CREATE_ERROR: ReducerName = "createError"
 const CREATE_START: ReducerName = "createStart"

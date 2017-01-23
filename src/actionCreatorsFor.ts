@@ -1,17 +1,17 @@
 import * as r from "ramda"
-import * as invariant from 'invariant'
+import * as invariant from "invariant"
 
-import actionTypesFor from './actionTypesFor'
-import assertNotArray from './utils/assertNotArray'
-import constants from './constants'
-import getDefaultConfig from './getDefaultConfig'
+import actionTypesFor from "./actionTypesFor"
+import assertNotArray from "./utils/assertNotArray"
+import constants from "./constants"
+import getDefaultConfig from "./getDefaultConfig"
 
-import { Config, ReducerName } from './types'
+import { Config, ReducerName } from "./types"
 
-// const invariant = require('invariant')
+// const invariant = require("invariant")
 
 function actionCreatorsFor(resourceName: string, config?: Config) {
-	if (resourceName == null) throw new Error('actionCreatorsFor: Expected resourceName')
+	if (resourceName == null) throw new Error("actionCreatorsFor: Expected resourceName")
 
 	config = config || getDefaultConfig(resourceName)
 	config = r.merge(config, {resourceName})
@@ -20,17 +20,17 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 	const key = config.key || constants.DEFAULT_KEY
 
 	function assertError(actionCreatorName: ReducerName, error) {
-		invariant(error != null, 'Expected error in ' + actionCreatorName)
+		invariant(error != null, "Expected error in " + actionCreatorName)
 	}
 
 	function assertOneRecord(actionCreatorName: ReducerName, record?: any) {
-		invariant(record != null, 'Expected record in ' + actionCreatorName)
-		assertNotArray(config, 'createStart', record)
-		invariant(record[key] != null, 'Expected record.' + key + ' in ' + actionCreatorName)
+		invariant(record != null, "Expected record in " + actionCreatorName)
+		assertNotArray(config, "createStart", record)
+		invariant(record[key] != null, "Expected record." + key + " in " + actionCreatorName)
 	}
 
 	function assertManyRecords(actionCreatorName, records) {
-		invariant(records != null, 'Expected records ' + actionCreatorName)
+		invariant(records != null, "Expected records " + actionCreatorName)
 	}
 
 	return {
@@ -42,7 +42,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 		},
 
 		fetchSuccess(records?, data?) {
-			var name: ReducerName = 'fetchSuccess'
+			var name: ReducerName = "fetchSuccess"
 			assertManyRecords(name, records)
 
 			return {
@@ -53,7 +53,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 		},
 
 		fetchError(error?, data?) {
-			var name: ReducerName = 'fetchError'
+			var name: ReducerName = "fetchError"
 			assertError(name, error)
 
 			return {
@@ -64,7 +64,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 		},
 
 		createStart(record?, data?) {
-			var name: ReducerName = 'createStart'
+			var name: ReducerName = "createStart"
 			assertOneRecord(name, record)
 
 			return {
@@ -75,7 +75,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 		},
 
 		createSuccess(record?, clientGeneratedKey?, data?) {
-			var name: ReducerName = 'createSuccess'
+			var name: ReducerName = "createSuccess"
 			assertOneRecord(name, record)
 
 			return {
@@ -87,7 +87,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 		},
 
 		createError(error?, record?, data?) {
-			var name: ReducerName = 'createError'
+			var name: ReducerName = "createError"
 			assertError(name, error)
 			assertOneRecord(name, record)
 
@@ -100,7 +100,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 		},
 
 		updateStart(record?, data?) {
-			var name: ReducerName = 'updateStart'
+			var name: ReducerName = "updateStart"
 			assertOneRecord(name, record)
 
 			return {
@@ -111,7 +111,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 		},
 
 		updateSuccess(record?, data?) {
-			var name: ReducerName = 'updateSuccess'
+			var name: ReducerName = "updateSuccess"
 			assertOneRecord(name, record)
 
 			return {
@@ -122,7 +122,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 		},
 
 		updateError(error?, record?, data?) {
-			var name: ReducerName = 'updateError'
+			var name: ReducerName = "updateError"
 			assertError(name, error)
 			assertOneRecord(name, record)
 
@@ -135,7 +135,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 		},
 
 		deleteStart(record?, data?) {
-			var name: ReducerName = 'deleteStart'
+			var name: ReducerName = "deleteStart"
 			assertOneRecord(name, record)
 
 			return {
@@ -146,7 +146,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 		},
 
 		deleteSuccess(record?, data?) {
-			var name: ReducerName = 'deleteSuccess'
+			var name: ReducerName = "deleteSuccess"
 			assertOneRecord(name, record)
 
 			return {
@@ -157,7 +157,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 		},
 
 		deleteError(error?, record?, data?) {
-			var name: ReducerName = 'deleteError'
+			var name: ReducerName = "deleteError"
 			assertError(name, error)
 			assertOneRecord(name, record)
 

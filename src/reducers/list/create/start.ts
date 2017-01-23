@@ -1,11 +1,11 @@
 import * as r from "ramda"
 
-import assertNotArray from '../../../utils/assertNotArray'
-import constants from '../../../constants'
-import invariants from '../invariants'
-import store from '../store'
+import assertNotArray from "../../../utils/assertNotArray"
+import constants from "../../../constants"
+import invariants from "../invariants"
+import store from "../store"
 
-import { Config, ReducerName } from '../../../types'
+import { Config, ReducerName } from "../../../types"
 
 var reducerName: ReducerName = constants.REDUCER_NAMES.CREATE_START
 
