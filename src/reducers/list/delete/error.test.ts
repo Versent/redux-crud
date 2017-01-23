@@ -6,7 +6,7 @@ var config          = {
 	key:           constants.DEFAULT_KEY,
 	resourceName:  'users',
 }
-var subject     = 'deleteError: '
+var subject     = constants.REDUCER_NAMES.DELETE_ERROR
 
 function getCurrent() {
 	return [

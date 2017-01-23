@@ -1,7 +1,7 @@
 "use strict";
 function getDefaultConfig(resourceName) {
     return {
-        key: 'id',
+        key: "id",
         resourceName,
     };
 }
