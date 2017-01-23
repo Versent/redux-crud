@@ -5,7 +5,7 @@ import constants         from '../../../constants'
 
 import { Config, ReducerName } from '../../../types'
 
-var reducerName: ReducerName = 'deleteSuccess'
+var reducerName: ReducerName = constants.REDUCER_NAMES.DELETE_SUCCESS
 
 export default function success(config: Config, current: Array<any>, record: any): Array<any> {
 	invariants(config, current, record, reducerName)

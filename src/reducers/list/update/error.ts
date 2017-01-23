@@ -7,7 +7,7 @@ import mergeMutable      from '../../../utils/mergeMutable'
 
 import { Config, ReducerName } from '../../../types'
 
-var reducerName: ReducerName = 'updateError'
+var reducerName: ReducerName = constants.REDUCER_NAMES.UPDATE_ERROR
 
 export default function error(config: Config, current: Array<any>, record: any): Array<any> {
 	invariants(config, current, record, reducerName)

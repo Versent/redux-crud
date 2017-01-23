@@ -8,7 +8,7 @@ import wrapArray          from '../../../utils/wrapArray'
 
 import { Config, ReducerName } from '../../../types'
 
-var reducerName: ReducerName = 'fetchSuccess'
+var reducerName: ReducerName = constants.REDUCER_NAMES.FETCH_SUCCESS
 
 export default function success(config: Config, current: Array<any>, records: any): Array<any> {
 	var scope = makeScope(config, reducerName)

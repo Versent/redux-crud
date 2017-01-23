@@ -1,7 +1,8 @@
 "use strict";
 const r = require("ramda");
 const invariants_1 = require("../invariants");
-var reducerName = 'deleteSuccess';
+const constants_1 = require("../../../constants");
+var reducerName = constants_1.default.REDUCER_NAMES.DELETE_SUCCESS;
 function success(config, current, record) {
     invariants_1.default(config, current, record, reducerName);
     var key = config.key;

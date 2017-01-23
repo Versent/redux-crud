@@ -1,10 +1,11 @@
 "use strict";
 const r = require("ramda");
 const assertAllHaveKeys_1 = require("../../../utils/assertAllHaveKeys");
+const constants_1 = require("../../../constants");
 const makeScope_1 = require("../../../utils/makeScope");
 const mergeMutable_1 = require("../../../utils/mergeMutable");
 const wrapArray_1 = require("../../../utils/wrapArray");
-var reducerName = 'fetchSuccess';
+var reducerName = constants_1.default.REDUCER_NAMES.FETCH_SUCCESS;
 function success(config, current, records) {
     var scope = makeScope_1.default(config, reducerName);
     if (!config.key)

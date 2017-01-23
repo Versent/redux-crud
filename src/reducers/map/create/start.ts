@@ -3,13 +3,13 @@ import * as r from "ramda"
 import assertNotArray from '../../../utils/assertNotArray'
 import constants from '../../../constants'
 import invariants from '../invariants'
-import mergeMutable from '../../../utils/mergeMutable'
+import store from '../store'
 
-import { Config, ReducerName } from '../../../types'
+import { Config, Map, ReducerName } from '../../../types'
 
 var reducerName: ReducerName = constants.REDUCER_NAMES.CREATE_START
 
-export default function start(config: Config, current: Array<any>, record: any): Array<any> {
+export default function start(config: Config, current: Map<any>, record: any): Map<any> {
 	assertNotArray(config, reducerName, record)
 	invariants(config, current, record, reducerName)
 
@@ -21,5 +21,5 @@ export default function start(config: Config, current: Array<any>, record: any):
 	var newRecord = r.merge(record, recordStatus)
 
 	// mark record as unsaved and busy
-	return mergeMutable(current, newRecord, config.key)
+	return store.replace(config, current, newRecord)
 }

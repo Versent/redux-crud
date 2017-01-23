@@ -1,9 +1,10 @@
 "use strict";
 const r = require("ramda");
 const invariants_1 = require("../invariants");
+const constants_1 = require("../../../constants");
 const findByKey_1 = require("../../../utils/findByKey");
 const mergeMutable_1 = require("../../../utils/mergeMutable");
-var reducerName = 'deleteStart';
+var reducerName = constants_1.default.REDUCER_NAMES.DELETE_START;
 function start(config, current, record) {
     invariants_1.default(config, current, record, reducerName);
     var key = config.key;

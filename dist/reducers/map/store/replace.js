@@ -1,9 +1,9 @@
 "use strict";
 const r = require("ramda");
-function remove(config, current, record) {
+function replace(config, current, record) {
     var key = config.key;
     var recordKey = record[key];
-    return r.omit([recordKey], current);
+    return r.merge(current, { [recordKey]: record });
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = remove;
+exports.default = replace;

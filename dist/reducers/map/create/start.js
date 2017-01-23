@@ -3,7 +3,7 @@ const r = require("ramda");
 const assertNotArray_1 = require("../../../utils/assertNotArray");
 const constants_1 = require("../../../constants");
 const invariants_1 = require("../invariants");
-const mergeMutable_1 = require("../../../utils/mergeMutable");
+const store_1 = require("../store");
 var reducerName = constants_1.default.REDUCER_NAMES.CREATE_START;
 function start(config, current, record) {
     assertNotArray_1.default(config, reducerName, record);
@@ -14,7 +14,7 @@ function start(config, current, record) {
     };
     var newRecord = r.merge(record, recordStatus);
     // mark record as unsaved and busy
-    return mergeMutable_1.default(current, newRecord, config.key);
+    return store_1.default.replace(config, current, newRecord);
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = start;

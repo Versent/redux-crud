@@ -7,7 +7,7 @@ import mergeMutable      from '../../../utils/mergeMutable'
 
 import { Config, ReducerName } from '../../../types'
 
-var reducerName: ReducerName = 'deleteStart'
+var reducerName: ReducerName = constants.REDUCER_NAMES.DELETE_START
 
 export default function start(config: Config, current: Array<any>, record: any): Array<any> {
 	invariants(config, current, record, reducerName)
