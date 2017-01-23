@@ -1,5 +1,8 @@
 "use strict";
 const r = require("ramda");
+/*
+Adds or replace one record
+*/
 function replace(config, current, record) {
     var key = config.key;
     var recordKey = record[key];

@@ -1,12 +1,16 @@
 import constants from '../../../constants'
 import invariants from '../invariants'
 
-import { Config, ReducerName } from '../../../types'
+import { Config, InvariantsBaseArgs, ReducerName } from '../../../types'
 
 var reducerName: ReducerName = constants.REDUCER_NAMES.CREATE_SUCCESS
+var invariantArgs: InvariantsBaseArgs = {
+	reducerName,
+	canBeArray: false,
+}
 
 export default function success(config: Config, current: Array<any>, addedRecord: any, clientGenKey?: string): Array<any> {
-	invariants(config, current, addedRecord, reducerName)
+	invariants(invariantArgs, config, current, addedRecord)
 
 	var key = config.key
 	var done = false

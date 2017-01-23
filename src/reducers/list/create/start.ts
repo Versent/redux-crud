@@ -5,13 +5,16 @@ import constants from "../../../constants"
 import invariants from "../invariants"
 import store from "../store"
 
-import { Config, ReducerName } from "../../../types"
+import { Config, InvariantsBaseArgs, ReducerName } from "../../../types"
 
 var reducerName: ReducerName = constants.REDUCER_NAMES.CREATE_START
+var invariantArgs: InvariantsBaseArgs = {
+	reducerName,
+	canBeArray: false,
+}
 
 export default function start(config: Config, current: Array<any>, record: any): Array<any> {
-	assertNotArray(config, reducerName, record)
-	invariants(config, current, record, reducerName)
+	invariants(invariantArgs, config, current, record)
 
 	var recordStatus = {
 		busy:          true,

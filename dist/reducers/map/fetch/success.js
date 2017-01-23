@@ -1,9 +1,9 @@
 "use strict";
+const r = require("ramda");
 const assertAllHaveKeys_1 = require("../../../utils/assertAllHaveKeys");
 const constants_1 = require("../../../constants");
-const store_1 = require("../store");
-const wrapArray_1 = require("../../../utils/wrapArray");
 const invariants_1 = require("../invariants");
+const wrapArray_1 = require("../../../utils/wrapArray");
 var reducerName = constants_1.default.REDUCER_NAMES.FETCH_SUCCESS;
 var invariantArgs = {
     reducerName,
@@ -15,7 +15,8 @@ function success(config, current, records) {
     records = wrapArray_1.default(records);
     // All given records must have a key
     assertAllHaveKeys_1.default(config, reducerName, records);
-    return store_1.default.merge(current, records, config.key);
+    var merge = r.indexBy(config.key, records);
+    return r.merge(current, merge);
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = success;

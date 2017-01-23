@@ -1,13 +1,15 @@
 "use strict";
 const r = require("ramda");
-const assertNotArray_1 = require("../../../utils/assertNotArray");
 const constants_1 = require("../../../constants");
 const invariants_1 = require("../invariants");
 const store_1 = require("../store");
 var reducerName = constants_1.default.REDUCER_NAMES.CREATE_START;
+var invariantArgs = {
+    reducerName,
+    canBeArray: false,
+};
 function start(config, current, record) {
-    assertNotArray_1.default(config, reducerName, record);
-    invariants_1.default(config, current, record, reducerName);
+    invariants_1.default(invariantArgs, config, current, record);
     var recordStatus = {
         busy: true,
         pendingCreate: true,

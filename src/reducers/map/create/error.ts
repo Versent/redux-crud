@@ -1,14 +1,17 @@
-import assertNotArray    from '../../../utils/assertNotArray'
 import constants         from '../../../constants'
 import invariants        from '../invariants'
-import remove            from '../store/remove'
+import store             from '../store'
 
-import { Config, Map, ReducerName } from '../../../types'
+import { Config, InvariantsBaseArgs, Map, ReducerName } from '../../../types'
 
 var reducerName: ReducerName = constants.REDUCER_NAMES.CREATE_ERROR
+var invariantArgs: InvariantsBaseArgs = {
+	reducerName,
+	canBeArray: false,
+}
 
 export default function error(config: Config, current: Map<any>, record: any):  Map<any> {
-	invariants(config, current, record, reducerName)
+	invariants(invariantArgs, config, current, record)
 
-	return remove(config, current, record)
+	return store.remove(config, current, record)
 }

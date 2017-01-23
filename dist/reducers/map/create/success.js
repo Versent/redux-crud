@@ -3,8 +3,12 @@ const r = require("ramda");
 const constants_1 = require("../../../constants");
 const invariants_1 = require("../invariants");
 var reducerName = constants_1.default.REDUCER_NAMES.CREATE_SUCCESS;
+var invariantArgs = {
+    reducerName,
+    canBeArray: false,
+};
 function success(config, current, addedRecord, clientGenKey) {
-    invariants_1.default(config, current, addedRecord, reducerName);
+    invariants_1.default(invariantArgs, config, current, addedRecord);
     var key = config.key;
     var done = false;
     var addedRecordKey = addedRecord[key];

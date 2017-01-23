@@ -1,26 +1,29 @@
-import assertHasKey      from "../utils/assertHasKey"
+import assertHasKey      from "./invariants/assertHasKey"
 import assertNotArray    from "../utils/assertNotArray"
 import constants         from "../constants"
 import makeScope         from "../utils/makeScope"
 import wrapArray         from "../utils/wrapArray"
 
-import { Config, ReducerName } from "../types"
+import { Config, InvariantsBaseArgs, InvariantsExtraArgs, ReducerName } from "../types"
 
 export default function invariants(
-		config: Config,
-		current: any,
-		record: any,
-		reducerName: ReducerName,
-		assertValidStore: (scope: string, current: any) => void,
+		baseArgs: InvariantsBaseArgs,
+		extraArgs: InvariantsExtraArgs,
 	) {
+	
+	var config = extraArgs.config
+
 	if (!config.resourceName)     throw new Error("Expected config.resourceName")
 
-	const scope = makeScope(config, reducerName)
+	const scope = makeScope(config, baseArgs.reducerName)
 
-	if (!config.key)              throw new Error(scope + ": Expected config.key")
-	if (!record)                  throw new Error(scope + ": Expected record")
+	if (!config.key) throw new Error(scope + ": Expected config.key")
+	if (!extraArgs.record) throw new Error(scope + ": Expected record/s")
 
-	assertValidStore(scope, current)
-	assertNotArray(config, reducerName, record)
-	assertHasKey(config, reducerName, record)
+	extraArgs.assertValidStore(scope, extraArgs.current)
+	assertHasKey(extraArgs.config, scope, extraArgs.record)
+	
+	if (!baseArgs.canBeArray) {
+		assertNotArray(extraArgs.config, baseArgs.reducerName, extraArgs.record)
+	}
 }

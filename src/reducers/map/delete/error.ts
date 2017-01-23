@@ -5,12 +5,16 @@ import findByKey from "../../../utils/findByKey"
 import invariants from "../invariants"
 import store from "../store"
 
-import { Config, Map, ReducerName } from "../../../types"
+import { Config, InvariantsBaseArgs, Map, ReducerName } from "../../../types"
 
 var reducerName: ReducerName = constants.REDUCER_NAMES.DELETE_ERROR
+var invariantArgs: InvariantsBaseArgs = {
+	reducerName,
+	canBeArray: false,
+}
 
 export default function error(config: Config, current: Map<any>, record: any): Map<any> {
-	invariants(config, current, record, reducerName)
+	invariants(invariantArgs, config, current, record)
 
 	var key = config.key
 	var deleteId = record[key]

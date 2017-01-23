@@ -3,6 +3,18 @@ export interface Config {
 	resourceName: string;
 }
 
+export interface InvariantsBaseArgs {
+	reducerName: ReducerName;
+	canBeArray: boolean;
+}
+
+export interface InvariantsExtraArgs {
+	assertValidStore: (scope: string, current: any) => void;
+	config: Config;
+	current: any;
+	record: any;
+}
+
 export interface Map<T> {
 		[key: string]: T;
 }

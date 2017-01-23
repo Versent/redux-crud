@@ -2,11 +2,12 @@ import * as r from "ramda"
 
 import assertAllHaveKeys from "../../../utils/assertAllHaveKeys"
 import constants from "../../../constants"
+import invariants from "../invariants"
+import makeScope from "../../../utils/makeScope"
 import store from "../store"
 import wrapArray from "../../../utils/wrapArray"
-import invariants            from '../invariants'
 
-import { Config, InvariantsBaseArgs, ReducerName } from "../../../types"
+import { Config, InvariantsBaseArgs, Map, ReducerName } from "../../../types"
 
 var reducerName: ReducerName = constants.REDUCER_NAMES.FETCH_SUCCESS
 var invariantArgs: InvariantsBaseArgs = {
@@ -14,7 +15,7 @@ var invariantArgs: InvariantsBaseArgs = {
 	canBeArray: true,
 }
 
-export default function success(config: Config, current: Array<any>, records: any): Array<any> {
+export default function success(config: Config, current: Map<any>, records: any): Map<any> {
 	invariants(invariantArgs, config, current, records)
 
 	// wrap array
@@ -22,6 +23,8 @@ export default function success(config: Config, current: Array<any>, records: an
 
 	// All given records must have a key
 	assertAllHaveKeys(config, reducerName, records)
-	
-	return store.merge(current, records, config.key)
+
+	var merge = r.indexBy(config.key, records)
+
+	return r.merge(current, merge)
 }

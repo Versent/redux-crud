@@ -5,12 +5,16 @@ import constants from "../../../constants"
 import findByKey from "../../../utils/findByKey"
 import store from "../store"
 
-import { Config, ReducerName } from "../../../types"
+import { Config, InvariantsBaseArgs, ReducerName } from "../../../types"
 
 var reducerName: ReducerName = constants.REDUCER_NAMES.UPDATE_ERROR
+var invariantArgs: InvariantsBaseArgs = {
+	reducerName,
+	canBeArray: false,
+}
 
 export default function error(config: Config, current: Array<any>, record: any): Array<any> {
-	invariants(config, current, record, reducerName)
+	invariants(invariantArgs, config, current, record)
 
 	// We don"t want to rollback
 	var key = config.key

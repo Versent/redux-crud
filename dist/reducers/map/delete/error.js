@@ -3,8 +3,12 @@ const r = require("ramda");
 const constants_1 = require("../../../constants");
 const invariants_1 = require("../invariants");
 var reducerName = constants_1.default.REDUCER_NAMES.DELETE_ERROR;
+var invariantArgs = {
+    reducerName,
+    canBeArray: false,
+};
 function error(config, current, record) {
-    invariants_1.default(config, current, record, reducerName);
+    invariants_1.default(invariantArgs, config, current, record);
     var key = config.key;
     var deleteId = record[key];
     // Find the record

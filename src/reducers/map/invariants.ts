@@ -1,8 +1,14 @@
-import assertValidStore from './assertValidStore'
 import invariants from '../invariants'
+import store from './store'
 
-import { Config, Map, ReducerName } from '../../types'
+import { Config, InvariantsBaseArgs, Map, ReducerName } from '../../types'
 
-export default function invariantsMap(config: Config, current: Map<any>, record: any, reducerName: ReducerName) {
-	invariants(config, current, record, reducerName, assertValidStore)
+export default function invariantsMap(invariantArgs: InvariantsBaseArgs, config: Config, current: Map<any>, record: any) {
+	var extra = {
+		assertValidStore: store.assert,
+		config,
+		current,
+		record,
+	}
+	invariants(invariantArgs, extra)
 }

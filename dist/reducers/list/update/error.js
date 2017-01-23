@@ -5,8 +5,12 @@ const constants_1 = require("../../../constants");
 const findByKey_1 = require("../../../utils/findByKey");
 const store_1 = require("../store");
 var reducerName = constants_1.default.REDUCER_NAMES.UPDATE_ERROR;
+var invariantArgs = {
+    reducerName,
+    canBeArray: false,
+};
 function error(config, current, record) {
-    invariants_1.default(config, current, record, reducerName);
+    invariants_1.default(invariantArgs, config, current, record);
     // We don"t want to rollback
     var key = config.key;
     var updatedId = record[key];
