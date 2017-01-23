@@ -3,7 +3,7 @@ import * as r from "ramda"
 import constants from '../../../constants'
 import findByKey from '../../../utils/findByKey'
 import invariants from '../invariants'
-import mergeMutable from '../../../utils/mergeMutable'
+import store from '../store'
 
 import { Config, ReducerName } from '../../../types'
 
@@ -17,5 +17,5 @@ export default function error(config: Config, current: Array<any>, record: any):
 	var deleteRecord = findByKey(current, key, deleteId)
 	deleteRecord = r.omit(['deleted', 'busy'], deleteRecord)
 
-	return mergeMutable(current, deleteRecord, key)
+	return store.merge(current, deleteRecord, key)
 }

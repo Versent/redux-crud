@@ -14,7 +14,7 @@ function start(config, current, record) {
     };
     var newRecord = r.merge(record, recordStatus);
     // mark record as unsaved and busy
-    return store_1.default.replace(config, current, newRecord);
+    return store_1.default.merge(config, current, newRecord);
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = start;

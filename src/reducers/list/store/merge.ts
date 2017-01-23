@@ -1,6 +1,10 @@
-import wrapArray from "./wrapArray"
+import wrapArray from "../../../utils/wrapArray"
 
-export default function mergeMutable (current, records, key) {
+/*
+Replaces an existing record in a list
+Or adds if not there
+*/
+export default function merge(current, records, key) {
 	records = wrapArray(records)
 	var recordMap = {}
 	var indexMap = {}

@@ -21,5 +21,5 @@ export default function start(config: Config, current: Map<any>, record: any): M
 	var newRecord = r.merge(record, recordStatus)
 
 	// mark record as unsaved and busy
-	return store.replace(config, current, newRecord)
+	return store.merge(config, current, newRecord)
 }
