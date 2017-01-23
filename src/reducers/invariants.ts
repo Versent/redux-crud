@@ -13,7 +13,7 @@ export default function invariants(
 	
 	var config = extraArgs.config
 
-	if (!config.resourceName)     throw new Error("Expected config.resourceName")
+	if (!config.resourceName) throw new Error("Expected config.resourceName")
 
 	const scope = makeScope(config, baseArgs.reducerName)
 
@@ -21,9 +21,10 @@ export default function invariants(
 	if (!extraArgs.record) throw new Error(scope + ": Expected record/s")
 
 	extraArgs.assertValidStore(scope, extraArgs.current)
-	assertHasKey(extraArgs.config, scope, extraArgs.record)
 	
 	if (!baseArgs.canBeArray) {
 		assertNotArray(extraArgs.config, baseArgs.reducerName, extraArgs.record)
 	}
+
+	assertHasKey(extraArgs.config, scope, extraArgs.record)
 }

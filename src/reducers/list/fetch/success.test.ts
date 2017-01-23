@@ -20,7 +20,7 @@ function getCurrent() {
 	]
 }
 
-test(subject + 'adds the records', function(t) {
+test(subject + ' adds the records', function(t) {
 	var curr = getCurrent()
 	var more = [{
 		id: 3,
@@ -31,7 +31,7 @@ test(subject + 'adds the records', function(t) {
 	t.is(updated.length, 3)
 })
 
-test(subject + 'doesnt mutate the original collection', function(t){
+test(subject + ' doesnt mutate the original collection', function(t){
 	var curr = getCurrent()
 	var more = [{
 		id: 3,
@@ -43,7 +43,7 @@ test(subject + 'doesnt mutate the original collection', function(t){
 	t.is(updated.length, 3)
 })
 
-test(subject + 'merges', function(t) {
+test(subject + ' merges', function(t) {
 	var curr = getCurrent()
 	var more = [{
 		id: 2,

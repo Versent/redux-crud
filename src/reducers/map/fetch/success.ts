@@ -24,7 +24,7 @@ export default function success(config: Config, current: Map<any>, records: any)
 	// All given records must have a key
 	assertAllHaveKeys(config, reducerName, records)
 
-	var merge = r.indexBy(config.key, records)
+	var merge = r.indexBy(r.prop(config.key), records)
 
 	return r.merge(current, merge)
 }

@@ -10,5 +10,6 @@ export default function invariantsMap(invariantArgs: InvariantsBaseArgs, config:
 		current,
 		record,
 	}
+
 	invariants(invariantArgs, extra)
 }

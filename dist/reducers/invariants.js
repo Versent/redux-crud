@@ -12,10 +12,10 @@ function invariants(baseArgs, extraArgs) {
     if (!extraArgs.record)
         throw new Error(scope + ": Expected record/s");
     extraArgs.assertValidStore(scope, extraArgs.current);
-    assertHasKey_1.default(extraArgs.config, scope, extraArgs.record);
     if (!baseArgs.canBeArray) {
         assertNotArray_1.default(extraArgs.config, baseArgs.reducerName, extraArgs.record);
     }
+    assertHasKey_1.default(extraArgs.config, scope, extraArgs.record);
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = invariants;

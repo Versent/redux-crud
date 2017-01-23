@@ -20,7 +20,7 @@ function getCurrent() {
         },
     };
 }
-ava_1.default(subject + "adds the records", function (t) {
+ava_1.default(subject + " adds the records", function (t) {
     var curr = getCurrent();
     var more = [{
             id: 3,
@@ -29,7 +29,7 @@ ava_1.default(subject + "adds the records", function (t) {
     var updated = success_1.default(config, curr, more);
     t.is(r.values(updated).length, 3);
 });
-ava_1.default(subject + "doesnt mutate the original collection", function (t) {
+ava_1.default(subject + " doesnt mutate the original collection", function (t) {
     var curr = getCurrent();
     var more = [{
             id: 3,
@@ -39,18 +39,18 @@ ava_1.default(subject + "doesnt mutate the original collection", function (t) {
     t.is(r.values(curr).length, 2);
     t.is(r.values(updated).length, 3);
 });
-ava_1.default(subject + "merges", function (t) {
+ava_1.default(subject + " merges", function (t) {
     var curr = getCurrent();
     var more = [{
             id: 2,
             name: "Green"
         }];
     var updated = success_1.default(config, curr, more);
-    t.is(r.vales(updated).length, 2);
+    t.is(r.values(updated).length, 2);
     t.is(updated["2"].id, 2);
     t.is(updated["2"].name, "Green");
 });
-ava_1.default(subject + "uses the given key", function (t) {
+ava_1.default(subject + " uses the given key", function (t) {
     var config = {
         key: "_id",
         resourceName: "users",
@@ -68,7 +68,7 @@ ava_1.default(subject + "uses the given key", function (t) {
     var updated = success_1.default(config, curr, more);
     t.is(r.values(updated).length, 1);
 });
-ava_1.default(subject + "it throws when records dont have an id", function (t) {
+ava_1.default(subject + " it throws when records dont have an id", function (t) {
     var curr = getCurrent();
     var more = [{
             name: "Green"
@@ -78,7 +78,7 @@ ava_1.default(subject + "it throws when records dont have an id", function (t) {
     };
     t.throws(f);
 });
-ava_1.default(subject + "can take one record", function (t) {
+ava_1.default(subject + " can take one record", function (t) {
     var curr = getCurrent();
     var one = {
         id: 3,

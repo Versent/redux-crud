@@ -18,7 +18,7 @@ function getCurrent() {
         }
     ];
 }
-ava_1.default(subject + 'adds the records', function (t) {
+ava_1.default(subject + ' adds the records', function (t) {
     var curr = getCurrent();
     var more = [{
             id: 3,
@@ -27,7 +27,7 @@ ava_1.default(subject + 'adds the records', function (t) {
     var updated = success_1.default(config, curr, more);
     t.is(updated.length, 3);
 });
-ava_1.default(subject + 'doesnt mutate the original collection', function (t) {
+ava_1.default(subject + ' doesnt mutate the original collection', function (t) {
     var curr = getCurrent();
     var more = [{
             id: 3,
@@ -37,7 +37,7 @@ ava_1.default(subject + 'doesnt mutate the original collection', function (t) {
     t.is(curr.length, 2);
     t.is(updated.length, 3);
 });
-ava_1.default(subject + 'merges', function (t) {
+ava_1.default(subject + ' merges', function (t) {
     var curr = getCurrent();
     var more = [{
             id: 2,

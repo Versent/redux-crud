@@ -15,7 +15,7 @@ function success(config, current, records) {
     records = wrapArray_1.default(records);
     // All given records must have a key
     assertAllHaveKeys_1.default(config, reducerName, records);
-    var merge = r.indexBy(config.key, records);
+    var merge = r.indexBy(r.prop(config.key), records);
     return r.merge(current, merge);
 }
 Object.defineProperty(exports, "__esModule", { value: true });
