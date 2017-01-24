@@ -1,27 +1,29 @@
+import * as r from "ramda"
 import constants       from "../../../constants"
-import reducer         from "./error"
+import reducer         from "./success"
 import test            from "ava"
 
 var config          = {
 	key:           constants.DEFAULT_KEY,
 	resourceName:  "users",
 }
-var subject     = constants.REDUCER_NAMES.UPDATE_ERROR
+var subject     = constants.REDUCER_NAMES.UPDATE_SUCCESS
 
 function getCurrent() {
-	return [
-		{
+	return {
+		1: {
 			id: 1,
 			name: "Blue",
+			unsaved: true,
 			busy: true,
-			pendingUpdate: true,
-		},{
+		},
+		2: {
 			id: 2,
 			name: "Red",
+			unsaved: true,
 			busy: true,
-			pendingUpdate: true,
 		}
-	]
+	}
 }
 
 function getValid() {
@@ -41,7 +43,7 @@ test(subject + "throws if given an array", function(t) {
 	t.throws(fn, TypeError)
 })
 
-test(subject + "doesnt add record if not there", function(t) {
+test(subject + "adds the record if not there", function(t) {
 	var curr = getCurrent()
 	var record = {
 		id: 3,
@@ -49,52 +51,49 @@ test(subject + "doesnt add record if not there", function(t) {
 	}
 	var updated = reducer(config, curr, record)
 
-	t.is(updated.length, 2)
-})
-
-test(subject + "removes busy", function(t) {
-	var curr    = getCurrent()
-	var record  = getValid()
-	var updated = reducer(config, curr, record)
-
-	t.truthy(updated[0].busy, "doesnt remove on others")
-	t.truthy(updated[1].busy == null, "removes busy")
+	t.is(r.values(updated).length, 3)
 })
 
 test(subject + "doesnt mutate the original collection", function(t) {
-	var curr    = getCurrent()
-	var record  = getValid()
+	var curr = getCurrent()
+	var record = {
+		id: 3,
+		name: "Green"
+	}
 	var updated = reducer(config, curr, record)
 
-	t.is(curr[1].busy, true)
-	t.is(updated[1].busy, undefined)
+	t.is(r.values(curr).length, 2)
+	t.is(r.values(updated).length, 3)
 })
 
-test(subject + "doesnt remove pendingUpdate", function(t) {
+test(subject + "updates existing", function(t) {
 	var curr    = getCurrent()
 	var record  = getValid()
 	var updated = reducer(config, curr, record)
 
-	t.truthy(updated[1].pendingUpdate)
+	t.is(r.values(updated).length, 2)
+	t.is(updated["2"].id, 2)
+	t.is(updated["2"].name, "Green")
 })
 
 test(subject + "uses the given key", function(t) {
 	var config = {
-		key:          "_id",
-		resourceName: "users",
+		key:           "_id",
+		resourceName:  "users",
 	}
-	var curr = [{
-		_id: 2,
-		name: "Blue",
-		busy: true,
-		unsaved: true,
-	}]
+	var curr = {
+		2: {
+			_id: 2,
+			name: "Blue"
+		}
+	}
 	var record = {
 		_id: 2,
+		name: "Green"
 	}
 	var updated = reducer(config, curr, record)
 
-	t.truthy(updated[0].busy == null, "removes busy")
+	t.is(r.values(updated).length, 1)
 })
 
 test(subject + "it throws when record dont have an id", function(t) {
@@ -106,6 +105,22 @@ test(subject + "it throws when record dont have an id", function(t) {
 	var f = function() {
 		reducer(config, curr, record)
 	}
-
 	t.throws(f)
+})
+
+test(subject + "removes busy and pendingUpdate", function(t) {
+	var curr = {
+		2: {
+			id: 2,
+			name: "Green",
+			pendingUpdate: true,
+			busy: true,
+		}
+	}
+	var record  = getValid()
+	var updated = reducer(config, curr, record)
+
+	t.deepEqual(r.values(updated).length, 1)
+	t.truthy(updated["2"].busy == null, "removes busy")
+	t.truthy(updated["2"].pendingUpdate == null, "removes pendingUpdate")
 })

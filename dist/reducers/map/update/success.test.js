@@ -1,4 +1,5 @@
 "use strict";
+const r = require("ramda");
 const constants_1 = require("../../../constants");
 const success_1 = require("./success");
 const ava_1 = require("ava");
@@ -8,19 +9,20 @@ var config = {
 };
 var subject = constants_1.default.REDUCER_NAMES.UPDATE_SUCCESS;
 function getCurrent() {
-    return [
-        {
+    return {
+        1: {
             id: 1,
             name: "Blue",
             unsaved: true,
             busy: true,
-        }, {
+        },
+        2: {
             id: 2,
             name: "Red",
             unsaved: true,
             busy: true,
         }
-    ];
+    };
 }
 function getValid() {
     return {
@@ -43,7 +45,7 @@ ava_1.default(subject + "adds the record if not there", function (t) {
         name: "Green"
     };
     var updated = success_1.default(config, curr, record);
-    t.is(updated.length, 3);
+    t.is(r.values(updated).length, 3);
 });
 ava_1.default(subject + "doesnt mutate the original collection", function (t) {
     var curr = getCurrent();
@@ -52,32 +54,34 @@ ava_1.default(subject + "doesnt mutate the original collection", function (t) {
         name: "Green"
     };
     var updated = success_1.default(config, curr, record);
-    t.is(curr.length, 2);
-    t.is(updated.length, 3);
+    t.is(r.values(curr).length, 2);
+    t.is(r.values(updated).length, 3);
 });
 ava_1.default(subject + "updates existing", function (t) {
     var curr = getCurrent();
     var record = getValid();
     var updated = success_1.default(config, curr, record);
-    t.is(updated.length, 2);
-    t.is(updated[1].id, 2);
-    t.is(updated[1].name, "Green");
+    t.is(r.values(updated).length, 2);
+    t.is(updated["2"].id, 2);
+    t.is(updated["2"].name, "Green");
 });
 ava_1.default(subject + "uses the given key", function (t) {
     var config = {
         key: "_id",
         resourceName: "users",
     };
-    var curr = [{
+    var curr = {
+        2: {
             _id: 2,
             name: "Blue"
-        }];
+        }
+    };
     var record = {
         _id: 2,
         name: "Green"
     };
     var updated = success_1.default(config, curr, record);
-    t.is(updated.length, 1);
+    t.is(r.values(updated).length, 1);
 });
 ava_1.default(subject + "it throws when record dont have an id", function (t) {
     var curr = getCurrent();
@@ -90,15 +94,17 @@ ava_1.default(subject + "it throws when record dont have an id", function (t) {
     t.throws(f);
 });
 ava_1.default(subject + "removes busy and pendingUpdate", function (t) {
-    var curr = [{
+    var curr = {
+        2: {
             id: 2,
             name: "Green",
             pendingUpdate: true,
             busy: true,
-        }];
+        }
+    };
     var record = getValid();
     var updated = success_1.default(config, curr, record);
-    t.deepEqual(updated.length, 1);
-    t.truthy(updated[0].busy == null, "removes busy");
-    t.truthy(updated[0].pendingUpdate == null, "removes pendingUpdate");
+    t.deepEqual(r.values(updated).length, 1);
+    t.truthy(updated["2"].busy == null, "removes busy");
+    t.truthy(updated["2"].pendingUpdate == null, "removes pendingUpdate");
 });

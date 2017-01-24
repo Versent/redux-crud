@@ -1,22 +1,24 @@
 "use strict";
+const r = require("ramda");
+const ava_1 = require("ava");
 const constants_1 = require("../../../constants");
 const start_1 = require("./start");
-const ava_1 = require("ava");
 var config = {
     key: constants_1.default.DEFAULT_KEY,
     resourceName: "users",
 };
 var subject = constants_1.default.REDUCER_NAMES.UPDATE_START;
 function getCurrent() {
-    return [
-        {
+    return {
+        1: {
             id: 1,
             name: "Blue"
-        }, {
+        },
+        2: {
             id: 2,
             name: "Red"
         }
-    ];
+    };
 }
 function getValid() {
     return {
@@ -39,7 +41,7 @@ ava_1.default(subject + "adds the record if not there", function (t) {
         name: "Green"
     };
     var updated = start_1.default(config, curr, record);
-    t.is(updated.length, 3);
+    t.is(r.values(updated).length, 3);
 });
 ava_1.default(subject + "doesnt mutate the original", function (t) {
     var curr = getCurrent();
@@ -48,32 +50,34 @@ ava_1.default(subject + "doesnt mutate the original", function (t) {
         name: "Green"
     };
     var updated = start_1.default(config, curr, record);
-    t.is(curr.length, 2);
-    t.is(updated.length, 3);
+    t.is(r.values(curr).length, 2);
+    t.is(r.values(updated).length, 3);
 });
 ava_1.default(subject + "updates existing", function (t) {
     var curr = getCurrent();
     var record = getValid();
     var updated = start_1.default(config, curr, record);
-    t.is(updated.length, 2);
-    t.is(updated[1].id, 2);
-    t.is(updated[1].name, "Green");
+    t.is(r.values(updated).length, 2);
+    t.is(updated["2"].id, 2);
+    t.is(updated["2"].name, "Green");
 });
 ava_1.default(subject + "uses the given key", function (t) {
     var config = {
         key: "_id",
         resourceName: "users",
     };
-    var curr = [{
+    var curr = {
+        2: {
             _id: 2,
             name: "Blue"
-        }];
+        }
+    };
     var record = {
         _id: 2,
         name: "Green"
     };
     var updated = start_1.default(config, curr, record);
-    t.is(updated.length, 1);
+    t.is(r.values(updated).length, 1);
 });
 ava_1.default(subject + "it throws when record dont have an id", function (t) {
     var curr = getCurrent();
@@ -89,7 +93,7 @@ ava_1.default(subject + "adds busy and pendingUpdate", function (t) {
     var curr = getCurrent();
     var record = getValid();
     var updated = start_1.default(config, curr, record);
-    t.deepEqual(updated[1].name, "Green");
-    t.truthy(updated[1].busy, "adds busy");
-    t.truthy(updated[1].pendingUpdate, "adds pendingUpdate");
+    t.deepEqual(updated["2"].name, "Green");
+    t.truthy(updated["2"].busy, "adds busy");
+    t.truthy(updated["2"].pendingUpdate, "adds pendingUpdate");
 });
