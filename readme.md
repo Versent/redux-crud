@@ -28,9 +28,17 @@ And action creators like:
 
 There's obvious repetition there. Redux CRUD aims to remove this boilerplate by providing strong conventions on naming and processing data.
 
+## Stores
+
+Redux-crud provides two stores:
+
+- __List__. A plain JS array. This preserves the order of records.
+- __Map__. A JS object where records are indexed by key. This provides faster writes and lookups.
+
 ## Docs
 
-### [API](./docs/api.md)
+### [Actions](./docs/actions.md)
+### [Reducers](./docs/reducers.md)
 ### [Using with Redux](./docs/redux.md)
 ### [Tips](./docs/tips.md)
 
