@@ -1,5 +1,5 @@
 "use strict";
-const r = require("ramda");
+const start_1 = require("../../common/update/start");
 const constants_1 = require("../../../constants");
 const invariants_1 = require("../invariants");
 const store_1 = require("../store");
@@ -11,11 +11,7 @@ var invariantArgs = {
 function start(config, current, record) {
     invariants_1.default(invariantArgs, config, current, record);
     // mark record as unsaved and busy
-    var recordStatus = {
-        busy: true,
-        pendingUpdate: true,
-    };
-    var newRecord = r.merge(record, recordStatus);
+    var newRecord = start_1.prepareRecord(record);
     // replace record
     return store_1.default.merge(current, newRecord, config.key);
 }

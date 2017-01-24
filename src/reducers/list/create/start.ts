@@ -1,6 +1,6 @@
 import * as r from "ramda"
 
-import assertNotArray from "../../../utils/assertNotArray"
+import { prepareRecord } from "../../common/create/start"
 import constants from "../../../constants"
 import invariants from "../invariants"
 import store from "../store"
@@ -16,13 +16,8 @@ var invariantArgs: InvariantsBaseArgs = {
 export default function start(config: Config, current: Array<any>, record: any): Array<any> {
 	invariants(invariantArgs, config, current, record)
 
-	var recordStatus = {
-		busy:          true,
-		pendingCreate: true,
-	}
-
-	var newRecord = r.merge(record, recordStatus)
-
 	// mark record as unsaved and busy
+	var newRecord = prepareRecord(record)
+
 	return store.merge(current, newRecord, config.key)
 }

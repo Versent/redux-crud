@@ -1,7 +1,8 @@
 import * as r from "ramda"
 
-import invariants from "../invariants"
+import { prepareRecord } from "../../common/update/error"
 import constants from "../../../constants"
+import invariants from "../invariants"
 import store from "../store"
 
 import { Config, InvariantsBaseArgs, Map, ReducerName } from "../../../types"
@@ -20,10 +21,9 @@ export default function error(config: Config, current: Map<any>, record: any): M
 	var updatedId = record[key]
 	var updatedRecord = current[updatedId]
 
-	if (updatedRecord) {
-		updatedRecord = r.omit(["busy"], updatedRecord)
-		return store.merge(config, current, updatedRecord)
-	} else {
-		return current
-	}
+	if (updatedRecord == null) return current
+
+	updatedRecord = prepareRecord(updatedRecord)
+
+	return store.merge(config, current, updatedRecord)
 }

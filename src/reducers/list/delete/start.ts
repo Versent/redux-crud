@@ -1,8 +1,9 @@
 import * as r from "ramda"
 
+import { prepareRecord } from "../../common/delete/start"
+import constants from "../../../constants"
+import findByKey from "../../../utils/findByKey"
 import invariants from "../invariants"
-import constants         from "../../../constants"
-import findByKey         from "../../../utils/findByKey"
 import store from "../store"
 
 import { Config, InvariantsBaseArgs, ReducerName } from "../../../types"
@@ -18,12 +19,9 @@ export default function start(config: Config, current: Array<any>, record: any):
 
 	var key = config.key
 	var deleteId = record[key]
-	var recordStatus = {
-		deleted: true,
-		busy:    true,
-	}
+
 	var deleteRecord = findByKey(current, key, deleteId)
-	deleteRecord = r.merge(deleteRecord, recordStatus)
+	deleteRecord = prepareRecord(deleteRecord)
 
 	return store.merge(current, deleteRecord, key)
 }

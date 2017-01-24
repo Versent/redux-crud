@@ -1,13 +1,13 @@
 import actionCreatorsFor from "./actionCreatorsFor"
 import actionTypesFor    from "./actionTypesFor"
 import constants         from "./constants"
-import list              from "./reducers/list"
-import map               from "./reducers/map"
+import List              from "./reducers/list"
+import Map               from "./reducers/map"
 
 export default {
 	actionCreatorsFor,
 	actionTypesFor,
 	constants,
-	list,
-	map,
+	List,
+	Map,
 }

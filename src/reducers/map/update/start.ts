@@ -1,5 +1,6 @@
 import * as r from "ramda"
 
+import { prepareRecord } from "../../common/update/start"
 import constants from "../../../constants"
 import invariants from "../invariants"
 import store from "../store"
@@ -16,12 +17,7 @@ export default function start(config: Config, current: Map<any>, record: any): M
 	invariants(invariantArgs, config, current, record)
 
 	// mark record as unsaved and busy
-	var recordStatus = {
-		busy:          true,
-		pendingUpdate: true,
-	}
-
-	var newRecord = r.merge(record, recordStatus)
+	var newRecord = prepareRecord(record)
 
 	// replace record
 	return store.merge(config, current, newRecord)

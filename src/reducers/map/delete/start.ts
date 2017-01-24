@@ -1,7 +1,8 @@
 import * as r from "ramda"
 
+import { prepareRecord } from "../../common/delete/start"
 import invariants from "../invariants"
-import constants         from "../../../constants"
+import constants from "../../../constants"
 import store from "../store"
 
 import { Config, InvariantsBaseArgs, Map, ReducerName } from "../../../types"
@@ -17,16 +18,13 @@ export default function start(config: Config, current: Map<any>, record: any): M
 
 	var key = config.key
 	var deleteId = record[key]
-	var recordStatus = {
-		deleted: true,
-		busy:    true,
-	}
 	var deleteRecord = current[deleteId] 
 	
 	if (deleteRecord == null) {
 		return current
 	} else {
-		deleteRecord = r.merge(deleteRecord, recordStatus)
+		deleteRecord = prepareRecord(deleteRecord)
+
 		return store.merge(config, current, deleteRecord)
 	}
 }
