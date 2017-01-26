@@ -1,19 +1,19 @@
+// import bows from "bows"
 import actions from "./actions"
-import bows from "bows"
 import Icon from "react-fa"
 import invariant from "invariant"
 import r from "ramda"
 import React from "react"
 
 var PT = React.PropTypes
-var baseClass = "todos--List"
-var log = bows(baseClass)
+var baseClass = "todos-List"
+// var log = bows(baseClass)
 
 class List extends React.Component {
 
 	onToggle(todo, done, event) {
 		event.preventDefault()
-		todo = todo.merge({done})
+		todo = r.merge(todo, {done})
 		const action = actions.update(todo)
 		this.props.dispatch(action)
 	}
@@ -37,15 +37,21 @@ class List extends React.Component {
 	renderCheck(todo) {
 		if (todo.done) {
 			return (
-				 <a className="btn regular blue"
-						href="javascript://"
-						onClick={this.onToggle.bind(this, todo, false)}><Icon name="check-square-o" /></a>
+				<a className="btn regular blue"
+					href="javascript://"
+					onClick={this.onToggle.bind(this, todo, false)}
+					>
+					<Icon name="check-square-o" />
+				</a>
 			)
 		} else {
 			return (
-				 <a className="btn regular blue"
-						href="javascript://"
-						onClick={this.onToggle.bind(this, todo, true)}><Icon name="square-o" /></a>
+				<a className="btn regular blue"
+					href="javascript://"
+					onClick={this.onToggle.bind(this, todo, true)}
+					>
+					<Icon name="square-o" />
+				</a>
 			)
 		}
 	}
@@ -53,7 +59,7 @@ class List extends React.Component {
 	renderTodos() {
 		return this.props.todos.map(todo => {
 			return (
-				<tr>
+				<tr key={todo.id}>
 					<td>
 						{todo.title}
 					</td>

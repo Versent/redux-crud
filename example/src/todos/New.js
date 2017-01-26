@@ -1,11 +1,11 @@
 import actions        from "./actions"
-import bows           from "bows"
+// import bows           from "bows"
 import Form           from "./Form"
 import invariant      from "invariant"
 import React          from "react"
 
 var PT                = React.PropTypes
-var log               = bows("todos--New")
+// var log               = bows("todos-New")
 
 class New extends React.Component {
 

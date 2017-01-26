@@ -1,24 +1,20 @@
 import axios from "axios"
-import AxiosMock from 'axios-mock-adapter'
 import bows from "bows"
 import cuid from "cuid"
 import r from "ramda"
 import reduxCrud from "../../../dist/index"
-import fixture from './fixture'
 
 var baseActionCreators = reduxCrud.actionCreatorsFor("todos")
-var log = bows("todos--actions")
-var mock = new AxiosMock(axios, { delayResponse: 500 })
-
-mock.onGet('/todos').reply(200, fixture)
+var log = bows("todos-actions")
 
 let actionCreators = {
 
 	fetch() {
-		log("fetch")
+		log("fetch todos")
 		return function(dispatch, getState) {
 
 			const action = baseActionCreators.fetchStart()
+			log("action", action)
 			dispatch(action)
 
 			// send the request
@@ -32,11 +28,11 @@ let actionCreators = {
 					// dispatch the success action
 					const returned = response.data
 					const successAction = baseActionCreators.fetchSuccess(returned)
+					log("successAction", successAction)
 					dispatch(successAction)
 				}, function(response) {
 					log("rejection", response)
-					// rejection
-					// dispatch the error action
+					// On rejection dispatch the error action
 					const errorAction = baseActionCreators.fetchError(response)
 					dispatch(errorAction)
 				}).catch(function(err) {

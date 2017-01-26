@@ -1,11 +1,10 @@
-import actions from "./actions"
-import bows from "bows"
+// import bows from "bows"
 import Icon from "react-fa"
 import r from "ramda"
 import React from "react"
 
 const PT              = React.PropTypes
-const log             = bows("todos--Form")
+// const log             = bows("todos--Form")
 
 class Form extends React.Component {
 
@@ -34,7 +33,7 @@ class Form extends React.Component {
 
 	onSave(event) {
 		event.preventDefault()
-    var todo = r.merge(this.props.todo, this.state)
+		var todo = r.merge(this.props.todo, this.state)
 		this.props.onCommit(todo)
 	}
 
@@ -46,10 +45,13 @@ class Form extends React.Component {
 						type="text"
 						value={this.state.title}
 						onChange={this.onChange.bind(this)}
-						className="input col col-6" />
-          <div className="col col-6 pl2">
-					  <button type="submit" onClick={this.onSave.bind(this)} className="btn btn-outline"><Icon name="save" /></button>
-          </div>
+						className="input col col-6" 
+					/>
+					<div className="col col-6 pl2">
+						<button type="submit" onClick={this.onSave.bind(this)} className="btn btn-outline">
+							<Icon name="save" />
+						</button>
+					</div>
 				</form>
 			</section>
 		)
