@@ -1,12 +1,13 @@
-import React          from "react"
-import bows           from "bows"
 import actions        from "./actions"
+import bows           from "bows"
 import Form           from "./Form"
+import invariant      from "invariant"
+import React          from "react"
 
 var PT                = React.PropTypes
 var log               = bows("todos--New")
 
-class Comp extends React.Component {
+class New extends React.Component {
 
 	constructor(props, ctx) {
 		super(props, ctx)
@@ -29,11 +30,16 @@ class Comp extends React.Component {
 	}
 
 	render() {
+		var { props, state } = this
+
+		invariant(props.dispatch, "Required dispatch")
+
 		return (
 			<section>
 				<Form
-					todo={this.state.todo}
-					onCommit={this.onCommit.bind(this)} 
+					dispatch={props.dispatch}
+					todo={state.todo}
+					onCommit={this.onCommit.bind(this)}
 					/>
 			</section>
 		)
@@ -41,8 +47,8 @@ class Comp extends React.Component {
 
 }
 
-Comp.propTypes = {
+New.propTypes = {
 	dispatch: PT.func.isRequired,
 }
 
-export default Comp
+export default New

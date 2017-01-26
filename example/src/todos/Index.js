@@ -1,11 +1,13 @@
-import React       from "react"
 import { connect } from "react-redux"
 import actions     from "./actions"
-import New         from "./New"
+import invariant from "invariant"
 import List        from "./List"
+import New         from "./New"
+import React       from "react"
+
 const PT           = React.PropTypes
 
-class Comp extends React.Component {
+class Index extends React.Component {
 
 	componentDidMount() {
 		this.fetchTodos()
@@ -21,18 +23,26 @@ class Comp extends React.Component {
 	}
 
 	render() {
+		var props = this.props
+
+		invariant(props.dispatch, "Required dispatch")
+		invariant(props.todos, "Required todos")
+
 		return (
 			<section className="p1">
 				<h2>Todos</h2>
-				<New {...this.props} />
-				<List {...this.props} />
+				<New dispatch={props.dispatch} />
+				<List 
+					dispatch={props.dispatch} 
+					todos={props.todos}
+					/>
 			</section>
 		)
 	}
 }
 
-Comp.propTypes = {
+Index.propTypes = {
 	dispatch: PT.func.isRequired,
 }
 
-export default connect(state => state)(Comp);
+export default connect(state => state)(Index)

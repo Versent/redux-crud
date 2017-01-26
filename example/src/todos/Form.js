@@ -7,7 +7,7 @@ import React from "react"
 const PT              = React.PropTypes
 const log             = bows("todos--Form")
 
-class Comp extends React.Component {
+class Form extends React.Component {
 
 	constructor(props, ctx) {
 		super(props, ctx)
@@ -41,13 +41,15 @@ class Comp extends React.Component {
 	render() {
 		return (
 			<section>
-				<form>
+				<form className="col col-12">
 					<input
 						type="text"
 						value={this.state.title}
 						onChange={this.onChange.bind(this)}
-						className="field col-5" />&nbsp;
-					<button type="submit" onClick={this.onSave.bind(this)} className="btn btn-outline"><Icon name="save" /></button>
+						className="input col col-6" />
+          <div className="col col-6 pl2">
+					  <button type="submit" onClick={this.onSave.bind(this)} className="btn btn-outline"><Icon name="save" /></button>
+          </div>
 				</form>
 			</section>
 		)
@@ -55,10 +57,10 @@ class Comp extends React.Component {
 
 }
 
-Comp.propTypes = {
+Form.propTypes = {
 	dispatch: PT.func.isRequired,
 	onCommit: PT.func.isRequired,
 	todo: PT.object.isRequired,
 }
 
-export default Comp
+export default Form

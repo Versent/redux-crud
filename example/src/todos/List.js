@@ -1,6 +1,7 @@
 import actions from "./actions"
 import bows from "bows"
 import Icon from "react-fa"
+import invariant from "invariant"
 import r from "ramda"
 import React from "react"
 
@@ -8,7 +9,7 @@ var PT = React.PropTypes
 var baseClass = "todos--List"
 var log = bows(baseClass)
 
-class Comp extends React.Component {
+class List extends React.Component {
 
 	onToggle(todo, done, event) {
 		event.preventDefault()
@@ -68,6 +69,11 @@ class Comp extends React.Component {
 	}
 
 	render() {
+		var props = this.props
+
+		invariant(props.todos, "Required todos")
+		invariant(props.dispatch, "Required dispatch")
+
 		return (
 			<section className="">
 				<table className="table-light">
@@ -86,9 +92,9 @@ class Comp extends React.Component {
 	}
 }
 
-Comp.propTypes = {
+List.propTypes = {
 	todos: PT.array.isRequired,
 	dispatch: PT.func.isRequired,
 }
 
-export default Comp
+export default List
