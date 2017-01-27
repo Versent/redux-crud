@@ -1,5 +1,5 @@
 "use strict";
-const r = require("ramda");
+var r = require("ramda");
 function prepareRecord(record) {
     var recordStatus = {
         busy: true,

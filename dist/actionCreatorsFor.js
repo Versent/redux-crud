@@ -1,18 +1,18 @@
 "use strict";
-const r = require("ramda");
-const invariant = require("invariant");
-const actionTypesFor_1 = require("./actionTypesFor");
-const assertNotArray_1 = require("./utils/assertNotArray");
-const constants_1 = require("./constants");
-const getDefaultConfig_1 = require("./getDefaultConfig");
+var r = require("ramda");
+var invariant = require("invariant");
+var actionTypesFor_1 = require("./actionTypesFor");
+var assertNotArray_1 = require("./utils/assertNotArray");
+var constants_1 = require("./constants");
+var getDefaultConfig_1 = require("./getDefaultConfig");
 // const invariant = require("invariant")
 function actionCreatorsFor(resourceName, config) {
     if (resourceName == null)
         throw new Error("actionCreatorsFor: Expected resourceName");
     config = config || getDefaultConfig_1.default(resourceName);
-    config = r.merge(config, { resourceName });
-    const actionTypes = actionTypesFor_1.default(resourceName);
-    const key = config.key || constants_1.default.DEFAULT_KEY;
+    config = r.merge(config, { resourceName: resourceName });
+    var actionTypes = actionTypesFor_1.default(resourceName);
+    var key = config.key || constants_1.default.DEFAULT_KEY;
     function assertError(actionCreatorName, error) {
         invariant(error != null, "Expected error in " + actionCreatorName);
     }
@@ -25,13 +25,13 @@ function actionCreatorsFor(resourceName, config) {
         invariant(records != null, "Expected records " + actionCreatorName);
     }
     return {
-        fetchStart(data) {
+        fetchStart: function (data) {
             return {
                 data: data,
                 type: actionTypes.fetchStart,
             };
         },
-        fetchSuccess(records, data) {
+        fetchSuccess: function (records, data) {
             var name = "fetchSuccess";
             assertManyRecords(name, records);
             return {
@@ -40,7 +40,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.fetchSuccess,
             };
         },
-        fetchError(error, data) {
+        fetchError: function (error, data) {
             var name = "fetchError";
             assertError(name, error);
             return {
@@ -49,7 +49,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.fetchError,
             };
         },
-        createStart(record, data) {
+        createStart: function (record, data) {
             var name = "createStart";
             assertOneRecord(name, record);
             return {
@@ -58,7 +58,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.createStart,
             };
         },
-        createSuccess(record, clientGeneratedKey, data) {
+        createSuccess: function (record, clientGeneratedKey, data) {
             var name = "createSuccess";
             assertOneRecord(name, record);
             return {
@@ -68,7 +68,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.createSuccess,
             };
         },
-        createError(error, record, data) {
+        createError: function (error, record, data) {
             var name = "createError";
             assertError(name, error);
             assertOneRecord(name, record);
@@ -79,7 +79,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.createError,
             };
         },
-        updateStart(record, data) {
+        updateStart: function (record, data) {
             var name = "updateStart";
             assertOneRecord(name, record);
             return {
@@ -88,7 +88,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.updateStart,
             };
         },
-        updateSuccess(record, data) {
+        updateSuccess: function (record, data) {
             var name = "updateSuccess";
             assertOneRecord(name, record);
             return {
@@ -97,7 +97,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.updateSuccess,
             };
         },
-        updateError(error, record, data) {
+        updateError: function (error, record, data) {
             var name = "updateError";
             assertError(name, error);
             assertOneRecord(name, record);
@@ -108,7 +108,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.updateError,
             };
         },
-        deleteStart(record, data) {
+        deleteStart: function (record, data) {
             var name = "deleteStart";
             assertOneRecord(name, record);
             return {
@@ -117,7 +117,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.deleteStart,
             };
         },
-        deleteSuccess(record, data) {
+        deleteSuccess: function (record, data) {
             var name = "deleteSuccess";
             assertOneRecord(name, record);
             return {
@@ -126,7 +126,7 @@ function actionCreatorsFor(resourceName, config) {
                 type: actionTypes.deleteSuccess,
             };
         },
-        deleteError(error, record, data) {
+        deleteError: function (error, record, data) {
             var name = "deleteError";
             assertError(name, error);
             assertOneRecord(name, record);

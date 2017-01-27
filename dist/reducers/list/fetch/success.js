@@ -1,12 +1,12 @@
 "use strict";
-const assertAllHaveKeys_1 = require("../../../utils/assertAllHaveKeys");
-const constants_1 = require("../../../constants");
-const store_1 = require("../store");
-const wrapArray_1 = require("../../../utils/wrapArray");
-const invariants_1 = require("../invariants");
+var assertAllHaveKeys_1 = require("../../../utils/assertAllHaveKeys");
+var constants_1 = require("../../../constants");
+var store_1 = require("../store");
+var wrapArray_1 = require("../../../utils/wrapArray");
+var invariants_1 = require("../invariants");
 var reducerName = constants_1.default.REDUCER_NAMES.FETCH_SUCCESS;
 var invariantArgs = {
-    reducerName,
+    reducerName: reducerName,
     canBeArray: true,
 };
 function success(config, current, records) {

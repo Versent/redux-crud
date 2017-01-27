@@ -1,10 +1,10 @@
 "use strict";
-const r = require("ramda");
-const constants_1 = require("../../../constants");
-const invariants_1 = require("../invariants");
+var r = require("ramda");
+var constants_1 = require("../../../constants");
+var invariants_1 = require("../invariants");
 var reducerName = constants_1.default.REDUCER_NAMES.CREATE_SUCCESS;
 var invariantArgs = {
-    reducerName,
+    reducerName: reducerName,
     canBeArray: false,
 };
 function success(config, current, addedRecord, clientGenKey) {
@@ -13,7 +13,7 @@ function success(config, current, addedRecord, clientGenKey) {
     var done = false;
     var addedRecordKey = addedRecord[key];
     // Update existing records
-    var updatedCollection = r.map((existingRecord) => {
+    var updatedCollection = r.map(function (existingRecord) {
         var recordKey = existingRecord[key];
         if (recordKey == null)
             throw new Error('Expected record to have ' + key);
@@ -29,12 +29,13 @@ function success(config, current, addedRecord, clientGenKey) {
     })(current);
     // Add if not updated
     if (!done) {
-        var merge = {
-            [addedRecordKey]: addedRecord
-        };
+        var merge = (_a = {},
+            _a[addedRecordKey] = addedRecord,
+            _a);
         updatedCollection = r.merge(updatedCollection, merge);
     }
     return updatedCollection;
+    var _a;
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = success;

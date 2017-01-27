@@ -1,6 +1,6 @@
 "use strict";
-const makeScope_1 = require("../utils/makeScope");
-const r = require("ramda");
+var makeScope_1 = require("../utils/makeScope");
+var r = require("ramda");
 function default_1(config, reducerName, record) {
     var scope = makeScope_1.default(config, reducerName);
     var isArray = r.is(Array, record);

@@ -1,12 +1,12 @@
 "use strict";
-const assertHasKey_1 = require("./invariants/assertHasKey");
-const assertNotArray_1 = require("../utils/assertNotArray");
-const makeScope_1 = require("../utils/makeScope");
+var assertHasKey_1 = require("./invariants/assertHasKey");
+var assertNotArray_1 = require("../utils/assertNotArray");
+var makeScope_1 = require("../utils/makeScope");
 function invariants(baseArgs, extraArgs) {
     var config = extraArgs.config;
     if (!config.resourceName)
         throw new Error("Expected config.resourceName");
-    const scope = makeScope_1.default(config, baseArgs.reducerName);
+    var scope = makeScope_1.default(config, baseArgs.reducerName);
     if (!config.key)
         throw new Error(scope + ": Expected config.key");
     if (!extraArgs.record)

@@ -1,10 +1,10 @@
 "use strict";
-const r = require("ramda");
-const constants_1 = require("../../../constants");
-const invariants_1 = require("../invariants");
+var r = require("ramda");
+var constants_1 = require("../../../constants");
+var invariants_1 = require("../invariants");
 var reducerName = constants_1.default.REDUCER_NAMES.DELETE_ERROR;
 var invariantArgs = {
-    reducerName,
+    reducerName: reducerName,
     canBeArray: false,
 };
 function error(config, current, record) {
@@ -19,8 +19,9 @@ function error(config, current, record) {
     else {
         // Remove deleted and busy
         deleteRecord = r.omit(["deleted", "busy"], deleteRecord);
-        return r.merge(current, { [deleteId]: deleteRecord });
+        return r.merge(current, (_a = {}, _a[deleteId] = deleteRecord, _a));
     }
+    var _a;
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = error;

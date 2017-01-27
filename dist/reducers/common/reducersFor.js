@@ -1,8 +1,9 @@
 "use strict";
-const r = require("ramda");
-const actionTypesFor_1 = require("../../actionTypesFor");
-const constants_1 = require("../../constants");
-function reducersFor(resourceName, args = {}, emptyState, reducers) {
+var r = require("ramda");
+var actionTypesFor_1 = require("../../actionTypesFor");
+var constants_1 = require("../../constants");
+function reducersFor(resourceName, args, emptyState, reducers) {
+    if (args === void 0) { args = {}; }
     if (resourceName == null)
         throw new Error('reducersFor: Expected resourceName');
     var defaults = {

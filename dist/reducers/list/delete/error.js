@@ -1,12 +1,12 @@
 "use strict";
-const r = require("ramda");
-const constants_1 = require("../../../constants");
-const findByKey_1 = require("../../../utils/findByKey");
-const invariants_1 = require("../invariants");
-const store_1 = require("../store");
+var r = require("ramda");
+var constants_1 = require("../../../constants");
+var findByKey_1 = require("../../../utils/findByKey");
+var invariants_1 = require("../invariants");
+var store_1 = require("../store");
 var reducerName = constants_1.default.REDUCER_NAMES.DELETE_ERROR;
 var invariantArgs = {
-    reducerName,
+    reducerName: reducerName,
     canBeArray: false,
 };
 function error(config, current, record) {

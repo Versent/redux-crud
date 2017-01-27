@@ -1,8 +1,8 @@
 "use strict";
-const r = require("ramda");
-const ava_1 = require("ava");
-const constants_1 = require("../../../constants");
-const error_1 = require("./error");
+var r = require("ramda");
+var ava_1 = require("ava");
+var constants_1 = require("../../../constants");
+var error_1 = require("./error");
 var config = {
     key: constants_1.default.DEFAULT_KEY,
     resourceName: "users",

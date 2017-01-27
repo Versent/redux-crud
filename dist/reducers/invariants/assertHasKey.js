@@ -1,6 +1,6 @@
 "use strict";
-const r = require("ramda");
-const wrapArray_1 = require("../../utils/wrapArray");
+var r = require("ramda");
+var wrapArray_1 = require("../../utils/wrapArray");
 function assertHasKey(config, scope, recordOrRecords) {
     var key = config.key;
     var records = wrapArray_1.default(recordOrRecords);

@@ -1,5 +1,5 @@
 "use strict";
-const r = require("ramda");
+var r = require("ramda");
 function wrapArray(recordOrRecords) {
     var isArray = r.is(Array, recordOrRecords);
     return isArray ? recordOrRecords : [recordOrRecords];

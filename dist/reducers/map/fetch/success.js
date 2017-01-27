@@ -1,12 +1,12 @@
 "use strict";
-const r = require("ramda");
-const assertAllHaveKeys_1 = require("../../../utils/assertAllHaveKeys");
-const constants_1 = require("../../../constants");
-const invariants_1 = require("../invariants");
-const wrapArray_1 = require("../../../utils/wrapArray");
+var r = require("ramda");
+var assertAllHaveKeys_1 = require("../../../utils/assertAllHaveKeys");
+var constants_1 = require("../../../constants");
+var invariants_1 = require("../invariants");
+var wrapArray_1 = require("../../../utils/wrapArray");
 var reducerName = constants_1.default.REDUCER_NAMES.FETCH_SUCCESS;
 var invariantArgs = {
-    reducerName,
+    reducerName: reducerName,
     canBeArray: true,
 };
 function success(config, current, records) {

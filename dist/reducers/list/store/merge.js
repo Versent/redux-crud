@@ -1,5 +1,5 @@
 "use strict";
-const wrapArray_1 = require("../../../utils/wrapArray");
+var wrapArray_1 = require("../../../utils/wrapArray");
 /*
 Replaces an existing record in a list
 Or adds if not there

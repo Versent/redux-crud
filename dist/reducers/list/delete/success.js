@@ -1,10 +1,10 @@
 "use strict";
-const r = require("ramda");
-const invariants_1 = require("../invariants");
-const constants_1 = require("../../../constants");
+var r = require("ramda");
+var invariants_1 = require("../invariants");
+var constants_1 = require("../../../constants");
 var reducerName = constants_1.default.REDUCER_NAMES.DELETE_SUCCESS;
 var invariantArgs = {
-    reducerName,
+    reducerName: reducerName,
     canBeArray: false,
 };
 function success(config, current, record) {

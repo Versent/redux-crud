@@ -1,5 +1,5 @@
 "use strict";
-const r = require("ramda");
+var r = require("ramda");
 function remove(config, current, record) {
     var key = config.key;
     var recordKey = record[key];

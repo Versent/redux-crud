@@ -1,7 +1,7 @@
 "use strict";
-const actionTypesFor_1 = require("./actionTypesFor");
-const ava_1 = require("ava");
-const actionTypes = actionTypesFor_1.default("users");
+var actionTypesFor_1 = require("./actionTypesFor");
+var ava_1 = require("ava");
+var actionTypes = actionTypesFor_1.default("users");
 ava_1.default("returns the action actionTypes", function (t) {
     t.deepEqual(actionTypes.USERS_FETCH_START, "USERS_FETCH_START");
     t.deepEqual(actionTypes.USERS_FETCH_SUCCESS, "USERS_FETCH_SUCCESS");

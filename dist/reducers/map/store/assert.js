@@ -1,5 +1,5 @@
 "use strict";
-const r = require("ramda");
+var r = require("ramda");
 function assertValidStore(scope, current) {
     if (!r.is(Object, current))
         throw new Error(scope + ': Expected current to be an object');

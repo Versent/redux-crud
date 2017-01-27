@@ -1,5 +1,5 @@
 "use strict";
-const r = require("ramda");
+var r = require("ramda");
 function remove(config, current, addedRecord) {
     var key = config.key;
     function predicate(record) {

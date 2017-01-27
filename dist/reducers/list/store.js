@@ -1,7 +1,7 @@
 "use strict";
-const assert_1 = require("./store/assert");
-const remove_1 = require("./store/remove");
-const merge_1 = require("./store/merge");
+var assert_1 = require("./store/assert");
+var remove_1 = require("./store/remove");
+var merge_1 = require("./store/merge");
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     assert: assert_1.default,

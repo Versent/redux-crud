@@ -1,5 +1,5 @@
 "use strict";
-const r = require("ramda");
+var r = require("ramda");
 function default_1(config, reducerName, records) {
     // All given records must have a key
     var haskey = r.has(config.key);

@@ -1,10 +1,10 @@
 "use strict";
-const constants_1 = require("../../../constants");
-const invariants_1 = require("../invariants");
-const remove_1 = require("../store/remove");
+var constants_1 = require("../../../constants");
+var invariants_1 = require("../invariants");
+var remove_1 = require("../store/remove");
 var reducerName = constants_1.default.REDUCER_NAMES.CREATE_ERROR;
 var invariantArgs = {
-    reducerName,
+    reducerName: reducerName,
     canBeArray: false,
 };
 function error(config, current, record) {

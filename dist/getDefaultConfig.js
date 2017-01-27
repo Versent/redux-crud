@@ -2,7 +2,7 @@
 function getDefaultConfig(resourceName) {
     return {
         key: "id",
-        resourceName,
+        resourceName: resourceName,
     };
 }
 Object.defineProperty(exports, "__esModule", { value: true });

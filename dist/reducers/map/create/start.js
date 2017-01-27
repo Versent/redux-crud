@@ -1,11 +1,11 @@
 "use strict";
-const start_1 = require("../../common/create/start");
-const constants_1 = require("../../../constants");
-const invariants_1 = require("../invariants");
-const store_1 = require("../store");
+var start_1 = require("../../common/create/start");
+var constants_1 = require("../../../constants");
+var invariants_1 = require("../invariants");
+var store_1 = require("../store");
 var reducerName = constants_1.default.REDUCER_NAMES.CREATE_START;
 var invariantArgs = {
-    reducerName,
+    reducerName: reducerName,
     canBeArray: false,
 };
 function start(config, current, record) {

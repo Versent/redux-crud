@@ -1,5 +1,5 @@
 "use strict";
-const r = require("ramda");
+var r = require("ramda");
 function findByKey(collection, key, id) {
     function predicate(record) {
         return record[key] === id;

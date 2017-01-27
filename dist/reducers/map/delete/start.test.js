@@ -1,7 +1,7 @@
 "use strict";
-const constants_1 = require("../../../constants");
-const start_1 = require("./start");
-const ava_1 = require("ava");
+var constants_1 = require("../../../constants");
+var start_1 = require("./start");
+var ava_1 = require("ava");
 var config = {
     key: constants_1.default.DEFAULT_KEY,
     resourceName: "users",

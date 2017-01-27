@@ -1,10 +1,10 @@
 "use strict";
-const ava_1 = require("ava");
-const actionCreatorsFor_1 = require("./actionCreatorsFor");
-const error = {};
-const actionCreators = actionCreatorsFor_1.default("users");
-const subject = " actionCreatorsFor: ";
-const arrayRegEx = /Expected record not to be an array/;
+var ava_1 = require("ava");
+var actionCreatorsFor_1 = require("./actionCreatorsFor");
+var error = {};
+var actionCreators = actionCreatorsFor_1.default("users");
+var subject = " actionCreatorsFor: ";
+var arrayRegEx = /Expected record not to be an array/;
 function makeUser() {
     return {
         id: 11
