@@ -1,6 +1,6 @@
 {
   "name": "redux-crud",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Redux CRUD",
   "main": "dist/index.js",
   "scripts": {
