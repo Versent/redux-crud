@@ -16,5 +16,9 @@ indent_size = 4
 indent_style = tab
 indent_size = 4
 
+[*.json]
+indent_style = tab
+indent_size = 4
+
 [Makefile]
 indent_style = tab
