@@ -10,32 +10,13 @@ var invariantArgs = {
 function success(config, current, addedRecord, clientGenKey) {
     invariants_1.default(invariantArgs, config, current, addedRecord);
     var key = config.key;
-    var done = false;
     var addedRecordKey = addedRecord[key];
-    // Update existing records
-    var updatedCollection = r.map(function (existingRecord) {
-        var recordKey = existingRecord[key];
-        if (recordKey == null)
-            throw new Error('Expected record to have ' + key);
-        var isSameKey = recordKey === addedRecordKey;
-        var isSameClientGetKey = (clientGenKey != null && clientGenKey === recordKey);
-        if (isSameKey || isSameClientGetKey) {
-            done = true;
-            return addedRecord;
-        }
-        else {
-            return existingRecord;
-        }
-    })(current);
-    // Add if not updated
-    if (!done) {
-        var merge = (_a = {},
-            _a[addedRecordKey] = addedRecord,
-            _a);
-        updatedCollection = r.merge(updatedCollection, merge);
+    var addedRecordKeyLens = r.lensProp(addedRecordKey);
+    var clientGenKeyLens = r.lensProp(clientGenKey);
+    if (r.view(clientGenKeyLens, current)) {
+        return r.set(addedRecordKeyLens, addedRecord, r.dissoc(clientGenKey, current));
     }
-    return updatedCollection;
-    var _a;
+    return r.set(addedRecordKeyLens, addedRecord, current);
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = success;

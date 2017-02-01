@@ -14,31 +14,15 @@ var invariantArgs: InvariantsBaseArgs = {
 export default function success(config: Config, current: Map<any>, addedRecord: any, clientGenKey?: string): Map<any> {
 	invariants(invariantArgs, config, current, addedRecord)
 
-	var key = config.key
-	var done = false
-	var addedRecordKey = addedRecord[key]
+  var key = config.key
+  var addedRecordKey = addedRecord[key]
 
-	// Update existing records
-	var updatedCollection = r.map((existingRecord) => {
-		var recordKey = existingRecord[key]
-		if (recordKey == null) throw new Error('Expected record to have ' + key)
-		var isSameKey = recordKey === addedRecordKey
-		var isSameClientGetKey = (clientGenKey != null && clientGenKey === recordKey)
-		if (isSameKey || isSameClientGetKey) {
-			done = true
-			return addedRecord
-		} else {
-			return existingRecord
-		}
-	})(current)
+  var addedRecordKeyLens = r.lensProp(addedRecordKey)
+  var clientGenKeyLens = r.lensProp(clientGenKey)
 
-	// Add if not updated
-	if (!done) {
-		var merge = {
-			[addedRecordKey]: addedRecord
-		}
-		updatedCollection = r.merge(updatedCollection, merge)
-	}
+  if (r.view(clientGenKeyLens, current)) {
+    return r.set(addedRecordKeyLens, addedRecord, r.dissoc(clientGenKey, current))
+  }
 
-	return updatedCollection
+  return r.set(addedRecordKeyLens, addedRecord, current)
 }
