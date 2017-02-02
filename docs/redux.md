@@ -66,7 +66,7 @@ let actionCreators = {
 }
 ```
 
-[See a list of examples here](./docs/async_action_creators.js)
+[See a list of examples here](./async_action_creators.js)
 
 ### Reducers
 
