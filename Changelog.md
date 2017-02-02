@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.2
+
+- Fix broken `Map.fetch.success reducer`
+
 ## 3.0
 
 - Added Map Store
