@@ -1,9 +1,10 @@
 import * as r from "ramda"
+import constants from '../../../constants'
 
 export function prepareRecord(record: Object) {
 	var recordStatus = {
-		busy:          true,
-		pendingCreate: true,
+		[constants.SPECIAL_KEYS.BUSY]:          true,
+		[constants.SPECIAL_KEYS.PENDING_CREATE]: true,
 	}
 
 	return r.merge(record, recordStatus)

@@ -107,7 +107,7 @@ ava_1.default(subject + 'it uses the cid', function (t) {
     var updated = success_1.default(config, curr, record, cid);
     t.is(updated.length, 1);
 });
-ava_1.default.only(subject + " it keeps the cid", function (t) {
+ava_1.default(subject + " it keeps the cid", function (t) {
     var cid = "abc";
     var curr = [
         {

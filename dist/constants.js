@@ -27,6 +27,10 @@ exports.default = {
         UPDATE_SUCCESS: UPDATE_SUCCESS
     },
     SPECIAL_KEYS: {
+        BUSY: "busy",
         CLIENT_GENERATED_ID: "_cid",
+        DELETED: "deleted",
+        PENDING_CREATE: "pendingCreate",
+        PENDING_UPDATE: "pendingUpdate",
     }
 };
