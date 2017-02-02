@@ -86,8 +86,8 @@ const createStoreWithMiddleware = applyMiddleware(
 )(createStore);
 
 const allReducers = combineReducers({
-  users: reduxCrud.reducersFor('users'),
-  posts: reduxCrud.reducersFor('posts'),
+  users: reduxCrud.Map.reducersFor('users'),
+  posts: reduxCrud.Map.reducersFor('posts'),
 });
 
 const store = createStoreWithMiddleware(allReducers);
@@ -102,7 +102,7 @@ There are many cases when the generated reducers are not enough. For example you
 
 import reduxCrud  from 'redux-crud';
 
-const standardReducers = reduxCrud.reducersFor('comments');
+const standardReducers = reduxCrud.Map.reducersFor('comments');
 
 function reducers(state=[], action) {
   switch(action.type) {
@@ -125,6 +125,6 @@ import commentsReducers from './comments/reducers';
 
 const allReducers = combineReducers({
   comments: commentsReducers,
-  posts:    reduxCrud.reducersFor('posts'),
+  posts:    reduxCrud.Map.reducersFor('posts'),
 });
 ```
