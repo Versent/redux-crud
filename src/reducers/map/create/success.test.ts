@@ -35,7 +35,7 @@ test(subject + " it throws if it cannot find config.key", function(t) {
 	t.throws(f, /users.createSuccess: Expected config.key/)
 })
 
-test(subject + " doesnt mutate the original collection", function(t){
+test(subject + " doesn't mutate the original collection", function(t){
 	var curr = getCurrent()
 	var record = {
 		id: 3,
@@ -70,7 +70,7 @@ test(subject + " adds the record", function(t) {
 	t.deepEqual(actual, expected)
 })
 
-test(subject + " doesnt mutate the given record", function(t) {
+test(subject + " doesn't mutate the given record", function(t) {
 	var curr = getCurrent()
 
 	function getRecord() {
@@ -122,7 +122,7 @@ test(subject + " uses the given key", function(t) {
 	t.is(r.values(updated).length, 1)
 })
 
-test(subject + " it throws when record doesnt have an id", function(t) {
+test(subject + " it throws when record doesn't have an id", function(t) {
 	var curr = getCurrent()
 	var record = {
 		name: "Green"
@@ -137,8 +137,8 @@ test(subject + " it throws when record doesnt have an id", function(t) {
 test(subject + " it uses the cid", function(t) {
 	var cid = "abc"
 	var curr = {
-		"abc": {
-			id: "abc",
+		[cid]: {
+			id: cid,
 			name: "Green"
 		}
 	}
@@ -151,8 +151,27 @@ test(subject + " it uses the cid", function(t) {
 	var actualKeys = r.keys(updated)
 	var expectedKeys = ["3"] // Verify that key was updated too
 
-	t.deepEqual(actualKeys, expectedKeys)
-	t.is(r.values(updated).length, 1)
+	t.same(actualKeys, expectedKeys)
+})
+
+test(subject + " it keeps the cid", function(t) {
+	var cid = "abc"
+	var curr = {
+		[cid]: {
+			id: cid,
+			name: "Green"
+		}
+	}
+
+	var record = {
+		id: 3,
+		name: "Green"
+	}
+
+	var updated = reducer(config, curr, record, cid)
+	var updatedRecord = updated["3"]
+
+	t.same(updatedRecord._cid, cid)
 })
 
 test(subject + " removes busy and pendingCreate", function(t) {

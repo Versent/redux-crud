@@ -11,18 +11,21 @@ var invariantArgs: InvariantsBaseArgs = {
 	canBeArray: false,
 }
 
-export default function success(config: Config, current: Map<any>, addedRecord: any, clientGenKey?: string): Map<any> {
+export default function success(config: Config, current: Map<any>, addedRecord: any, clientGeneratedKey?: string): Map<any> {
 	invariants(invariantArgs, config, current, addedRecord)
 
-  var key = config.key
-  var addedRecordKey = addedRecord[key]
+	var key = config.key
+	var addedRecordKey: string = addedRecord[key]
+	var addedRecordKeyLens = r.lensProp(addedRecordKey)
 
-  var addedRecordKeyLens = r.lensProp(addedRecordKey)
-  var clientGenKeyLens = r.lensProp(clientGenKey)
+	// Keep the cuid in the record if there is one
+	if (clientGeneratedKey != null) {
+		addedRecord = r.merge(addedRecordKey,  {
+			[constants.SPECIAL_KEYS.CLIENT_GENERATED_ID]: clientGeneratedKey,
+		})
+	}
 
-  if (r.view(clientGenKeyLens, current)) {
-    return r.set(addedRecordKeyLens, addedRecord, r.dissoc(clientGenKey, current))
-  }
+	var currentWithoutClientGeneratedKey = r.dissoc(clientGeneratedKey, current)
 
-  return r.set(addedRecordKeyLens, addedRecord, current)
+	return r.set(addedRecordKeyLens, addedRecord, currentWithoutClientGeneratedKey)
 }

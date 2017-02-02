@@ -1,4 +1,5 @@
 "use strict";
+var r = require("ramda");
 var constants_1 = require("../../../constants");
 var invariants_1 = require("../invariants");
 var reducerName = constants_1.default.REDUCER_NAMES.CREATE_SUCCESS;
@@ -10,6 +11,10 @@ function success(config, current, addedRecord, clientGenKey) {
     invariants_1.default(invariantArgs, config, current, addedRecord);
     var key = config.key;
     var done = false;
+    // Keep the clientGenKey if provided
+    addedRecord = r.merge(addedRecord, (_a = {},
+        _a[constants_1.default.SPECIAL_KEYS.CLIENT_GENERATED_ID] = clientGenKey,
+        _a));
     // Update existing records
     var updatedCollection = current.map(function (record) {
         var recordKey = record[key];
@@ -30,6 +35,7 @@ function success(config, current, addedRecord, clientGenKey) {
         updatedCollection = updatedCollection.concat([addedRecord]);
     }
     return updatedCollection;
+    var _a;
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = success;

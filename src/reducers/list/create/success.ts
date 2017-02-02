@@ -1,3 +1,4 @@
+import * as r from "ramda"
 import constants from '../../../constants'
 import invariants from '../invariants'
 
@@ -14,6 +15,11 @@ export default function success(config: Config, current: Array<any>, addedRecord
 
 	var key = config.key
 	var done = false
+
+	// Keep the clientGenKey if provided
+	addedRecord = r.merge(addedRecord, {
+		[constants.SPECIAL_KEYS.CLIENT_GENERATED_ID]: clientGenKey,
+	})
 
 	// Update existing records
 	var updatedCollection = current.map(function (record) {

@@ -26,5 +26,8 @@ export default {
 		UPDATE_ERROR,
 		UPDATE_START,
 		UPDATE_SUCCESS
+	},
+	SPECIAL_KEYS: {
+		CLIENT_GENERATED_ID: "_cid",
 	}
 }

@@ -107,6 +107,22 @@ ava_1.default(subject + 'it uses the cid', function (t) {
     var updated = success_1.default(config, curr, record, cid);
     t.is(updated.length, 1);
 });
+ava_1.default.only(subject + " it keeps the cid", function (t) {
+    var cid = "abc";
+    var curr = [
+        {
+            id: cid,
+            name: 'Blue'
+        }
+    ];
+    var record = {
+        id: 3,
+        name: "Green"
+    };
+    var updated = success_1.default(config, curr, record, cid);
+    var updatedRecord = updated[0];
+    t.same(updatedRecord._cid, cid);
+});
 ava_1.default(subject + 'removes busy and pendingCreate', function (t) {
     var curr = [{
             busy: true,

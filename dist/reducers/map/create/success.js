@@ -7,16 +7,20 @@ var invariantArgs = {
     reducerName: reducerName,
     canBeArray: false,
 };
-function success(config, current, addedRecord, clientGenKey) {
+function success(config, current, addedRecord, clientGeneratedKey) {
     invariants_1.default(invariantArgs, config, current, addedRecord);
     var key = config.key;
     var addedRecordKey = addedRecord[key];
     var addedRecordKeyLens = r.lensProp(addedRecordKey);
-    var clientGenKeyLens = r.lensProp(clientGenKey);
-    if (r.view(clientGenKeyLens, current)) {
-        return r.set(addedRecordKeyLens, addedRecord, r.dissoc(clientGenKey, current));
+    // Keep the cuid in the record if there is one
+    if (clientGeneratedKey != null) {
+        addedRecord = r.merge(addedRecordKey, (_a = {},
+            _a[constants_1.default.SPECIAL_KEYS.CLIENT_GENERATED_ID] = clientGeneratedKey,
+            _a));
     }
-    return r.set(addedRecordKeyLens, addedRecord, current);
+    var currentWithoutClientGeneratedKey = r.dissoc(clientGeneratedKey, current);
+    return r.set(addedRecordKeyLens, addedRecord, currentWithoutClientGeneratedKey);
+    var _a;
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = success;

@@ -31,7 +31,7 @@ ava_1.default(subject + " it throws if it cannot find config.key", function (t) 
     };
     t.throws(f, /users.createSuccess: Expected config.key/);
 });
-ava_1.default(subject + " doesnt mutate the original collection", function (t) {
+ava_1.default(subject + " doesn't mutate the original collection", function (t) {
     var curr = getCurrent();
     var record = {
         id: 3,
@@ -60,7 +60,7 @@ ava_1.default(subject + " adds the record", function (t) {
     var expected = ["1", "2", "3"];
     t.deepEqual(actual, expected);
 });
-ava_1.default(subject + " doesnt mutate the given record", function (t) {
+ava_1.default(subject + " doesn't mutate the given record", function (t) {
     var curr = getCurrent();
     function getRecord() {
         return {
@@ -103,7 +103,7 @@ ava_1.default(subject + " uses the given key", function (t) {
     var updated = success_1.default(config, curr, record);
     t.is(r.values(updated).length, 1);
 });
-ava_1.default(subject + " it throws when record doesnt have an id", function (t) {
+ava_1.default(subject + " it throws when record doesn't have an id", function (t) {
     var curr = getCurrent();
     var record = {
         name: "Green"
@@ -115,12 +115,12 @@ ava_1.default(subject + " it throws when record doesnt have an id", function (t)
 });
 ava_1.default(subject + " it uses the cid", function (t) {
     var cid = "abc";
-    var curr = {
-        "abc": {
-            id: "abc",
+    var curr = (_a = {},
+        _a[cid] = {
+            id: cid,
             name: "Green"
-        }
-    };
+        },
+        _a);
     var record = {
         id: 3,
         name: "Green"
@@ -128,8 +128,25 @@ ava_1.default(subject + " it uses the cid", function (t) {
     var updated = success_1.default(config, curr, record, cid);
     var actualKeys = r.keys(updated);
     var expectedKeys = ["3"]; // Verify that key was updated too
-    t.deepEqual(actualKeys, expectedKeys);
-    t.is(r.values(updated).length, 1);
+    t.same(actualKeys, expectedKeys);
+    var _a;
+});
+ava_1.default(subject + " it keeps the cid", function (t) {
+    var cid = "abc";
+    var curr = (_a = {},
+        _a[cid] = {
+            id: cid,
+            name: "Green"
+        },
+        _a);
+    var record = {
+        id: 3,
+        name: "Green"
+    };
+    var updated = success_1.default(config, curr, record, cid);
+    var updatedRecord = updated["3"];
+    t.same(updatedRecord._cid, cid);
+    var _a;
 });
 ava_1.default(subject + " removes busy and pendingCreate", function (t) {
     var curr = {
