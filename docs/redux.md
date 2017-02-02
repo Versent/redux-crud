@@ -15,7 +15,7 @@ let actionCreators = {
   }
 }
 
-actionCreators = _.extend(actionCreators, standardActionCreators);
+actionCreators = _.extend(standardActionCreators, actionCreators);
 
 export default actionCreators;
 ```
