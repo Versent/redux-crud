@@ -23,7 +23,7 @@ function getCurrent() {
 	}
 }
 
-test(subject + "it throws if it cannot find config.key", function(t) {
+test(subject + " it throws if it cannot find config.key", function(t) {
 	var curr = getCurrent()
 	var record = {}
 	var config = {
@@ -35,7 +35,7 @@ test(subject + "it throws if it cannot find config.key", function(t) {
 	t.throws(f, /users.createSuccess: Expected config.key/)
 })
 
-test(subject + "doesnt mutate the original collection", function(t){
+test(subject + " doesnt mutate the original collection", function(t){
 	var curr = getCurrent()
 	var record = {
 		id: 3,
@@ -47,7 +47,7 @@ test(subject + "doesnt mutate the original collection", function(t){
 	t.is(r.values(curr).length, 2)
 })
 
-test(subject + "throws if given an array", function(t) {
+test(subject + " throws if given an array", function(t) {
 	var curr    = getCurrent()
 	var record = []
 	function fn() {
@@ -57,7 +57,7 @@ test(subject + "throws if given an array", function(t) {
 	t.throws(fn, TypeError)
 })
 
-test(subject + "adds the record", function(t) {
+test(subject + " adds the record", function(t) {
 	var curr = getCurrent()
 	var record = {
 		id: 3,
@@ -88,7 +88,7 @@ test(subject + " doesnt mutate the given record", function(t) {
 	t.deepEqual(original, expected)
 })
 
-test(subject + "merges if exists", function(t) {
+test(subject + " merges if exists", function(t) {
 	var curr = getCurrent()
 	var record = {
 		id: 2,
@@ -101,25 +101,28 @@ test(subject + "merges if exists", function(t) {
 	t.is(updated["2"].name, "Green")
 })
 
-test(subject + "uses the given key", function(t) {
+test(subject + " uses the given key", function(t) {
 	var config = {
 		key:          "_id",
 		resourceName: "users",
 	}
-	var curr = [{
-		_id: 2,
-		name: "Blue"
-	}]
+	var curr = {
+    2: {
+      _id: 2,
+      name: "Blue"
+    }
+	}
 	var record = {
 		_id: 2,
 		name: "Green"
 	}
+
 	var updated = reducer(config, curr, record)
 
 	t.is(r.values(updated).length, 1)
 })
 
-test(subject + "it throws when record doesnt have an id", function(t) {
+test(subject + " it throws when record doesnt have an id", function(t) {
 	var curr = getCurrent()
 	var record = {
 		name: "Green"
@@ -131,23 +134,28 @@ test(subject + "it throws when record doesnt have an id", function(t) {
 	t.throws(f, /users.createSuccess: Expected record to have .id/)
 })
 
-test(subject + "it uses the cid", function(t) {
+test(subject + " it uses the cid", function(t) {
 	var cid = "abc"
-	var curr = [
-		{
-			id: cid,
-			name: "Blue"
+	var curr = {
+		"abc": {
+			id: "abc",
+			name: "Green"
 		}
-	]
+	}
 	var record = {
 		id: 3,
 		name: "Green"
 	}
+
 	var updated = reducer(config, curr, record, cid)
+	var actualKeys = r.keys(updated)
+	var expectedKeys = ["3"] // Verify that key was updated too
+
+	t.deepEqual(actualKeys, expectedKeys)
 	t.is(r.values(updated).length, 1)
 })
 
-test(subject + "removes busy and pendingCreate", function(t) {
+test(subject + " removes busy and pendingCreate", function(t) {
 	var curr = {
 		2: {
 			busy: true,
