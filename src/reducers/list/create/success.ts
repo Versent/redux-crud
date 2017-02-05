@@ -10,23 +10,25 @@ var invariantArgs: InvariantsBaseArgs = {
 	canBeArray: false,
 }
 
-export default function success(config: Config, current: Array<any>, addedRecord: any, clientGenKey?: string): Array<any> {
+export default function success(config: Config, current: Array<any>, addedRecord: any, clientGeneratedKey?: string): Array<any> {
 	invariants(invariantArgs, config, current, addedRecord)
 
 	var key = config.key
 	var done = false
 
-	// Keep the clientGenKey if provided
-	addedRecord = r.merge(addedRecord, {
-		[constants.SPECIAL_KEYS.CLIENT_GENERATED_ID]: clientGenKey,
-	})
+	// Keep the clientGeneratedKey if provided
+	if (clientGeneratedKey != null) {
+		addedRecord = r.merge(addedRecord, {
+			[constants.SPECIAL_KEYS.CLIENT_GENERATED_ID]: clientGeneratedKey,
+		})
+	}
 
 	// Update existing records
 	var updatedCollection = current.map(function (record) {
 		var recordKey = record[key]
 		if (recordKey == null) throw new Error('Expected record to have ' + key)
 		var isSameKey = recordKey === addedRecord[key]
-		var isSameClientGetKey = (clientGenKey != null && clientGenKey === recordKey)
+		var isSameClientGetKey = (clientGeneratedKey != null && clientGeneratedKey === recordKey)
 		if (isSameKey || isSameClientGetKey) {
 			done = true
 			return addedRecord

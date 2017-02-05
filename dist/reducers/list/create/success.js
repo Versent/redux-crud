@@ -7,21 +7,21 @@ var invariantArgs = {
     reducerName: reducerName,
     canBeArray: false,
 };
-function success(config, current, addedRecord, clientGenKey) {
+function success(config, current, addedRecord, clientGeneratedKey) {
     invariants_1.default(invariantArgs, config, current, addedRecord);
     var key = config.key;
     var done = false;
-    // Keep the clientGenKey if provided
-    addedRecord = r.merge(addedRecord, (_a = {},
-        _a[constants_1.default.SPECIAL_KEYS.CLIENT_GENERATED_ID] = clientGenKey,
-        _a));
-    // Update existing records
+    if (clientGeneratedKey != null) {
+        addedRecord = r.merge(addedRecord, (_a = {},
+            _a[constants_1.default.SPECIAL_KEYS.CLIENT_GENERATED_ID] = clientGeneratedKey,
+            _a));
+    }
     var updatedCollection = current.map(function (record) {
         var recordKey = record[key];
         if (recordKey == null)
             throw new Error('Expected record to have ' + key);
         var isSameKey = recordKey === addedRecord[key];
-        var isSameClientGetKey = (clientGenKey != null && clientGenKey === recordKey);
+        var isSameClientGetKey = (clientGeneratedKey != null && clientGeneratedKey === recordKey);
         if (isSameKey || isSameClientGetKey) {
             done = true;
             return addedRecord;
