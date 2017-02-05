@@ -11,11 +11,13 @@ function success(config, current, addedRecord, clientGeneratedKey) {
     invariants_1.default(invariantArgs, config, current, addedRecord);
     var key = config.key;
     var done = false;
+    // Keep the clientGeneratedKey if provided
     if (clientGeneratedKey != null) {
         addedRecord = r.merge(addedRecord, (_a = {},
             _a[constants_1.default.SPECIAL_KEYS.CLIENT_GENERATED_ID] = clientGeneratedKey,
             _a));
     }
+    // Update existing records
     var updatedCollection = current.map(function (record) {
         var recordKey = record[key];
         if (recordKey == null)
