@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.3
+
+- Fixed the List reducer adding a null client generated key when not needed.
+
 ## 3.0.2
 
 - Fix broken `Map.fetch.success reducer`
