@@ -20,7 +20,7 @@ export default function success(config: Config, current: Map<any>, addedRecord: 
 
 	// Keep the cuid in the record if there is one
 	if (clientGeneratedKey != null) {
-		addedRecord = r.merge(addedRecordKey,  {
+		addedRecord = r.merge(addedRecord,  {
 			[constants.SPECIAL_KEYS.CLIENT_GENERATED_ID]: clientGeneratedKey,
 		})
 	}

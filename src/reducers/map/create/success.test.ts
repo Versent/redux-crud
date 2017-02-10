@@ -134,7 +134,7 @@ test(subject + " it throws when record doesn't have an id", function(t) {
 	t.throws(f, /users.createSuccess: Expected record to have .id/)
 })
 
-test(subject + " it uses the cid", function(t) {
+test(subject + " it uses the cid to merge the record", function(t) {
 	var cid = "abc"
 	var curr = {
 		[cid]: {
@@ -150,6 +150,12 @@ test(subject + " it uses the cid", function(t) {
 	var updated = reducer(config, curr, record, cid)
 	var actualKeys = r.keys(updated)
 	var expectedKeys = ["3"] // Verify that key was updated too
+
+	// Verify that the record was merged
+	t.same(updated['3'], {
+		_cid: 'abc',
+		...record
+	})
 
 	t.same(actualKeys, expectedKeys)
 })
