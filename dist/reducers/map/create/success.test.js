@@ -1,4 +1,12 @@
 "use strict";
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 var r = require("ramda");
 var ava_1 = require("ava");
 var constants_1 = require("../../../constants");
@@ -113,7 +121,7 @@ ava_1.default(subject + " it throws when record doesn't have an id", function (t
     };
     t.throws(f, /users.createSuccess: Expected record to have .id/);
 });
-ava_1.default(subject + " it uses the cid", function (t) {
+ava_1.default(subject + " it uses the cid to merge the record", function (t) {
     var cid = "abc";
     var curr = (_a = {},
         _a[cid] = {
@@ -128,6 +136,8 @@ ava_1.default(subject + " it uses the cid", function (t) {
     var updated = success_1.default(config, curr, record, cid);
     var actualKeys = r.keys(updated);
     var expectedKeys = ["3"]; // Verify that key was updated too
+    // Verify that the record was merged
+    t.same(updated['3'], __assign({ _cid: 'abc' }, record));
     t.same(actualKeys, expectedKeys);
     var _a;
 });

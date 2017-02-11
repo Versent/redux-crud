@@ -14,7 +14,7 @@ function success(config, current, addedRecord, clientGeneratedKey) {
     var addedRecordKeyLens = r.lensProp(addedRecordKey);
     // Keep the cuid in the record if there is one
     if (clientGeneratedKey != null) {
-        addedRecord = r.merge(addedRecordKey, (_a = {},
+        addedRecord = r.merge(addedRecord, (_a = {},
             _a[constants_1.default.SPECIAL_KEYS.CLIENT_GENERATED_ID] = clientGeneratedKey,
             _a));
     }
