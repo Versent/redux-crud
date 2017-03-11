@@ -26,7 +26,7 @@ var baseReducers = {
 function reducersFor(resourceName, args, deps) {
     if (args === void 0) { args = {}; }
     var reducers = r.merge(baseReducers, deps);
-    return reducersFor_1.default(resourceName, args, [], reducers);
+    return reducersFor_1.default(resourceName, args, {}, reducers);
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = reducersFor;

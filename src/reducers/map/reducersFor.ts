@@ -30,5 +30,5 @@ const baseReducers = {
 
 export default function reducersFor(resourceName: string, args = {}, deps?) {
 	const reducers = r.merge(baseReducers, deps)
-	return commonReducersFor(resourceName, args, [], reducers)
+	return commonReducersFor(resourceName, args, {}, reducers)
 }
