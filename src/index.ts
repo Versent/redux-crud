@@ -5,6 +5,8 @@ import constants         from "./constants"
 import List              from "./reducers/list"
 import Map               from "./reducers/map"
 
+export * from "./types";
+
 export default {
 	actionCreatorsFor,
 	actionTypesFor,

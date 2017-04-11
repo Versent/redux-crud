@@ -39,3 +39,12 @@ export interface StoreList {
 export interface StoreMap {
 	remove: (config: Config, current: Map<any>, record: any) => Map<any>
 }
+
+export interface Record {
+	id: string|number;
+	_cid?: string|number;
+	busy?: boolean;
+	deleted?: boolean;
+	pendingCreate?: boolean;
+	pendingUpdate?: boolean;
+}

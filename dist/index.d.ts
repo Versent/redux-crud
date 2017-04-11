@@ -1,13 +1,14 @@
 import { Config } from "./types";
+export * from "./types";
 declare var _default: {
-    actionCreatorsFor: (resourceName: string, config?: Config) => {
+    actionCreatorsFor: <T>(resourceName: string, config?: Config) => {
         fetchStart(data?: any): {
             data: any;
             type: any;
         };
-        fetchSuccess(records?: any, data?: any): {
+        fetchSuccess(records?: T[], data?: any): {
             data: any;
-            records: any;
+            records: T[];
             type: any;
         };
         fetchError(error?: any, data?: any): {
@@ -15,53 +16,53 @@ declare var _default: {
             error: any;
             type: any;
         };
-        createStart(record?: any, data?: any): {
+        createStart(record?: T, data?: any): {
             data: any;
-            record: any;
+            record: T;
             type: any;
         };
-        createSuccess(record?: any, clientGeneratedKey?: any, data?: any): {
+        createSuccess(record?: T, clientGeneratedKey?: any, data?: any): {
             cid: any;
             data: any;
-            record: any;
+            record: T;
             type: any;
         };
-        createError(error?: any, record?: any, data?: any): {
+        createError(error?: any, record?: T, data?: any): {
             data: any;
             error: any;
-            record: any;
+            record: T;
             type: any;
         };
-        updateStart(record?: any, data?: any): {
+        updateStart(record?: T, data?: any): {
             data: any;
-            record: any;
+            record: T;
             type: any;
         };
-        updateSuccess(record?: any, data?: any): {
+        updateSuccess(record?: T, data?: any): {
             data: any;
-            record: any;
+            record: T;
             type: any;
         };
-        updateError(error?: any, record?: any, data?: any): {
-            data: any;
-            error: any;
-            record: any;
-            type: any;
-        };
-        deleteStart(record?: any, data?: any): {
-            data: any;
-            record: any;
-            type: any;
-        };
-        deleteSuccess(record?: any, data?: any): {
-            data: any;
-            record: any;
-            type: any;
-        };
-        deleteError(error?: any, record?: any, data?: any): {
+        updateError(error?: any, record?: T, data?: any): {
             data: any;
             error: any;
-            record: any;
+            record: T;
+            type: any;
+        };
+        deleteStart(record?: T, data?: any): {
+            data: any;
+            record: T;
+            type: any;
+        };
+        deleteSuccess(record?: T, data?: any): {
+            data: any;
+            record: T;
+            type: any;
+        };
+        deleteError(error?: any, record?: T, data?: any): {
+            data: any;
+            error: any;
+            record: T;
             type: any;
         };
     };

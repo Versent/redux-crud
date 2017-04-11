@@ -10,7 +10,7 @@ import { Config, ReducerName } from "./types"
 
 // const invariant = require("invariant")
 
-function actionCreatorsFor(resourceName: string, config?: Config) {
+function actionCreatorsFor<T>(resourceName: string, config?: Config) {
 	if (resourceName == null) throw new Error("actionCreatorsFor: Expected resourceName")
 
 	config = config || getDefaultConfig(resourceName)
@@ -41,7 +41,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 			}
 		},
 
-		fetchSuccess(records?, data?) {
+		fetchSuccess(records?: T[], data?) {
 			var name: ReducerName = "fetchSuccess"
 			assertManyRecords(name, records)
 
@@ -63,7 +63,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 			}
 		},
 
-		createStart(record?, data?) {
+		createStart(record?: T, data?) {
 			var name: ReducerName = "createStart"
 			assertOneRecord(name, record)
 
@@ -74,7 +74,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 			}
 		},
 
-		createSuccess(record?, clientGeneratedKey?, data?) {
+		createSuccess(record?: T, clientGeneratedKey?, data?) {
 			var name: ReducerName = "createSuccess"
 			assertOneRecord(name, record)
 
@@ -86,7 +86,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 			}
 		},
 
-		createError(error?, record?, data?) {
+		createError(error?, record?: T, data?) {
 			var name: ReducerName = "createError"
 			assertError(name, error)
 			assertOneRecord(name, record)
@@ -99,7 +99,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 			}
 		},
 
-		updateStart(record?, data?) {
+		updateStart(record?: T, data?) {
 			var name: ReducerName = "updateStart"
 			assertOneRecord(name, record)
 
@@ -110,7 +110,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 			}
 		},
 
-		updateSuccess(record?, data?) {
+		updateSuccess(record?: T, data?) {
 			var name: ReducerName = "updateSuccess"
 			assertOneRecord(name, record)
 
@@ -121,7 +121,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 			}
 		},
 
-		updateError(error?, record?, data?) {
+		updateError(error?, record?: T, data?) {
 			var name: ReducerName = "updateError"
 			assertError(name, error)
 			assertOneRecord(name, record)
@@ -134,7 +134,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 			}
 		},
 
-		deleteStart(record?, data?) {
+		deleteStart(record?: T, data?) {
 			var name: ReducerName = "deleteStart"
 			assertOneRecord(name, record)
 
@@ -145,7 +145,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 			}
 		},
 
-		deleteSuccess(record?, data?) {
+		deleteSuccess(record?: T, data?) {
 			var name: ReducerName = "deleteSuccess"
 			assertOneRecord(name, record)
 
@@ -156,7 +156,7 @@ function actionCreatorsFor(resourceName: string, config?: Config) {
 			}
 		},
 
-		deleteError(error?, record?, data?) {
+		deleteError(error?, record?: T, data?) {
 			var name: ReducerName = "deleteError"
 			assertError(name, error)
 			assertOneRecord(name, record)
