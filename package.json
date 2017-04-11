@@ -3,7 +3,9 @@
   "version": "3.0.4",
   "description": "Redux CRUD",
   "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
     "test": "tsc && ava dist/**/*.test.js",
     "lint": "tslint src/**/*.ts"
   },
