@@ -177,6 +177,18 @@ var actionCreators  = reduxCrud.actionCreatorsFor('users');
 }
 ```
 
+`actionCreatorsFor` takes an optional config object as second argument:
+
+```js
+reduxCrud.actionCreatorsFor('users', {key: '_id'});
+```
+
+Don't forget to do the same thing in reducers, with `reducersFor`:
+
+```js
+reduxCrud.reducersFor('users', {key: '_id'});
+```
+
 ### The `data` attribute
 
 The `data` attribute in the actions payload is optional. The reducer doesn't do anything with this. This is only provided in case you want to pass extra information in the actions.
