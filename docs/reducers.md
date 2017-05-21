@@ -54,6 +54,12 @@ function (state, action) {
 reduxCrud.reducersFor('users', {key: '_id'});
 ```
 
+Don't forget to do the same thing in actions, with `actionCreatorsFor`:
+
+```js
+reduxCrud.actionCreatorsFor('users', {key: '_id'});
+```
+
 __config.key__
 
 Key to be used for merging records. Default: 'id'.
