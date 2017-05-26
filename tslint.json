@@ -11,11 +11,10 @@
      * Any rules specified here will override those from the base config we are extending.
      */
     "curly": false,
-    "indent": [true, "tabs"],
     "no-var-keyword": false,
     "only-arrow-functions": false,
     "ordered-imports": false,
-    "semicolon": [true, "never"]
+	"trailing-comma": false
   },
   "jsRules": {
     /*
