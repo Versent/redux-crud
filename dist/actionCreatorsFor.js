@@ -28,7 +28,7 @@ function actionCreatorsFor(resourceName, config) {
         fetchStart: function (data) {
             return {
                 data: data,
-                type: actionTypes.fetchStart,
+                type: actionTypes.fetchStart
             };
         },
         fetchSuccess: function (records, data) {
@@ -37,7 +37,7 @@ function actionCreatorsFor(resourceName, config) {
             return {
                 data: data,
                 records: records,
-                type: actionTypes.fetchSuccess,
+                type: actionTypes.fetchSuccess
             };
         },
         fetchError: function (error, data) {
@@ -46,7 +46,7 @@ function actionCreatorsFor(resourceName, config) {
             return {
                 data: data,
                 error: error,
-                type: actionTypes.fetchError,
+                type: actionTypes.fetchError
             };
         },
         createStart: function (record, data) {
@@ -55,7 +55,7 @@ function actionCreatorsFor(resourceName, config) {
             return {
                 data: data,
                 record: record,
-                type: actionTypes.createStart,
+                type: actionTypes.createStart
             };
         },
         createSuccess: function (record, clientGeneratedKey, data) {
@@ -65,7 +65,7 @@ function actionCreatorsFor(resourceName, config) {
                 cid: clientGeneratedKey,
                 data: data,
                 record: record,
-                type: actionTypes.createSuccess,
+                type: actionTypes.createSuccess
             };
         },
         createError: function (error, record, data) {
@@ -76,7 +76,7 @@ function actionCreatorsFor(resourceName, config) {
                 data: data,
                 error: error,
                 record: record,
-                type: actionTypes.createError,
+                type: actionTypes.createError
             };
         },
         updateStart: function (record, data) {
@@ -85,7 +85,7 @@ function actionCreatorsFor(resourceName, config) {
             return {
                 data: data,
                 record: record,
-                type: actionTypes.updateStart,
+                type: actionTypes.updateStart
             };
         },
         updateSuccess: function (record, data) {
@@ -94,7 +94,7 @@ function actionCreatorsFor(resourceName, config) {
             return {
                 data: data,
                 record: record,
-                type: actionTypes.updateSuccess,
+                type: actionTypes.updateSuccess
             };
         },
         updateError: function (error, record, data) {
@@ -105,7 +105,7 @@ function actionCreatorsFor(resourceName, config) {
                 data: data,
                 error: error,
                 record: record,
-                type: actionTypes.updateError,
+                type: actionTypes.updateError
             };
         },
         deleteStart: function (record, data) {
@@ -114,7 +114,7 @@ function actionCreatorsFor(resourceName, config) {
             return {
                 data: data,
                 record: record,
-                type: actionTypes.deleteStart,
+                type: actionTypes.deleteStart
             };
         },
         deleteSuccess: function (record, data) {
@@ -123,7 +123,7 @@ function actionCreatorsFor(resourceName, config) {
             return {
                 data: data,
                 record: record,
-                type: actionTypes.deleteSuccess,
+                type: actionTypes.deleteSuccess
             };
         },
         deleteError: function (error, record, data) {
@@ -134,7 +134,7 @@ function actionCreatorsFor(resourceName, config) {
                 data: data,
                 error: error,
                 record: record,
-                type: actionTypes.deleteError,
+                type: actionTypes.deleteError
             };
         }
     };

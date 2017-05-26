@@ -6,7 +6,7 @@ function invariantsList(invariantArgs, config, current, record) {
         assertValidStore: store_1.default.assert,
         config: config,
         current: current,
-        record: record,
+        record: record
     };
     invariants_1.default(invariantArgs, extra);
 }

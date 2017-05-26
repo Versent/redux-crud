@@ -5,7 +5,7 @@ var constants_1 = require("../../../constants");
 var error_1 = require("./error");
 var config = {
     key: constants_1.default.DEFAULT_KEY,
-    resourceName: "users",
+    resourceName: "users"
 };
 var subject = constants_1.default.REDUCER_NAMES.UPDATE_ERROR;
 function getCurrent() {
@@ -14,13 +14,13 @@ function getCurrent() {
             id: 1,
             name: "Blue",
             busy: true,
-            pendingUpdate: true,
+            pendingUpdate: true
         },
         2: {
             id: 2,
             name: "Red",
             busy: true,
-            pendingUpdate: true,
+            pendingUpdate: true
         }
     };
 }
@@ -70,18 +70,18 @@ ava_1.default(subject + "doesnt remove pendingUpdate", function (t) {
 ava_1.default(subject + "uses the given key", function (t) {
     var config = {
         key: "_id",
-        resourceName: "users",
+        resourceName: "users"
     };
     var curr = {
         2: {
             _id: 2,
             name: "Blue",
             busy: true,
-            unsaved: true,
+            unsaved: true
         }
     };
     var record = {
-        _id: 2,
+        _id: 2
     };
     var updated = error_1.default(config, curr, record);
     t.truthy(updated["2"].busy == null, "removes busy");

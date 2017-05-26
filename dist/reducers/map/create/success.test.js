@@ -14,7 +14,7 @@ var success_1 = require("./success");
 var subject = constants_1.default.REDUCER_NAMES.CREATE_SUCCESS;
 var config = {
     key: constants_1.default.DEFAULT_KEY,
-    resourceName: "users",
+    resourceName: "users"
 };
 function getCurrent() {
     return {
@@ -96,7 +96,7 @@ ava_1.default(subject + " merges if exists", function (t) {
 ava_1.default(subject + " uses the given key", function (t) {
     var config = {
         key: "_id",
-        resourceName: "users",
+        resourceName: "users"
     };
     var curr = {
         2: {
@@ -137,7 +137,7 @@ ava_1.default(subject + " it uses the cid to merge the record", function (t) {
     var actualKeys = r.keys(updated);
     var expectedKeys = ["3"]; // Verify that key was updated too
     // Verify that the record was merged
-    t.same(updated['3'], __assign({ _cid: 'abc' }, record));
+    t.same(updated["3"], __assign({ _cid: "abc" }, record));
     t.same(actualKeys, expectedKeys);
     var _a;
 });
@@ -164,7 +164,7 @@ ava_1.default(subject + " removes busy and pendingCreate", function (t) {
             busy: true,
             id: 2,
             name: "Green",
-            pendingCreate: true,
+            pendingCreate: true
         }
     };
     var record = {

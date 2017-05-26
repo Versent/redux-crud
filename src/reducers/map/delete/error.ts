@@ -1,33 +1,37 @@
-import * as r from "ramda"
+import * as r from "ramda";
 
-import constants from "../../../constants"
-import findByKey from "../../../utils/findByKey"
-import invariants from "../invariants"
-import store from "../store"
+import constants from "../../../constants";
+import findByKey from "../../../utils/findByKey";
+import invariants from "../invariants";
+import store from "../store";
 
-import { Config, InvariantsBaseArgs, Map, ReducerName } from "../../../types"
+import {Config, InvariantsBaseArgs, Map, ReducerName} from "../../../types";
 
-var reducerName: ReducerName = constants.REDUCER_NAMES.DELETE_ERROR
+var reducerName: ReducerName = constants.REDUCER_NAMES.DELETE_ERROR;
 var invariantArgs: InvariantsBaseArgs = {
-	reducerName,
-	canBeArray: false,
-}
+  reducerName,
+  canBeArray: false
+};
 
-export default function error(config: Config, current: Map<any>, record: any): Map<any> {
-	invariants(invariantArgs, config, current, record)
+export default function error(
+  config: Config,
+  current: Map<any>,
+  record: any
+): Map<any> {
+  invariants(invariantArgs, config, current, record);
 
-	var key = config.key
-	var deleteId = record[key]
-	
-	// Find the record
-	var deleteRecord = current[deleteId]
+  var key = config.key;
+  var deleteId = record[key];
 
-	if (deleteRecord == null) {
-		return current
-	} else {
-		// Remove deleted and busy
-		deleteRecord = r.omit(["deleted", "busy"], deleteRecord)
+  // Find the record
+  var deleteRecord = current[deleteId];
 
-		return r.merge(current, {[deleteId]: deleteRecord})
-	}
+  if (deleteRecord == null) {
+    return current;
+  } else {
+    // Remove deleted and busy
+    deleteRecord = r.omit(["deleted", "busy"], deleteRecord);
+
+    return r.merge(current, {[deleteId]: deleteRecord});
+  }
 }

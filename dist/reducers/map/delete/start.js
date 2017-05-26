@@ -6,7 +6,7 @@ var store_1 = require("../store");
 var reducerName = constants_1.default.REDUCER_NAMES.DELETE_START;
 var invariantArgs = {
     reducerName: reducerName,
-    canBeArray: false,
+    canBeArray: false
 };
 function start(config, current, record) {
     invariants_1.default(invariantArgs, config, current, record);

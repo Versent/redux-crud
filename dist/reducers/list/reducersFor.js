@@ -21,7 +21,7 @@ var baseReducers = {
     fetchSuccess: success_3.default,
     updateError: error_3.default,
     updateStart: start_3.default,
-    updateSuccess: success_4.default,
+    updateSuccess: success_4.default
 };
 function reducersFor(resourceName, args, deps) {
     if (args === void 0) { args = {}; }

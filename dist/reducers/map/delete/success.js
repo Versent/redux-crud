@@ -5,7 +5,7 @@ var constants_1 = require("../../../constants");
 var reducerName = constants_1.default.REDUCER_NAMES.DELETE_SUCCESS;
 var invariantArgs = {
     reducerName: reducerName,
-    canBeArray: false,
+    canBeArray: false
 };
 function success(config, current, record) {
     invariants_1.default(invariantArgs, config, current, record);

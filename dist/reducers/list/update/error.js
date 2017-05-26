@@ -7,7 +7,7 @@ var store_1 = require("../store");
 var reducerName = constants_1.default.REDUCER_NAMES.UPDATE_ERROR;
 var invariantArgs = {
     reducerName: reducerName,
-    canBeArray: false,
+    canBeArray: false
 };
 function error(config, current, record) {
     invariants_1.default(invariantArgs, config, current, record);

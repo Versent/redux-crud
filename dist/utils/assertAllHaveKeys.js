@@ -5,7 +5,10 @@ function default_1(config, reducerName, records) {
     var haskey = r.has(config.key);
     var allKeys = r.all(haskey, records);
     if (!allKeys) {
-        throw new Error(reducerName + ": Expected all records to have a value for the store\'s key `" + config.key + "`");
+        throw new Error(reducerName +
+            ": Expected all records to have a value for the store's key `" +
+            config.key +
+            "`");
     }
 }
 Object.defineProperty(exports, "__esModule", { value: true });

@@ -7,7 +7,7 @@ var wrapArray_1 = require("../../../utils/wrapArray");
 var reducerName = constants_1.default.REDUCER_NAMES.FETCH_SUCCESS;
 var invariantArgs = {
     reducerName: reducerName,
-    canBeArray: true,
+    canBeArray: true
 };
 function success(config, current, records, emptyState, replace) {
     if (replace === void 0) { replace = false; }

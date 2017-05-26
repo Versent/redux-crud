@@ -4,7 +4,7 @@ var start_1 = require("./start");
 var ava_1 = require("ava");
 var config = {
     key: constants_1.default.DEFAULT_KEY,
-    resourceName: "users",
+    resourceName: "users"
 };
 var subject = constants_1.default.REDUCER_NAMES.UPDATE_START;
 function getCurrent() {
@@ -12,7 +12,8 @@ function getCurrent() {
         {
             id: 1,
             name: "Blue"
-        }, {
+        },
+        {
             id: 2,
             name: "Red"
         }
@@ -62,12 +63,14 @@ ava_1.default(subject + "updates existing", function (t) {
 ava_1.default(subject + "uses the given key", function (t) {
     var config = {
         key: "_id",
-        resourceName: "users",
+        resourceName: "users"
     };
-    var curr = [{
+    var curr = [
+        {
             _id: 2,
             name: "Blue"
-        }];
+        }
+    ];
     var record = {
         _id: 2,
         name: "Green"

@@ -4,7 +4,7 @@ var start_1 = require("./start");
 var ava_1 = require("ava");
 var config = {
     key: constants_1.default.DEFAULT_KEY,
-    resourceName: "users",
+    resourceName: "users"
 };
 var subject = constants_1.default.REDUCER_NAMES.DELETE_START;
 function getCurrent() {
@@ -52,15 +52,15 @@ ava_1.default(subject + "doesnt mutate", function (t) {
 ava_1.default(subject + "uses the given key", function (t) {
     var config = {
         key: "_id",
-        resourceName: "users",
+        resourceName: "users"
     };
     var curr = {
         1: {
-            _id: 1,
+            _id: 1
         }
     };
     var record = {
-        _id: 1,
+        _id: 1
     };
     var updated = start_1.default(config, curr, record);
     t.truthy(updated["1"].deleted, "adds deleted");

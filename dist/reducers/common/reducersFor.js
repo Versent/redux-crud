@@ -5,16 +5,16 @@ var constants_1 = require("../../constants");
 function reducersFor(resourceName, args, emptyState, reducers) {
     if (args === void 0) { args = {}; }
     if (resourceName == null)
-        throw new Error('reducersFor: Expected resourceName');
+        throw new Error("reducersFor: Expected resourceName");
     var defaults = {
         key: constants_1.default.DEFAULT_KEY,
-        resourceName: resourceName,
+        resourceName: resourceName
     };
     var config = r.merge(defaults, args);
     return function getReducer(state, action) {
         state = state || emptyState;
         if (action == null)
-            throw new Error(resourceName + ' reducers: Expected action');
+            throw new Error(resourceName + " reducers: Expected action");
         var actionTypes = actionTypesFor_1.default(resourceName);
         var record = action.record;
         switch (action.type) {

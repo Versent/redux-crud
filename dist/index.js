@@ -10,5 +10,5 @@ exports.default = {
     actionTypesFor: actionTypesFor_1.default,
     constants: constants_1.default,
     List: list_1.default,
-    Map: map_1.default,
+    Map: map_1.default
 };
