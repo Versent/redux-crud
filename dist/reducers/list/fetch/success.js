@@ -9,13 +9,14 @@ var invariantArgs = {
     reducerName: reducerName,
     canBeArray: true,
 };
-function success(config, current, records) {
+function success(config, current, records, emptyState, replace) {
+    if (replace === void 0) { replace = false; }
     invariants_1.default(invariantArgs, config, current, records);
     // wrap array
     records = wrapArray_1.default(records);
     // All given records must have a key
     assertAllHaveKeys_1.default(config, reducerName, records);
-    return store_1.default.merge(current, records, config.key);
+    return store_1.default.merge(replace ? emptyState : current, records, config.key);
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = success;

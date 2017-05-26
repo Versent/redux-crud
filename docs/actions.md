@@ -76,6 +76,10 @@ var actionCreators  = reduxCrud.actionCreatorsFor('users');
     };
   },
 
+  /*
+  If data.replace is true, existing records in the store will
+  be replaced instead of merged.
+  */
   fetchSuccess: function(users, data) {
     return {
       data:    data,

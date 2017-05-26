@@ -19,7 +19,18 @@ ava_1.default(subject + 'calls fetchSuccess', function (t) {
         records: users,
         type: 'USERS_FETCH_SUCCESS',
     });
-    td.verify(fetchSuccess(config, current, users));
+    td.verify(fetchSuccess(config, current, users, [], undefined));
+});
+ava_1.default(subject + 'calls fetchSuccess with replace', function (t) {
+    var fetchSuccess = td.function();
+    var reducers = reducersFor_1.default('users', {}, { fetchSuccess: fetchSuccess });
+    var users = [user];
+    reducers(current, {
+        data: { replace: true },
+        records: users,
+        type: 'USERS_FETCH_SUCCESS',
+    });
+    td.verify(fetchSuccess(config, current, users, [], true));
 });
 ava_1.default(subject + 'calls createStart', function (t) {
     var createStart = td.function();

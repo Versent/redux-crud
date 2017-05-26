@@ -19,7 +19,7 @@ function reducersFor(resourceName, args, emptyState, reducers) {
         var record = action.record;
         switch (action.type) {
             case actionTypes.fetchSuccess:
-                return reducers.fetchSuccess(config, state, action.records);
+                return reducers.fetchSuccess(config, state, action.records, emptyState, action.data && action.data.replace);
             case actionTypes.createStart:
                 return reducers.createStart(config, state, record);
             case actionTypes.createSuccess:
