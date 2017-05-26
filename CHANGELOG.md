@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1
+
+- Added `replace` option to `fetchSucess` action.
+
 ## 3.0.3
 
 - Fixed the List reducer adding a null client generated key when not needed.
