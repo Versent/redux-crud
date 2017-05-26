@@ -24,7 +24,7 @@ ava_1.default(subject + ' adds the records', function (t) {
             id: 3,
             name: 'Green'
         }];
-    var updated = success_1.default(config, curr, more);
+    var updated = success_1.default(config, curr, more, []);
     t.is(updated.length, 3);
 });
 ava_1.default(subject + ' doesnt mutate the original collection', function (t) {
@@ -33,7 +33,7 @@ ava_1.default(subject + ' doesnt mutate the original collection', function (t) {
             id: 3,
             name: 'Green'
         }];
-    var updated = success_1.default(config, curr, more);
+    var updated = success_1.default(config, curr, more, []);
     t.is(curr.length, 2);
     t.is(updated.length, 3);
 });
@@ -43,10 +43,21 @@ ava_1.default(subject + ' merges', function (t) {
             id: 2,
             name: 'Green'
         }];
-    var updated = success_1.default(config, curr, more);
+    var updated = success_1.default(config, curr, more, []);
     t.is(updated.length, 2);
     t.is(updated[1].id, 2);
     t.is(updated[1].name, 'Green');
+});
+ava_1.default(subject + ' replaces', function (t) {
+    var curr = getCurrent();
+    var more = [{
+            id: 2,
+            name: 'Green'
+        }];
+    var updated = success_1.default(config, curr, more, [], true);
+    t.is(updated.length, 1);
+    t.is(updated[0].id, 2);
+    t.is(updated[0].name, 'Green');
 });
 ava_1.default(subject + 'preserves the order', function (t) {
     var curr = [];
@@ -60,7 +71,7 @@ ava_1.default(subject + 'preserves the order', function (t) {
             label: 'Sevent'
         }
     ];
-    var updated = success_1.default(config, curr, more);
+    var updated = success_1.default(config, curr, more, []);
     t.is(updated.length, 2, 'it has two');
     t.is(updated[0].id, 11, 'it is in the right position');
 });
@@ -77,7 +88,7 @@ ava_1.default(subject + 'uses the given key', function (t) {
             _id: 2,
             name: 'Green'
         }];
-    var updated = success_1.default(config, curr, more);
+    var updated = success_1.default(config, curr, more, []);
     t.is(updated.length, 1);
 });
 ava_1.default(subject + 'it throws when records dont have an id', function (t) {
@@ -86,7 +97,7 @@ ava_1.default(subject + 'it throws when records dont have an id', function (t) {
             name: 'Green'
         }];
     var f = function () {
-        success_1.default(config, curr, more);
+        success_1.default(config, curr, more, []);
     };
     t.throws(f);
 });
@@ -96,6 +107,6 @@ ava_1.default(subject + 'can take one record', function (t) {
         id: 3,
         name: 'Green'
     };
-    var updated = success_1.default(config, curr, one);
+    var updated = success_1.default(config, curr, one, []);
     t.is(updated.length, 3);
 });

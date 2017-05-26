@@ -35,7 +35,7 @@ let actionCreators = {
     }
   },
 
-  fetch(page, limit) {
+  fetch(page, limit, replaceExisting) {
     return function(dispatch) {
       const action = baseActionCreators.fetchStart();
       dispatch(action);
@@ -54,7 +54,7 @@ let actionCreators = {
 
       promise.then(function(response) {
           const users = response.data.data;
-          const action = baseActionCreators.fetchSuccess(users);
+          const action = baseActionCreators.fetchSuccess(users, {replace: replaceExisting});
           dispatch(action);
         }, function(response) {
           // dispatch the error action

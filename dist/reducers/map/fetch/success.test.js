@@ -26,7 +26,7 @@ ava_1.default(subject + " adds the records", function (t) {
             id: 3,
             name: "Green"
         }];
-    var updated = success_1.default(config, curr, more);
+    var updated = success_1.default(config, curr, more, {});
     t.is(r.values(updated).length, 3);
 });
 ava_1.default(subject + " doesnt mutate the original collection", function (t) {
@@ -35,7 +35,7 @@ ava_1.default(subject + " doesnt mutate the original collection", function (t) {
             id: 3,
             name: "Green"
         }];
-    var updated = success_1.default(config, curr, more);
+    var updated = success_1.default(config, curr, more, {});
     t.is(r.values(curr).length, 2);
     t.is(r.values(updated).length, 3);
 });
@@ -45,8 +45,19 @@ ava_1.default(subject + " merges", function (t) {
             id: 2,
             name: "Green"
         }];
-    var updated = success_1.default(config, curr, more);
+    var updated = success_1.default(config, curr, more, {});
     t.is(r.values(updated).length, 2);
+    t.is(updated["2"].id, 2);
+    t.is(updated["2"].name, "Green");
+});
+ava_1.default(subject + ' replaces', function (t) {
+    var curr = getCurrent();
+    var more = [{
+            id: 2,
+            name: 'Green'
+        }];
+    var updated = success_1.default(config, curr, more, {}, true);
+    t.is(r.values(updated).length, 1);
     t.is(updated["2"].id, 2);
     t.is(updated["2"].name, "Green");
 });
@@ -65,7 +76,7 @@ ava_1.default(subject + " uses the given key", function (t) {
             _id: 2,
             name: "Green"
         }];
-    var updated = success_1.default(config, curr, more);
+    var updated = success_1.default(config, curr, more, {});
     t.is(r.values(updated).length, 1);
 });
 ava_1.default(subject + " it throws when records dont have an id", function (t) {
@@ -74,7 +85,7 @@ ava_1.default(subject + " it throws when records dont have an id", function (t) 
             name: "Green"
         }];
     var f = function () {
-        success_1.default(config, curr, more);
+        success_1.default(config, curr, more, {});
     };
     t.throws(f);
 });
@@ -84,6 +95,6 @@ ava_1.default(subject + " can take one record", function (t) {
         id: 3,
         name: "Green"
     };
-    var updated = success_1.default(config, curr, one);
+    var updated = success_1.default(config, curr, one, {});
     t.is(r.values(updated).length, 3);
 });

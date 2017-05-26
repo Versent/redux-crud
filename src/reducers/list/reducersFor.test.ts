@@ -25,7 +25,22 @@ test(subject + 'calls fetchSuccess', function(t) {
 		type:   'USERS_FETCH_SUCCESS',
 	})
 
-	td.verify(fetchSuccess(config, current, users))
+	td.verify(fetchSuccess(config, current, users, [], undefined))
+})
+
+test(subject + 'calls fetchSuccess with replace', function(t) {
+	const fetchSuccess = td.function()
+	const reducers = reducersFor('users', {}, {fetchSuccess})
+
+	var users = [user]
+
+	reducers(current, {
+		data: {replace: true},
+		records: users,
+		type:   'USERS_FETCH_SUCCESS',
+	})
+
+	td.verify(fetchSuccess(config, current, users, [], true))
 })
 
 test(subject + 'calls createStart', function(t) {
