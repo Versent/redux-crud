@@ -4,7 +4,7 @@ var success_1 = require("./success");
 var ava_1 = require("ava");
 var config = {
     key: constants_1.default.DEFAULT_KEY,
-    resourceName: "users",
+    resourceName: "users"
 };
 var subject = constants_1.default.REDUCER_NAMES.UPDATE_SUCCESS;
 function getCurrent() {
@@ -13,12 +13,13 @@ function getCurrent() {
             id: 1,
             name: "Blue",
             unsaved: true,
-            busy: true,
-        }, {
+            busy: true
+        },
+        {
             id: 2,
             name: "Red",
             unsaved: true,
-            busy: true,
+            busy: true
         }
     ];
 }
@@ -66,12 +67,14 @@ ava_1.default(subject + "updates existing", function (t) {
 ava_1.default(subject + "uses the given key", function (t) {
     var config = {
         key: "_id",
-        resourceName: "users",
+        resourceName: "users"
     };
-    var curr = [{
+    var curr = [
+        {
             _id: 2,
             name: "Blue"
-        }];
+        }
+    ];
     var record = {
         _id: 2,
         name: "Green"
@@ -90,12 +93,14 @@ ava_1.default(subject + "it throws when record dont have an id", function (t) {
     t.throws(f);
 });
 ava_1.default(subject + "removes busy and pendingUpdate", function (t) {
-    var curr = [{
+    var curr = [
+        {
             id: 2,
             name: "Green",
             pendingUpdate: true,
-            busy: true,
-        }];
+            busy: true
+        }
+    ];
     var record = getValid();
     var updated = success_1.default(config, curr, record);
     t.deepEqual(updated.length, 1);

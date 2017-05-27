@@ -5,7 +5,7 @@ var constants_1 = require("../../../constants");
 var success_1 = require("./success");
 var config = {
     key: constants_1.default.DEFAULT_KEY,
-    resourceName: "users",
+    resourceName: "users"
 };
 var subject = constants_1.default.REDUCER_NAMES.DELETE_SUCCESS;
 function getCurrent() {
@@ -51,13 +51,15 @@ ava_1.default(subject + "doesnt mutate the original collection", function (t) {
 ava_1.default(subject + "uses the given key", function (t) {
     var config = {
         key: "_id",
-        resourceName: "users",
+        resourceName: "users"
     };
-    var curr = [{
-            _id: 1,
-        }];
+    var curr = [
+        {
+            _id: 1
+        }
+    ];
     var record = {
-        _id: 1,
+        _id: 1
     };
     var updated = success_1.default(config, curr, record);
     t.deepEqual(r.values(updated).length, 0, "removes the record");

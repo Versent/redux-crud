@@ -5,7 +5,7 @@ var invariants_1 = require("../invariants");
 var reducerName = constants_1.default.REDUCER_NAMES.CREATE_SUCCESS;
 var invariantArgs = {
     reducerName: reducerName,
-    canBeArray: false,
+    canBeArray: false
 };
 function success(config, current, addedRecord, clientGeneratedKey) {
     invariants_1.default(invariantArgs, config, current, addedRecord);

@@ -1,184 +1,182 @@
-import test from 'ava'
-import * as td from 'testdouble'
+import test from "ava";
+import * as td from "testdouble";
 
+import constants from "../../constants";
+import reducersFor from "./reducersFor";
 
-import constants       from '../../constants'
-import reducersFor     from './reducersFor'
+const current = [{}];
+const user = {};
+const error = "";
+const config = {
+  key: constants.DEFAULT_KEY,
+  resourceName: "users"
+};
+const subject = "reducersFor: ";
 
-const current         = [{}]
-const user            = {}
-const error           = ''
-const config          = {
-	key: constants.DEFAULT_KEY,
-	resourceName: 'users',
-}
-const subject = 'reducersFor: '
+test(subject + "calls fetchSuccess", function(t) {
+  const fetchSuccess = td.function();
+  const reducers = reducersFor("users", {}, {fetchSuccess});
 
-test(subject + 'calls fetchSuccess', function(t) {
-	const fetchSuccess = td.function()
-	const reducers = reducersFor('users', {}, {fetchSuccess})
+  var users = [user];
 
-	var users = [user]
+  reducers(current, {
+    records: users,
+    type: "USERS_FETCH_SUCCESS"
+  });
 
-	reducers(current, {
-		records: users,
-		type:   'USERS_FETCH_SUCCESS',
-	})
+  td.verify(fetchSuccess(config, current, users, [], undefined));
+});
 
-	td.verify(fetchSuccess(config, current, users, [], undefined))
-})
+test(subject + "calls fetchSuccess with replace", function(t) {
+  const fetchSuccess = td.function();
+  const reducers = reducersFor("users", {}, {fetchSuccess});
 
-test(subject + 'calls fetchSuccess with replace', function(t) {
-	const fetchSuccess = td.function()
-	const reducers = reducersFor('users', {}, {fetchSuccess})
+  var users = [user];
 
-	var users = [user]
+  reducers(current, {
+    data: {replace: true},
+    records: users,
+    type: "USERS_FETCH_SUCCESS"
+  });
 
-	reducers(current, {
-		data: {replace: true},
-		records: users,
-		type:   'USERS_FETCH_SUCCESS',
-	})
+  td.verify(fetchSuccess(config, current, users, [], true));
+});
 
-	td.verify(fetchSuccess(config, current, users, [], true))
-})
+test(subject + "calls createStart", function(t) {
+  const createStart = td.function();
+  const reducers = reducersFor("users", {}, {createStart});
 
-test(subject + 'calls createStart', function(t) {
-	const createStart = td.function()
-	const reducers = reducersFor('users', {}, {createStart})
+  reducers(current, {
+    record: user,
+    type: "USERS_CREATE_START"
+  });
 
-	reducers(current, {
-		record: user,
-		type: 'USERS_CREATE_START',
-	})
+  td.verify(createStart(config, current, user));
+});
 
-	td.verify(createStart(config, current, user))
-})
+test(subject + "calls createSuccess", function(t) {
+  const createSuccess = td.function();
+  const reducers = reducersFor("users", {}, {createSuccess});
 
-test(subject + 'calls createSuccess', function(t) {
-	const createSuccess = td.function()
-	const reducers = reducersFor('users', {}, {createSuccess})
+  var cid = "abc";
 
-	var cid = 'abc'
+  reducers(current, {
+    record: user,
+    type: "USERS_CREATE_SUCCESS",
+    cid: cid
+  });
 
-	reducers(current, {
-		record: user,
-		type: 'USERS_CREATE_SUCCESS',
-		cid:  cid,
-	})
+  td.verify(createSuccess(config, current, user, cid));
+});
 
-	td.verify(createSuccess(config, current, user, cid))
-})
+test(subject + "calls createError", function(t) {
+  const createError = td.function();
+  const reducers = reducersFor("users", {}, {createError});
 
-test(subject + 'calls createError', function(t) {
-	const createError = td.function()
-	const reducers = reducersFor('users', {}, {createError})
+  reducers(current, {
+    error: error,
+    record: user,
+    type: "USERS_CREATE_ERROR"
+  });
 
-	reducers(current, {
-		error: error,
-		record: user,
-		type: 'USERS_CREATE_ERROR',
-	})
+  td.verify(createError(config, current, user));
+});
 
-	td.verify(createError(config, current, user))
-})
+test(subject + "calls updateStart", function(t) {
+  const updateStart = td.function();
+  const reducers = reducersFor("users", {}, {updateStart});
 
-test(subject + 'calls updateStart', function(t) {
-	const updateStart = td.function()
-	const reducers = reducersFor('users', {}, {updateStart})
+  reducers(current, {
+    record: user,
+    type: "USERS_UPDATE_START"
+  });
 
-	reducers(current, {
-		record: user,
-		type: 'USERS_UPDATE_START',
-	})
+  td.verify(updateStart(config, current, user));
+});
 
-	td.verify(updateStart(config, current, user))
-})
+test(subject + "calls updateSuccess", function(t) {
+  const updateSuccess = td.function();
+  const reducers = reducersFor("users", {}, {updateSuccess});
 
-test(subject + 'calls updateSuccess', function(t) {
-	const updateSuccess = td.function()
-	const reducers = reducersFor('users', {}, {updateSuccess})
+  reducers(current, {
+    record: user,
+    type: "USERS_UPDATE_SUCCESS"
+  });
 
-	reducers(current, {
-		record: user,
-		type: 'USERS_UPDATE_SUCCESS',
-	})
+  td.verify(updateSuccess(config, current, user));
+});
 
-	td.verify(updateSuccess(config, current, user))
-})
+test(subject + "calls updateError", function(t) {
+  const updateError = td.function();
+  const reducers = reducersFor("users", {}, {updateError});
 
-test(subject + 'calls updateError', function(t) {
-	const updateError = td.function()
-	const reducers = reducersFor('users', {}, {updateError})
+  reducers(current, {
+    error: error,
+    record: user,
+    type: "USERS_UPDATE_ERROR"
+  });
 
-	reducers(current, {
-		error: error,
-		record: user,
-		type: 'USERS_UPDATE_ERROR',
-	})
+  td.verify(updateError(config, current, user));
+});
 
-	td.verify(updateError(config, current, user))
-})
+test(subject + "calls deleteStart", function(t) {
+  const deleteStart = td.function();
+  const reducers = reducersFor("users", {}, {deleteStart});
 
-test(subject + 'calls deleteStart', function(t) {
-	const deleteStart = td.function()
-	const reducers = reducersFor('users', {}, {deleteStart})
+  reducers(current, {
+    record: user,
+    type: "USERS_DELETE_START"
+  });
 
-	reducers(current, {
-		record: user,
-		type: 'USERS_DELETE_START',
-	})
+  td.verify(deleteStart(config, current, user));
+});
 
-	td.verify(deleteStart(config, current, user))
-})
+test(subject + "calls deleteSuccess", function(t) {
+  const deleteSuccess = td.function();
+  const reducers = reducersFor("users", {}, {deleteSuccess});
 
+  reducers(current, {
+    record: user,
+    type: "USERS_DELETE_SUCCESS"
+  });
 
-test(subject + 'calls deleteSuccess', function(t) {
-	const deleteSuccess = td.function()
-	const reducers = reducersFor('users', {}, {deleteSuccess})
+  td.verify(deleteSuccess(config, current, user));
+});
 
-	reducers(current, {
-		record: user,
-		type: 'USERS_DELETE_SUCCESS',
-	})
+test(subject + "calls deleteError", function(t) {
+  const deleteError = td.function();
+  const reducers = reducersFor("users", {}, {deleteError});
 
-	td.verify(deleteSuccess(config, current, user))
-})
+  reducers(current, {
+    error: error,
+    record: user,
+    type: "USERS_DELETE_ERROR"
+  });
 
-test(subject + 'calls deleteError', function(t) {
-	const deleteError = td.function()
-	const reducers = reducersFor('users', {}, {deleteError})
+  td.verify(deleteError(config, current, user));
+});
 
-	reducers(current, {
-		error: error,
-		record: user,
-		type: 'USERS_DELETE_ERROR',
-	})
+test(subject + "it passes the given key", function(t) {
+  const createStart = td.function();
+  const reducers = reducersFor("users", {key: "_id"}, {createStart});
 
-	td.verify(deleteError(config, current, user))
-})
+  reducers(current, {
+    record: user,
+    type: "USERS_CREATE_START"
+  });
 
-test(subject + 'it passes the given key', function(t) {
-	const createStart = td.function()
-	const reducers = reducersFor('users', {key: '_id'}, {createStart})
+  var expectedConfig = {
+    key: "_id",
+    resourceName: "users"
+  };
 
-	reducers(current, {
-		record: user,
-		type:  'USERS_CREATE_START',
-	})
+  td.verify(createStart(expectedConfig, current, user));
+});
 
-	var expectedConfig = {
-		key: '_id',
-		resourceName: 'users',
-	}
+test(subject + "it doesnt mutate the config", function(t) {
+  const config = {};
+  reducersFor("users", config);
+  reducersFor("monkeys", config);
 
-	td.verify(createStart(expectedConfig, current, user))
-})
-
-test(subject + 'it doesnt mutate the config', function(t) {
-	const config = {}
-	reducersFor('users', config)
-	reducersFor('monkeys', config)
-
-	t.deepEqual(config, {})
-})
+  t.deepEqual(config, {});
+});

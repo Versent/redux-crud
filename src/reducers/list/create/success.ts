@@ -1,46 +1,52 @@
-import * as r from "ramda"
-import constants from '../../../constants'
-import invariants from '../invariants'
+import * as r from "ramda";
+import constants from "../../../constants";
+import invariants from "../invariants";
 
-import { Config, InvariantsBaseArgs, ReducerName } from '../../../types'
+import {Config, InvariantsBaseArgs, ReducerName} from "../../../types";
 
-var reducerName: ReducerName = constants.REDUCER_NAMES.CREATE_SUCCESS
+var reducerName: ReducerName = constants.REDUCER_NAMES.CREATE_SUCCESS;
 var invariantArgs: InvariantsBaseArgs = {
-	reducerName,
-	canBeArray: false,
-}
+  reducerName,
+  canBeArray: false
+};
 
-export default function success(config: Config, current: Array<any>, addedRecord: any, clientGeneratedKey?: string): Array<any> {
-	invariants(invariantArgs, config, current, addedRecord)
+export default function success(
+  config: Config,
+  current: Array<any>,
+  addedRecord: any,
+  clientGeneratedKey?: string
+): Array<any> {
+  invariants(invariantArgs, config, current, addedRecord);
 
-	var key = config.key
-	var done = false
+  var key = config.key;
+  var done = false;
 
-	// Keep the clientGeneratedKey if provided
-	if (clientGeneratedKey != null) {
-		addedRecord = r.merge(addedRecord, {
-			[constants.SPECIAL_KEYS.CLIENT_GENERATED_ID]: clientGeneratedKey,
-		})
-	}
+  // Keep the clientGeneratedKey if provided
+  if (clientGeneratedKey != null) {
+    addedRecord = r.merge(addedRecord, {
+      [constants.SPECIAL_KEYS.CLIENT_GENERATED_ID]: clientGeneratedKey
+    });
+  }
 
-	// Update existing records
-	var updatedCollection = current.map(function (record) {
-		var recordKey = record[key]
-		if (recordKey == null) throw new Error('Expected record to have ' + key)
-		var isSameKey = recordKey === addedRecord[key]
-		var isSameClientGetKey = (clientGeneratedKey != null && clientGeneratedKey === recordKey)
-		if (isSameKey || isSameClientGetKey) {
-			done = true
-			return addedRecord
-		} else {
-			return record
-		}
-	})
+  // Update existing records
+  var updatedCollection = current.map(function(record) {
+    var recordKey = record[key];
+    if (recordKey == null) throw new Error("Expected record to have " + key);
+    var isSameKey = recordKey === addedRecord[key];
+    var isSameClientGetKey =
+      clientGeneratedKey != null && clientGeneratedKey === recordKey;
+    if (isSameKey || isSameClientGetKey) {
+      done = true;
+      return addedRecord;
+    } else {
+      return record;
+    }
+  });
 
-	// Add if not updated
-	if (!done) {
-		updatedCollection = updatedCollection.concat([addedRecord])
-	}
+  // Add if not updated
+  if (!done) {
+    updatedCollection = updatedCollection.concat([addedRecord]);
+  }
 
-	return updatedCollection
+  return updatedCollection;
 }

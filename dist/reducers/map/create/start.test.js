@@ -5,7 +5,7 @@ var constants_1 = require("../../../constants");
 var start_1 = require("./start");
 var config = {
     key: constants_1.default.DEFAULT_KEY,
-    resourceName: "users",
+    resourceName: "users"
 };
 var subject = constants_1.default.REDUCER_NAMES.CREATE_START;
 function getCurrent() {

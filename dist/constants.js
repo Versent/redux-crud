@@ -31,6 +31,6 @@ exports.default = {
         CLIENT_GENERATED_ID: "_cid",
         DELETED: "deleted",
         PENDING_CREATE: "pendingCreate",
-        PENDING_UPDATE: "pendingUpdate",
+        PENDING_UPDATE: "pendingUpdate"
     }
 };

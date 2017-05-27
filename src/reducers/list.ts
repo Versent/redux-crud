@@ -1,5 +1,5 @@
-import reducersFor from "./list/reducersFor"
+import reducersFor from "./list/reducersFor";
 
 export default {
-	reducersFor,
-}
+  reducersFor
+};

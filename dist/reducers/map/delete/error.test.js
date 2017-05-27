@@ -5,7 +5,7 @@ var constants_1 = require("../../../constants");
 var error_1 = require("./error");
 var config = {
     key: constants_1.default.DEFAULT_KEY,
-    resourceName: "users",
+    resourceName: "users"
 };
 var subject = constants_1.default.REDUCER_NAMES.DELETE_ERROR;
 function getCurrent() {
@@ -14,13 +14,13 @@ function getCurrent() {
             id: 1,
             name: "Blue",
             deleted: true,
-            busy: true,
+            busy: true
         },
         2: {
             id: 2,
             name: "Red",
             deleted: true,
-            busy: true,
+            busy: true
         }
     };
 }
@@ -35,7 +35,7 @@ ava_1.default(subject + "throws if given an array", function (t) {
 ava_1.default(subject + "doesnt mutate", function (t) {
     var curr = getCurrent();
     var record = {
-        id: 1,
+        id: 1
     };
     var updated = error_1.default(config, curr, record);
     t.is(curr["1"].deleted, true);
@@ -46,7 +46,7 @@ ava_1.default(subject + "doesnt mutate", function (t) {
 ava_1.default(subject + "removes deleted and busy", function (t) {
     var curr = getCurrent();
     var record = {
-        id: 1,
+        id: 1
     };
     var updated = error_1.default(config, curr, record);
     t.is(r.values(updated).length, 2, "doesnt remove record");
@@ -58,17 +58,17 @@ ava_1.default(subject + "removes deleted and busy", function (t) {
 ava_1.default(subject + "uses the given key", function (t) {
     var config = {
         key: "_id",
-        resourceName: "users",
+        resourceName: "users"
     };
     var curr = {
         1: {
             _id: 1,
             deleted: true,
-            busy: true,
+            busy: true
         }
     };
     var record = {
-        _id: 1,
+        _id: 1
     };
     var updated = error_1.default(config, curr, record);
     t.truthy(updated["1"].deleted == null, "removes deleted");

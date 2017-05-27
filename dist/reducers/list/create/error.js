@@ -5,7 +5,7 @@ var remove_1 = require("../store/remove");
 var reducerName = constants_1.default.REDUCER_NAMES.CREATE_ERROR;
 var invariantArgs = {
     reducerName: reducerName,
-    canBeArray: false,
+    canBeArray: false
 };
 function error(config, current, record) {
     invariants_1.default(invariantArgs, config, current, record);

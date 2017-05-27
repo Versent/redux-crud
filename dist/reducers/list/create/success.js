@@ -5,7 +5,7 @@ var invariants_1 = require("../invariants");
 var reducerName = constants_1.default.REDUCER_NAMES.CREATE_SUCCESS;
 var invariantArgs = {
     reducerName: reducerName,
-    canBeArray: false,
+    canBeArray: false
 };
 function success(config, current, addedRecord, clientGeneratedKey) {
     invariants_1.default(invariantArgs, config, current, addedRecord);
@@ -21,9 +21,9 @@ function success(config, current, addedRecord, clientGeneratedKey) {
     var updatedCollection = current.map(function (record) {
         var recordKey = record[key];
         if (recordKey == null)
-            throw new Error('Expected record to have ' + key);
+            throw new Error("Expected record to have " + key);
         var isSameKey = recordKey === addedRecord[key];
-        var isSameClientGetKey = (clientGeneratedKey != null && clientGeneratedKey === recordKey);
+        var isSameClientGetKey = clientGeneratedKey != null && clientGeneratedKey === recordKey;
         if (isSameKey || isSameClientGetKey) {
             done = true;
             return addedRecord;
