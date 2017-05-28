@@ -9,14 +9,19 @@
     "test": "tsc && ava dist/**/*.test.js",
     "lint": "tslint src/**/*.ts",
     "format": "prettier --bracket-spacing=false --write 'src/**/*.ts'",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "prepublish": "npm run build"
   },
   "lint-staged": {
-    "src/**/*.js": [
+    "src/**/*.ts": [
       "prettier --write --bracket-spacing=false",
       "git add"
     ]
   },
+  "files": [
+    "dist",
+    "src"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Versent/redux-crud"
