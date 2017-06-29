@@ -153,14 +153,13 @@ test(subject + " it uses the cid to merge the record", function(t) {
 
   // Verify that the record was merged
   t.same(updated["3"], {
-    _cid: "abc",
     ...record
   });
 
   t.same(actualKeys, expectedKeys);
 });
 
-test(subject + " it keeps the cid", function(t) {
+test(subject + " cleans the cid", function(t) {
   var cid = "abc";
   var curr = {
     [cid]: {
@@ -177,7 +176,7 @@ test(subject + " it keeps the cid", function(t) {
   var updated = reducer(config, curr, record, cid);
   var updatedRecord = updated["3"];
 
-  t.same(updatedRecord._cid, cid);
+  t.same(updatedRecord._cid, undefined);
 });
 
 test(subject + " removes busy and pendingCreate", function(t) {

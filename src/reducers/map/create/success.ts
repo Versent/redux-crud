@@ -22,14 +22,6 @@ export default function success(
   var key = config.key;
   var addedRecordKey: string = addedRecord[key];
   var addedRecordKeyLens = r.lensProp(addedRecordKey);
-
-  // Keep the cuid in the record if there is one
-  if (clientGeneratedKey != null) {
-    addedRecord = r.merge(addedRecord, {
-      [constants.SPECIAL_KEYS.CLIENT_GENERATED_ID]: clientGeneratedKey
-    });
-  }
-
   var currentWithoutClientGeneratedKey = r.dissoc(clientGeneratedKey, current);
 
   return r.set(

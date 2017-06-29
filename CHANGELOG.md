@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.2.0
+
+- Removed `_cid` after successful creation
+
 ## 3.1
 
 - Added `replace` option to `fetchSucess` action.
@@ -24,7 +28,7 @@ You can wrap the collections with Seamless or Immutable.js after getting them fr
 
 - Remove dependency on the whole Lodash lib. This library now uses individual lodash functions as needed e.g. `lodash.assign`.
 
-## **1.0** 
+## **1.0**
 
 Added Immutable.js store
 

@@ -21,13 +21,6 @@ export default function success(
   var key = config.key;
   var done = false;
 
-  // Keep the clientGeneratedKey if provided
-  if (clientGeneratedKey != null) {
-    addedRecord = r.merge(addedRecord, {
-      [constants.SPECIAL_KEYS.CLIENT_GENERATED_ID]: clientGeneratedKey
-    });
-  }
-
   // Update existing records
   var updatedCollection = current.map(function(record) {
     var recordKey = record[key];
