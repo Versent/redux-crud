@@ -126,7 +126,7 @@ test(subject + "it uses the cid", function(t) {
   t.is(updated.length, 1);
 });
 
-test(subject + " it keeps the cid", function(t) {
+test(subject + " cleans the cid", function(t) {
   var cid = "abc";
   var curr = [
     {
@@ -143,7 +143,7 @@ test(subject + " it keeps the cid", function(t) {
   var updated = reducer(config, curr, record, cid);
   var updatedRecord = updated[0];
 
-  t.same(updatedRecord._cid, cid);
+  t.is(updatedRecord._cid, undefined);
 });
 
 test(subject + "removes busy and pendingCreate", function(t) {
