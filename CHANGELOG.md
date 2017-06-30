@@ -19,6 +19,7 @@
 ## 3.0
 
 - Added Map Store
+- Switch from lodash to ramda https://github.com/Versent/redux-crud/issues/39
 
 ## 2.0
 
