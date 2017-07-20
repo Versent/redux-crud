@@ -104,7 +104,7 @@ import reduxCrud  from 'redux-crud';
 
 const standardReducers = reduxCrud.Map.reducersFor('comments');
 
-function reducers(state=[], action) {
+function commentsReducers(state=[], action) {
   switch(action.type) {
     case 'POSTS_DELETE_SUCCESS':
       // ...delete comments for the given post and return a new state for comments
@@ -115,7 +115,7 @@ function reducers(state=[], action) {
   }
 }
 
-export default reducers;
+export default commentsReducers;
 ```
 
 Then you can use this reducer:
