@@ -134,7 +134,7 @@ test(subject + " it throws when record doesn't have an id", function(t) {
   t.throws(f, /users.createSuccess: Expected record to have .id/);
 });
 
-test(subject + " it uses the cid to merge the record", function(t) {
+test(subject + " uses the cid to merge the record", function(t) {
   var cid = "abc";
   var curr = {
     [cid]: {
@@ -148,15 +148,14 @@ test(subject + " it uses the cid to merge the record", function(t) {
   };
 
   var updated = reducer(config, curr, record, cid);
+
+  // It has the expected key
+  var expectedKeys = ["3"];
   var actualKeys = r.keys(updated);
-  var expectedKeys = ["3"]; // Verify that key was updated too
+  t.deepEqual(actualKeys, expectedKeys);
 
-  // Verify that the record was merged
-  t.same(updated["3"], {
-    ...record
-  });
-
-  t.same(actualKeys, expectedKeys);
+  // It merged the record
+  t.deepEqual(updated["3"], record);
 });
 
 test(subject + " cleans the cid", function(t) {
@@ -176,7 +175,7 @@ test(subject + " cleans the cid", function(t) {
   var updated = reducer(config, curr, record, cid);
   var updatedRecord = updated["3"];
 
-  t.same(updatedRecord._cid, undefined);
+  t.is(updatedRecord._cid, undefined);
 });
 
 test(subject + " removes busy and pendingCreate", function(t) {

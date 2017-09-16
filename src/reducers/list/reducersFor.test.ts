@@ -25,6 +25,7 @@ test(subject + "calls fetchSuccess", function(t) {
   });
 
   td.verify(fetchSuccess(config, current, users, [], undefined));
+  t.pass();
 });
 
 test(subject + "calls fetchSuccess with replace", function(t) {
@@ -40,6 +41,7 @@ test(subject + "calls fetchSuccess with replace", function(t) {
   });
 
   td.verify(fetchSuccess(config, current, users, [], true));
+  t.pass();
 });
 
 test(subject + "calls createStart", function(t) {
@@ -52,6 +54,7 @@ test(subject + "calls createStart", function(t) {
   });
 
   td.verify(createStart(config, current, user));
+  t.pass();
 });
 
 test(subject + "calls createSuccess", function(t) {
@@ -67,6 +70,7 @@ test(subject + "calls createSuccess", function(t) {
   });
 
   td.verify(createSuccess(config, current, user, cid));
+  t.pass();
 });
 
 test(subject + "calls createError", function(t) {
@@ -80,6 +84,7 @@ test(subject + "calls createError", function(t) {
   });
 
   td.verify(createError(config, current, user));
+  t.pass();
 });
 
 test(subject + "calls updateStart", function(t) {
@@ -92,6 +97,7 @@ test(subject + "calls updateStart", function(t) {
   });
 
   td.verify(updateStart(config, current, user));
+  t.pass();
 });
 
 test(subject + "calls updateSuccess", function(t) {
@@ -104,6 +110,7 @@ test(subject + "calls updateSuccess", function(t) {
   });
 
   td.verify(updateSuccess(config, current, user));
+  t.pass();
 });
 
 test(subject + "calls updateError", function(t) {
@@ -117,6 +124,7 @@ test(subject + "calls updateError", function(t) {
   });
 
   td.verify(updateError(config, current, user));
+  t.pass();
 });
 
 test(subject + "calls deleteStart", function(t) {
@@ -129,6 +137,7 @@ test(subject + "calls deleteStart", function(t) {
   });
 
   td.verify(deleteStart(config, current, user));
+  t.pass();
 });
 
 test(subject + "calls deleteSuccess", function(t) {
@@ -141,6 +150,7 @@ test(subject + "calls deleteSuccess", function(t) {
   });
 
   td.verify(deleteSuccess(config, current, user));
+  t.pass();
 });
 
 test(subject + "calls deleteError", function(t) {
@@ -154,6 +164,7 @@ test(subject + "calls deleteError", function(t) {
   });
 
   td.verify(deleteError(config, current, user));
+  t.pass();
 });
 
 test(subject + "it passes the given key", function(t) {
@@ -171,6 +182,7 @@ test(subject + "it passes the given key", function(t) {
   };
 
   td.verify(createStart(expectedConfig, current, user));
+  t.pass();
 });
 
 test(subject + "it doesnt mutate the config", function(t) {
