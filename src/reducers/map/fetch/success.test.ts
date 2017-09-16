@@ -8,6 +8,7 @@ var config = {
   key: constants.DEFAULT_KEY,
   resourceName: "users"
 };
+
 var subject = constants.REDUCER_NAMES.FETCH_SUCCESS;
 
 function getCurrent() {
@@ -51,6 +52,25 @@ test(subject + " adds the records", function(t) {
 
   t.deepEqual(updated, expected);
 });
+
+test(subject + " throws when config.key is wrong", function(t) {
+  var curr = getCurrent();
+  var more = [
+    {
+      id: 42,
+      name: "Green",
+    },
+  ];
+
+  var config2 = r.merge(config, {
+    key: "_id",
+  })
+
+  var f = function() {
+    reducer(config2, curr, more, {});
+  };
+  t.throws(f);
+})
 
 test(subject + " doesnt mutate the original collection", function(t) {
   var curr = getCurrent();
