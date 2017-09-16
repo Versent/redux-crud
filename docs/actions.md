@@ -190,7 +190,7 @@ reduxCrud.actionCreatorsFor('users', {key: '_id'});
 Don't forget to do the same thing in reducers, with `reducersFor`:
 
 ```js
-reduxCrud.reducersFor('users', {key: '_id'});
+reduxCrud.Map.reducersFor('users', {key: '_id'});
 ```
 
 ### The `data` attribute

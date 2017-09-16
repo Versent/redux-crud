@@ -51,7 +51,7 @@ function (state, action) {
 `reducersFor` takes an optional config object as second argument:
 
 ```js
-reduxCrud.reducersFor('users', {key: '_id'});
+reduxCrud.List.reducersFor('users', {key: '_id'});
 ```
 
 Don't forget to do the same thing in actions, with `actionCreatorsFor`:
