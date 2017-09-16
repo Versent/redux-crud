@@ -27,13 +27,29 @@ test(subject + " adds the records", function(t) {
   var curr = getCurrent();
   var more = [
     {
-      id: 3,
-      name: "Green"
-    }
+      id: 42,
+      name: "Green",
+    },
   ];
+
   var updated = reducer(config, curr, more, {});
 
-  t.is(r.values(updated).length, 3);
+  var expected = {
+    1: {
+      id: 1,
+      name: "Blue",
+    },
+    2: {
+      id: 2,
+      name: "Red",
+    },
+    42: {
+      id: 42,
+      name: "Green",
+    },
+  }
+
+  t.deepEqual(updated, expected);
 });
 
 test(subject + " doesnt mutate the original collection", function(t) {
