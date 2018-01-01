@@ -1,5 +1,3 @@
-import * as r from "ramda";
-
 import {prepareRecord} from "../../common/delete/start";
 import constants from "../../../constants";
 import findByKey from "../../../utils/findByKey";

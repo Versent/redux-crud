@@ -1,4 +1,5 @@
-import * as r from "ramda";
+import * as omit from "ramda/src/omit"
+import * as merge from "ramda/src/merge"
 
 import constants from "../../../constants";
 import findByKey from "../../../utils/findByKey";
@@ -30,8 +31,8 @@ export default function error(
     return current;
   } else {
     // Remove deleted and busy
-    deleteRecord = r.omit(["deleted", "busy"], deleteRecord);
+    deleteRecord = omit(["deleted", "busy"], deleteRecord);
 
-    return r.merge(current, {[deleteId]: deleteRecord});
+    return merge(current, {[deleteId]: deleteRecord});
   }
 }

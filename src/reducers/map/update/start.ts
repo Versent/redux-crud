@@ -1,5 +1,3 @@
-import * as r from "ramda";
-
 import {prepareRecord} from "../../common/update/start";
 import constants from "../../../constants";
 import invariants from "../invariants";

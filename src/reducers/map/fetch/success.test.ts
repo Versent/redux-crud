@@ -1,4 +1,5 @@
-import * as r from "ramda";
+import * as values from "ramda/src/values"
+import * as merge from "ramda/src/merge"
 import test from "ava";
 
 import constants from "../../../constants";
@@ -62,7 +63,7 @@ test(subject + " throws when config.key is wrong", function(t) {
     },
   ];
 
-  var config2 = r.merge(config, {
+  var config2 = merge(config, {
     key: "_id",
   })
 
@@ -82,8 +83,8 @@ test(subject + " doesnt mutate the original collection", function(t) {
   ];
   var updated = reducer(config, curr, more, {});
 
-  t.is(r.values(curr).length, 2);
-  t.is(r.values(updated).length, 3);
+  t.is(values(curr).length, 2);
+  t.is(values(updated).length, 3);
 });
 
 test(subject + " merges", function(t) {
@@ -96,7 +97,7 @@ test(subject + " merges", function(t) {
   ];
   var updated = reducer(config, curr, more, {});
 
-  t.is(r.values(updated).length, 2);
+  t.is(values(updated).length, 2);
   t.is(updated["2"].id, 2);
   t.is(updated["2"].name, "Green");
 });
@@ -111,7 +112,7 @@ test(subject + " replaces", function(t) {
   ];
   const updated = reducer(config, curr, more, {}, true);
 
-  t.is(r.values(updated).length, 1);
+  t.is(values(updated).length, 1);
   t.is(updated["2"].id, 2);
   t.is(updated["2"].name, "Green");
 });
@@ -136,7 +137,7 @@ test(subject + " uses the given key", function(t) {
 
   var updated = reducer(config, curr, more, {});
 
-  t.is(r.values(updated).length, 1);
+  t.is(values(updated).length, 1);
 });
 
 test(subject + " it throws when records dont have an id", function(t) {
@@ -161,5 +162,5 @@ test(subject + " can take one record", function(t) {
   };
   var updated = reducer(config, curr, one, {});
 
-  t.is(r.values(updated).length, 3);
+  t.is(values(updated).length, 3);
 });

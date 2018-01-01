@@ -1,4 +1,4 @@
-import * as r from "ramda";
+import * as values from "ramda/src/values"
 import test from "ava";
 
 import constants from "../../../constants";
@@ -48,7 +48,7 @@ test(subject + "adds the record if not there", function(t) {
   };
   var updated = reducer(config, curr, record);
 
-  t.is(r.values(updated).length, 3);
+  t.is(values(updated).length, 3);
 });
 
 test(subject + "doesnt mutate the original", function(t) {
@@ -59,8 +59,8 @@ test(subject + "doesnt mutate the original", function(t) {
   };
   var updated = reducer(config, curr, record);
 
-  t.is(r.values(curr).length, 2);
-  t.is(r.values(updated).length, 3);
+  t.is(values(curr).length, 2);
+  t.is(values(updated).length, 3);
 });
 
 test(subject + "updates existing", function(t) {
@@ -68,7 +68,7 @@ test(subject + "updates existing", function(t) {
   var record = getValid();
   var updated = reducer(config, curr, record);
 
-  t.is(r.values(updated).length, 2);
+  t.is(values(updated).length, 2);
   t.is(updated["2"].id, 2);
   t.is(updated["2"].name, "Green");
 });
@@ -90,7 +90,7 @@ test(subject + "uses the given key", function(t) {
   };
   var updated = reducer(config, curr, record);
 
-  t.is(r.values(updated).length, 1);
+  t.is(values(updated).length, 1);
 });
 
 test(subject + "it throws when record dont have an id", function(t) {

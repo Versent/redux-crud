@@ -1,4 +1,5 @@
-import * as r from "ramda";
+import * as values from "ramda/src/values"
+import * as keys from "ramda/src/keys"
 import test from "ava";
 
 import constants from "../../../constants";
@@ -43,8 +44,8 @@ test(subject + " doesn't mutate the original collection", function(t) {
   };
   var updated = reducer(config, curr, record);
 
-  t.is(r.values(updated).length, 3);
-  t.is(r.values(curr).length, 2);
+  t.is(values(updated).length, 3);
+  t.is(values(curr).length, 2);
 });
 
 test(subject + " throws if given an array", function(t) {
@@ -64,7 +65,7 @@ test(subject + " adds the record", function(t) {
     name: "Green"
   };
   var updated = reducer(config, curr, record);
-  var actual = r.keys(updated);
+  var actual = keys(updated);
   var expected = ["1", "2", "3"];
 
   t.deepEqual(actual, expected);
@@ -96,7 +97,7 @@ test(subject + " merges if exists", function(t) {
   };
   var updated = reducer(config, curr, record);
 
-  t.is(r.values(updated).length, 2);
+  t.is(values(updated).length, 2);
   t.is(updated["2"].id, 2);
   t.is(updated["2"].name, "Green");
 });
@@ -119,7 +120,7 @@ test(subject + " uses the given key", function(t) {
 
   var updated = reducer(config, curr, record);
 
-  t.is(r.values(updated).length, 1);
+  t.is(values(updated).length, 1);
 });
 
 test(subject + " it throws when record doesn't have an id", function(t) {
@@ -151,7 +152,7 @@ test(subject + " uses the cid to merge the record", function(t) {
 
   // It has the expected key
   var expectedKeys = ["3"];
-  var actualKeys = r.keys(updated);
+  var actualKeys = keys(updated);
   t.deepEqual(actualKeys, expectedKeys);
 
   // It merged the record
@@ -193,7 +194,7 @@ test(subject + " removes busy and pendingCreate", function(t) {
   };
   var updated = reducer(config, curr, record);
 
-  t.is(r.values(updated).length, 1);
+  t.is(values(updated).length, 1);
   t.truthy(updated["2"].busy == null, "removes busy");
   t.truthy(updated["2"].pendingCreate == null, "removes pendingCreate");
 });

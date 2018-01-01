@@ -1,4 +1,6 @@
-import * as r from "ramda";
+import * as dissoc from "ramda/src/dissoc"
+import * as lensProp from "ramda/src/lensProp"
+import * as set from "ramda/src/set"
 
 import constants from "../../../constants";
 import invariants from "../invariants";
@@ -21,10 +23,10 @@ export default function success(
 
   var key = config.key;
   var addedRecordKey: string = addedRecord[key];
-  var addedRecordKeyLens = r.lensProp(addedRecordKey);
-  var currentWithoutClientGeneratedKey = r.dissoc(clientGeneratedKey, current);
+  var addedRecordKeyLens = lensProp(addedRecordKey);
+  var currentWithoutClientGeneratedKey = dissoc(clientGeneratedKey, current);
 
-  return r.set(
+  return set(
     addedRecordKeyLens,
     addedRecord,
     currentWithoutClientGeneratedKey

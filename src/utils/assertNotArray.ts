@@ -1,12 +1,12 @@
-import makeScope from "../utils/makeScope";
+import * as is from "ramda/src/is"
 
-import * as r from "ramda";
+import makeScope from "../utils/makeScope";
 
 import {Config, ReducerName} from "../types";
 
 export default function(config: Config, reducerName: ReducerName, record: any) {
   var scope = makeScope(config, reducerName);
-  var isArray = r.is(Array, record);
+  var isArray = is(Array, record);
 
   if (isArray)
     throw new TypeError(scope + ": Expected record not to be an array");

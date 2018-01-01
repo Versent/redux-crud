@@ -1,4 +1,4 @@
-import * as r from "ramda";
+import * as omit from "ramda/src/omit"
 
 import {Config, Map} from "../../../types";
 
@@ -10,5 +10,5 @@ export default function remove(
   var key = config.key;
   var recordKey = record[key];
 
-  return r.omit([recordKey], current);
+  return omit([recordKey], current);
 }

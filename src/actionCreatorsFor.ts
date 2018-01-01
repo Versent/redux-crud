@@ -1,4 +1,4 @@
-import * as r from "ramda";
+import * as merge from "ramda/src/merge";
 import * as invariant from "invariant";
 
 import actionTypesFor from "./actionTypesFor";
@@ -15,7 +15,7 @@ function actionCreatorsFor<T>(resourceName: string, config?: Config) {
     throw new Error("actionCreatorsFor: Expected resourceName");
 
   config = config || getDefaultConfig(resourceName);
-  config = r.merge(config, {resourceName});
+  config = merge(config, {resourceName});
 
   const actionTypes = actionTypesFor(resourceName);
   const key = config.key || constants.DEFAULT_KEY;

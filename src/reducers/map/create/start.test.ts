@@ -1,4 +1,4 @@
-import * as r from "ramda";
+import * as values from "ramda/src/values"
 import test from "ava";
 
 import constants from "../../../constants";
@@ -49,7 +49,7 @@ test(subject + " adds the new record", function(t) {
   };
   var updated = reducer(config, curr, other);
 
-  t.is(r.values(updated).length, 3, "adds the record");
+  t.is(values(updated).length, 3, "adds the record");
 });
 
 test(subject + "it throws when record doesnt have an id", function(t) {

@@ -1,4 +1,4 @@
-import * as r from "ramda";
+import * as values from "ramda/src/values"
 import test from "ava";
 
 import constants from "../../../constants";
@@ -52,7 +52,7 @@ test(subject + "doesnt add record if not there", function(t) {
   };
   var updated = reducer(config, curr, record);
 
-  t.is(r.values(updated).length, 2);
+  t.is(values(updated).length, 2);
 });
 
 test(subject + "removes busy", function(t) {
