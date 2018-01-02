@@ -1,4 +1,6 @@
-import * as r from "ramda";
+import * as indexBy from "ramda/src/indexBy"
+import * as prop from "ramda/src/prop"
+import * as merge from "ramda/src/merge"
 
 import assertAllHaveKeys from "../../../utils/assertAllHaveKeys";
 import constants from "../../../constants";
@@ -28,7 +30,7 @@ export default function success(
   // All given records must have a key
   assertAllHaveKeys(config, reducerName, records);
 
-  const merge = r.indexBy(r.prop(config.key), records);
+  const mergeValues = indexBy(prop(config.key), records);
 
-  return r.merge(replace ? emptyState : current, merge);
+  return merge(replace ? emptyState : current, mergeValues);
 }

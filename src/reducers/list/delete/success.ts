@@ -1,4 +1,4 @@
-import * as r from "ramda";
+import * as reject from "ramda/src/reject"
 
 import invariants from "../invariants";
 import constants from "../../../constants";
@@ -25,5 +25,5 @@ export default function success(
     return deleteId == existingRecord[key];
   }
 
-  return r.reject(predicate, current);
+  return reject(predicate, current);
 }

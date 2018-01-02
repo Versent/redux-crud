@@ -1,4 +1,4 @@
-import * as r from "ramda";
+import * as omit from "ramda/src/omit"
 
 import constants from "../../../constants";
 import findByKey from "../../../utils/findByKey";
@@ -23,7 +23,7 @@ export default function error(
   var key = config.key;
   var deleteId = record[key];
   var deleteRecord = findByKey(current, key, deleteId);
-  deleteRecord = r.omit(["deleted", "busy"], deleteRecord);
+  deleteRecord = omit(["deleted", "busy"], deleteRecord);
 
   return store.merge(current, deleteRecord, key);
 }

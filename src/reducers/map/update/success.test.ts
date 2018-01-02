@@ -1,4 +1,5 @@
-import * as r from "ramda";
+import * as values from "ramda/src/values"
+
 import constants from "../../../constants";
 import reducer from "./success";
 import test from "ava";
@@ -51,7 +52,7 @@ test(subject + "adds the record if not there", function(t) {
   };
   var updated = reducer(config, curr, record);
 
-  t.is(r.values(updated).length, 3);
+  t.is(values(updated).length, 3);
 });
 
 test(subject + "doesnt mutate the original collection", function(t) {
@@ -62,8 +63,8 @@ test(subject + "doesnt mutate the original collection", function(t) {
   };
   var updated = reducer(config, curr, record);
 
-  t.is(r.values(curr).length, 2);
-  t.is(r.values(updated).length, 3);
+  t.is(values(curr).length, 2);
+  t.is(values(updated).length, 3);
 });
 
 test(subject + "updates existing", function(t) {
@@ -71,7 +72,7 @@ test(subject + "updates existing", function(t) {
   var record = getValid();
   var updated = reducer(config, curr, record);
 
-  t.is(r.values(updated).length, 2);
+  t.is(values(updated).length, 2);
   t.is(updated["2"].id, 2);
   t.is(updated["2"].name, "Green");
 });
@@ -93,7 +94,7 @@ test(subject + "uses the given key", function(t) {
   };
   var updated = reducer(config, curr, record);
 
-  t.is(r.values(updated).length, 1);
+  t.is(values(updated).length, 1);
 });
 
 test(subject + "it throws when record dont have an id", function(t) {
@@ -120,7 +121,7 @@ test(subject + "removes busy and pendingUpdate", function(t) {
   var record = getValid();
   var updated = reducer(config, curr, record);
 
-  t.deepEqual(r.values(updated).length, 1);
+  t.deepEqual(values(updated).length, 1);
   t.truthy(updated["2"].busy == null, "removes busy");
   t.truthy(updated["2"].pendingUpdate == null, "removes pendingUpdate");
 });

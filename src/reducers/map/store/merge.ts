@@ -1,4 +1,4 @@
-import * as r from "ramda";
+import * as merge from "ramda/src/merge"
 
 import {Config, Map} from "../../../types";
 
@@ -13,5 +13,5 @@ export default function replace(
   var key = config.key;
   var recordKey = record[key];
 
-  return r.merge(current, {[recordKey]: record});
+  return merge(current, {[recordKey]: record});
 }

@@ -1,4 +1,4 @@
-import * as r from "ramda";
+import * as reject from "ramda/src/reject"
 
 import {Config} from "../../../types";
 
@@ -15,5 +15,5 @@ export default function remove(
     return isSameKey;
   }
 
-  return r.reject(predicate, current);
+  return reject(predicate, current);
 }

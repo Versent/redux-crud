@@ -1,4 +1,4 @@
-import * as r from "ramda";
+import * as merge from "ramda/src/merge"
 import constants from "../../../constants";
 
 export function prepareRecord(record: Object) {
@@ -7,5 +7,5 @@ export function prepareRecord(record: Object) {
     [constants.SPECIAL_KEYS.PENDING_UPDATE]: true
   };
 
-  return r.merge(record, recordStatus);
+  return merge(record, recordStatus);
 }

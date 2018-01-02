@@ -1,4 +1,4 @@
-import * as r from "ramda";
+import * as values from "ramda/src/values"
 import test from "ava";
 
 import constants from "../../../constants";
@@ -36,7 +36,7 @@ test(subject + "throws if given an array", function(t) {
 
 test(subject + "removes the record", function(t) {
   var curr = getCurrent();
-  t.deepEqual(r.values(curr).length, 2);
+  t.deepEqual(values(curr).length, 2);
 
   var created = {
     id: "abc",
@@ -44,5 +44,5 @@ test(subject + "removes the record", function(t) {
   };
   var updated = reducer(config, curr, created);
 
-  t.deepEqual(r.values(updated).length, 2);
+  t.deepEqual(values(updated).length, 2);
 });

@@ -1,3 +1,5 @@
+import * as merge from "ramda/src/merge"
+
 import actionTypesFor from "../../actionTypesFor";
 import constants from "../../constants";
 import commonReducersFor from "../common/reducersFor";
@@ -11,7 +13,6 @@ import fetchSuccess from "./fetch/success";
 import updateError from "./update/error";
 import updateStart from "./update/start";
 import updateSuccess from "./update/success";
-import * as r from "ramda";
 
 import {Config, ReducerName} from "../../types";
 
@@ -29,6 +30,6 @@ const baseReducers = {
 };
 
 export default function reducersFor(resourceName: string, args = {}, deps?) {
-  const reducers = r.merge(baseReducers, deps);
+  const reducers = merge(baseReducers, deps);
   return commonReducersFor(resourceName, args, {}, reducers);
 }

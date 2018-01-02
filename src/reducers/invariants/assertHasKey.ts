@@ -1,4 +1,4 @@
-import * as r from "ramda";
+import * as forEach from "ramda/src/forEach"
 
 import constants from "../../constants";
 import wrapArray from "../../utils/wrapArray";
@@ -13,7 +13,7 @@ export default function assertHasKey(
   var key = config.key;
   var records = wrapArray(recordOrRecords);
 
-  r.forEach(function(record) {
+  forEach(function(record) {
     if (record[key] == null) {
       throw new Error(scope + ": Expected record to have ." + key);
     }
