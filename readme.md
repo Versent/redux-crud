@@ -1,5 +1,7 @@
 # Redux CRUD
 
+**Looking for a new mantainer**: See https://github.com/Versent/redux-crud/issues/77
+
 [ ![Codeship Status for Versent/redux-crud](https://codeship.com/projects/41be3440-293a-0133-d1a0-76c73dc375da/status?branch=master)](https://codeship.com/projects/97928)
 
 Redux CRUD is a convention driven way of building CRUD applications using Redux. After building several Flux applications we found that we always end up creating the same action types, actions and reducers for all our resources.
