@@ -1,6 +1,6 @@
 # Redux CRUD
 
-**Looking for a new mantainer**: See https://github.com/Versent/redux-crud/issues/77
+**Looking for a new mantainer**: See <https://github.com/Versent/redux-crud/issues/77>
 
 [ ![Codeship Status for Versent/redux-crud](https://codeship.com/projects/41be3440-293a-0133-d1a0-76c73dc375da/status?branch=master)](https://codeship.com/projects/97928)
 
