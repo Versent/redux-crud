@@ -6,16 +6,17 @@ import {Config, InvariantsBaseArgs, Map, ReducerName} from "../../../types";
 
 var reducerName: ReducerName = constants.REDUCER_NAMES.UPDATE_SUCCESS;
 var invariantArgs: InvariantsBaseArgs = {
-  reducerName,
-  canBeArray: false
+	reducerName,
+	canBeArray: false
 };
 
 export default function success(
-  config: Config,
-  current: Map<any>,
-  record: any
+	config: Config,
+	current: Map<any>,
+	record: any,
+	partial: boolean = false
 ): Map<any> {
-  invariants(invariantArgs, config, current, record);
+	invariants(invariantArgs, config, current, record);
 
-  return store.merge(config, current, record);
+	return store.merge(config, current, record, partial);
 }
